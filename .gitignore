@@ -1,0 +1,25 @@
+# Visual Studio / Rider
+.vs/
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build results
+[Bb]in/
+[Oo]bj/
+
+# Rider
+*.DotSettings.user
+
+# User-specific files
+*.user
+*.rsuser
+
+# Test results
+TestResults/
+
+# OS files
+.DS_Store
+Thumbs.db
