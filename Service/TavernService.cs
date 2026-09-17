@@ -8,18 +8,17 @@ namespace TavernSimulator.Service;
 /// </summary>
 public static class TavernService
 {
+    public static readonly ProductCatalog ProductCatalog = new ();
+    private static readonly DishCatalog DishCatalog = new ();
     
     public static void CreateTavern(this Tavern tavern)
     {
-        var productCatalog = new ProductCatalog();
-        var dishCatalog = new DishCatalog();
-        tavern.Products = productCatalog.Products.Where(x => x.RequiredTavernLevel == 1).ToList();
-        tavern.AvailableDishes = dishCatalog.Dishes.Where(x => x.RequiredTavernLevel == 1).ToList();
-        Console.WriteLine("Доступные продукты таверны:");
-        foreach (var product in tavern.Products)
-            Console.WriteLine(product.Name + ' ' + product.Price);
-        Console.WriteLine("\nДоступные блюда таверны:");
-        foreach (var dish in tavern.AvailableDishes)
-            Console.WriteLine(dish.Name + ' ' + dish.Price);
+        var availiableProducts = ProductCatalog.Products.Where(x => x.RequiredTavernLevel == 1).ToList();
+        foreach (var product in availiableProducts)
+        {
+            tavern.Products.Add(product.Name, new Random().Next(4,10));
+        }
+        tavern.AvailableDishes = DishCatalog.Dishes.Where(x => x.RequiredTavernLevel == 1).ToList();
+        
     }
 }

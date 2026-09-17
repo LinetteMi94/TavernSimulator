@@ -4,7 +4,7 @@ using TavernSimulator.Models;
 namespace TavernSimulator.Data;
 
 /// <summary>
-/// Содержит все продукты, доступные в игре.
+/// Содержит полный каталог продуктов, доступных в игре.
 /// </summary>
 public class ProductCatalog
 {

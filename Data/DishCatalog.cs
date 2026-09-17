@@ -1,11 +1,10 @@
 ﻿using System.Text.Json;
-using TavernSimulator.Enums;
 using TavernSimulator.Models;
 
 namespace TavernSimulator.Data;
 
 /// <summary>
-/// Содержит все блюда, доступные в игре.
+/// Содержит полный каталог блюд, доступных в игре.
 /// </summary>
 public class DishCatalog
 {

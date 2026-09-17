@@ -1,6 +1,4 @@
-﻿using TavernSimulator.Enums;
-
-namespace TavernSimulator.Models;
+﻿namespace TavernSimulator.Models;
 
 /// <summary>
 /// Представляет блюдо, которое можно приготовить и продать в таверне.
