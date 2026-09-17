@@ -5,9 +5,11 @@ namespace TavernSimulator.Models;
 /// <summary>
 /// Представляет продукт, используемый для приготовления блюд.
 /// </summary>
-public class Product(ProductName name, ProductType type, int price)
+public class Product
 {
-    public ProductName Name { get; set; } = name;
-    public ProductType Type { get; set; } = type;
-    public decimal Price { get; set; } = price;
+    public string Id { get; set; } 
+    public string Name { get; set; }
+    public string Type { get; set; }
+    public decimal Price { get; set; }
+    public int RequiredTavernLevel  { get; set; }
 }

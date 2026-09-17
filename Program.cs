@@ -10,7 +10,7 @@ public class Program
         Console.OutputEncoding = System.Text.Encoding.UTF8;
         Tavern tavern = new ();
         tavern.CreateTavern();
-        MainMenu.ShowMorningMenu(tavern);
+        //MainMenu.ShowMorningMenu(tavern);
         
     }
 }

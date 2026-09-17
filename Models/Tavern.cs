@@ -1,4 +1,6 @@
-﻿using TavernSimulator.Enums;
+﻿using TavernSimulator.Data;
+using TavernSimulator.Enums;
+using System.Linq;
 
 namespace TavernSimulator.Models;
 
@@ -9,8 +11,8 @@ namespace TavernSimulator.Models;
 public class Tavern
 {
     public const string Name = "Гусь и пирог";
-    public Dictionary<Product, int>? Products { get; set; }
-    public List<Dish>? AvailableDishes { get; set; } = new();
+    public List<Product> Products { get; set; }
+    public List<Dish>? AvailableDishes { get; set; } 
     public int Day { get; set; } = 1;
     public int Customers { get; set; }
     public int Gold { get; set; } = 100;

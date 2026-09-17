@@ -51,7 +51,7 @@ public static class MainMenu
                 {
                     foreach (var item in _tavern.Products)
                     {
-                        Console.WriteLine($"{item.Key.Name}: {item.Value} золотых монет");
+                       // Console.WriteLine($"{item.Key.Name}: {item.Value} золотых монет");
                     }
                 }
                 break;
@@ -61,7 +61,7 @@ public static class MainMenu
             case 3:
                 foreach (var dish in _tavern.AvailableDishes)
                 {
-                    Console.WriteLine($"{dish.Name}: {dish.Price} золотых монет");
+                    //Console.WriteLine($"{dish.Name}: {dish.Price} золотых монет");
                 }
                 break;
             case 4:
@@ -110,7 +110,7 @@ public static class MainMenu
                 {
                     foreach (var item in _tavern.Products)
                     {
-                        Console.WriteLine($"{item.Key.Name}: {item.Value} золотых монет");
+                        // Console.WriteLine($"{item.Key.Name}: {item.Value} золотых монет");
                     }
                 }
                 break;
