@@ -11,6 +11,9 @@ namespace TavernSimulator.Game;
 public static class Game
 {
     private static bool _isRunning = true;
+    private static bool _isMorning;
+    private static bool _isDay;
+    private static bool _isEvening;
     private static Tavern _tavern = new();
     private static Dictionary<Product, int> AvailableProductsInShopToday = new ();
     
@@ -18,14 +21,28 @@ public static class Game
     {
         _tavern.CreateTavern();
         Console.WriteLine("Добро пожаловать в таверну!");
+        Console.WriteLine("Нажмите любую клавишу для продолжения...");
+        Console.ReadKey();
         while (_isRunning)
         {
-            Console.WriteLine("Нажмите любую клавишу для продолжения...");
-            Console.ReadKey();
             Console.Clear();
             ShowHeader();
             CreateAvailableProductsInShopToday();
-            MainMenu.ShowMorningMenu(_tavern,HandleMorningMenuChoice);
+            _isMorning = true;
+            while (_isMorning)
+            {
+                MainMenu.ShowMorningMenu(HandleMorningMenuChoice);
+            }
+            _isDay = true;
+            while (_isDay)
+            {
+                MainMenu.ShowDayMenu(HandleDayMenuChoice);
+            }
+            _isEvening = true;
+            while (_isEvening)
+            {
+                MainMenu.ShowEveningMenu(_tavern.Day, HandleEveningMenuChoice);
+            }
         }
     }
     
@@ -34,6 +51,7 @@ public static class Game
     /// </summary>
     public static void ShowHeader()
     {
+        Console.Clear();
         Console.WriteLine("╔════════════════════════════════════╗");
         Console.WriteLine("║   🪿 ТАВЕРНА «ГУСЬ И ПИРОГ» 🥧     ║");
         Console.WriteLine("╠════════════════════════════════════╣ ");
@@ -52,22 +70,53 @@ public static class Game
         switch (choice)
         {
             case 1:
-                Console.Clear();
-                ShowHeader();
                 ShowTheFoodStorage();
                 break;
             case 2:
-                Console.Clear();
-                ShowHeader();
                 ShowTheShop();
                 break;
             case 3:
-                foreach (var dish in _tavern.AvailableDishes)
-                {
-                    Console.WriteLine($"{dish.Name}: {dish.Price} золотых монет");
-                }
+                ShowTavernMenu();
                 break;
             case 4:
+                _isMorning = false;
+                break;
+        }
+    }
+    
+    private static void HandleDayMenuChoice(int choice)
+    {
+        switch (choice)
+        {
+            case 1:
+                _isDay = false;
+                break;
+        }
+    }
+    
+    private static void HandleEveningMenuChoice(int choice)
+    {
+        switch (choice)
+        {
+            case 1:
+                Console.Clear();
+                //ShowHeader();
+                Console.WriteLine("\nПродуктовый склад: \n");
+                if (_tavern.Products.Count == 0) Console.WriteLine("Продуктовый склад пуст!");
+                else
+                {
+                    foreach (var item in _tavern.Products)
+                    {
+                        // Console.WriteLine($"{item.Key.Name}: {item.Value} золотых монет");
+                    }
+                }
+                break;
+            case 2:
+                Console.WriteLine("Купить продукты");
+                break;
+            case 3:
+                _tavern.Day++;
+                _isEvening = false;
                 break;
         }
     }
@@ -77,6 +126,7 @@ public static class Game
     /// </summary>
     private static void ShowTheFoodStorage()
     {
+        Console.Clear();
         Console.WriteLine("\nПродуктовый склад: \n");
         if (_tavern.Products.Count == 0) Console.WriteLine("Продуктовый склад пуст!");
         else
@@ -109,6 +159,8 @@ public static class Game
     /// </summary>
     private static void ShowTheShop()
     {
+        Console.Clear();
+        Console.WriteLine($"\nТаверна может потратить {_tavern.Gold} зол.");
         Console.WriteLine("\nМагазин: \n");
         Console.WriteLine(new string('-', 66));
         Console.WriteLine($"|  №   | {"Продукт",-20} | {"Цена",15} | {"Количество",14} |");
@@ -120,5 +172,21 @@ public static class Game
             index++;
         }
         Console.WriteLine(new string('-', 66));
+    }
+    
+    private static void ShowTavernMenu()
+    {
+        Console.Clear();
+        Console.WriteLine("\nМеню таверны \"Гусь и Пирог\": \n");
+        Console.WriteLine(new string('-', 47));
+        Console.WriteLine($"|  №   | {"Блюдо",-20}|{"Цена",15} |");
+        Console.WriteLine(new string('-', 47));
+        int index = 1;
+        foreach (var dish in _tavern.AvailableDishes)
+        {
+            Console.WriteLine($"| {index,3}  | {dish.Name,-20}|{dish.Price,10} зол. |");
+            index++;
+        }
+        Console.WriteLine(new string('-', 47));
     }
 }
