@@ -84,27 +84,7 @@ public static class Game
                 ShowTavernMenu();
                 break;
             case 4:
-               // показать достпуные для изучения блюда
-               Console.Clear();
-               Console.WriteLine("\nДоступные блюда для изучения: \n");
-               var dishes = DishCatalog.Dishes.Where(x => x.RequiredTavernLevel <= _tavern.Level && !_tavern.AvailableDishes.Contains(x)).ToList();
-               if (dishes.Count == 0) Console.WriteLine("Доступных блюд для изучения нет!");
-               else
-               {
-                   Console.WriteLine(new string('-', 60));
-                   Console.WriteLine($"|  {"Блюдо",-30}| {"Необходимые продукты",23} |");
-                   Console.WriteLine(new string('-', 60));
-                   foreach (var item in dishes)
-                   {
-                       Console.WriteLine($"|  {item.Name,-30}                          |");
-                       foreach (var ingredient in item.Ingredients)
-                       {
-                           var product = TavernService.ProductCatalog.Products.First(x => x.Id == ingredient.Key).Name;
-                           Console.WriteLine($"| {product,45} - {ingredient.Value, 4} шт. |");
-                       }
-                       Console.WriteLine(new string('-', 60));
-                   }
-               }
+               ShowAvailableDishesToLearn();
                break;
             case 5:
                 _isMorning = false;
@@ -224,6 +204,9 @@ public static class Game
         Console.WriteLine(new string('-', 66));
     }
     
+    /// <summary>
+    /// Отображает блюда, доступные для заказа в таверне.
+    /// </summary>
     private static void ShowTavernMenu()
     {
         Console.Clear();
@@ -238,5 +221,35 @@ public static class Game
             index++;
         }
         Console.WriteLine(new string('-', 47));
+    }
+    
+    /// <summary>
+    /// Отображает рецепты, доступные для изучения.
+    /// </summary>
+    private static void ShowAvailableDishesToLearn()
+    {
+        Console.Clear();
+        _tavern.Level++;
+        Console.WriteLine("\nДоступные блюда для изучения: \n");
+        var dishes = DishCatalog.Dishes.Where(x => x.RequiredTavernLevel <= _tavern.Level && !_tavern.AvailableDishes.Contains(x)).ToList();
+        if (dishes.Count == 0) Console.WriteLine("Доступных блюд для изучения нет!");
+        else
+        {
+            Console.WriteLine(new string('-', 66));
+            Console.WriteLine($"|  №  |  {"Блюдо",-30}| {"Необходимые продукты",23} |");
+            Console.WriteLine(new string('-', 66));
+            var index = 1;
+            foreach (var item in dishes)
+            {
+                Console.WriteLine($"| {index,2}  | {item.Name,-30}                           |");
+                foreach (var ingredient in item.Ingredients)
+                {
+                    var product = TavernService.ProductCatalog.Products.First(x => x.Id == ingredient.Key).Name;
+                    Console.WriteLine($"|     | {product,48} - 1 шт. |");
+                }
+                Console.WriteLine(new string('-', 66));
+                index++;
+            }
+        }
     }
 }
