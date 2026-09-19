@@ -1,4 +1,5 @@
 ﻿using TavernSimulator.Data;
+using TavernSimulator.Input;
 using TavernSimulator.Menus;
 using TavernSimulator.Models;
 using TavernSimulator.Service;
@@ -74,6 +75,7 @@ public static class Game
                 break;
             case 2:
                 ShowTheShop();
+                MainMenu.ShowShopMenu(HandleShopMenuChoice);
                 break;
             case 3:
                 ShowTavernMenu();
@@ -99,26 +101,35 @@ public static class Game
         switch (choice)
         {
             case 1:
-                Console.Clear();
-                //ShowHeader();
-                Console.WriteLine("\nПродуктовый склад: \n");
-                if (_tavern.Products.Count == 0) Console.WriteLine("Продуктовый склад пуст!");
-                else
-                {
-                    foreach (var item in _tavern.Products)
-                    {
-                        // Console.WriteLine($"{item.Key.Name}: {item.Value} золотых монет");
-                    }
-                }
+                ShowTheFoodStorage();
                 break;
             case 2:
-                Console.WriteLine("Купить продукты");
+                ShowTheShop();
+                MainMenu.ShowShopMenu(HandleShopMenuChoice);
                 break;
             case 3:
                 _tavern.Day++;
                 _isEvening = false;
                 break;
         }
+    }
+    
+    private static void HandleShopMenuChoice()
+    {
+        Console.WriteLine("Какой продукт необходимо приобрести?");
+        var index = InputValidator.GetValidInput(AvailableProductsInShopToday.Count);
+        var product = AvailableProductsInShopToday.ElementAt(index - 1).Key;
+        Console.WriteLine("В каком количестве?");
+        var count = InputValidator.GetValidInput(AvailableProductsInShopToday.ElementAt(index-1).Value);
+        if (_tavern.Gold >= product.Price * count)
+        {
+            _tavern.Gold -= product.Price * count;
+            AvailableProductsInShopToday[product] -= count;
+            _tavern.Products.TryAdd(product.Name, 0);
+            _tavern.Products[product.Name] += count;
+            Console.WriteLine($"Куплено {product.Name} - {count} шт.!");
+        }
+        else Console.WriteLine("Недостаточно золота!");
     }
 
     /// <summary>
@@ -142,6 +153,9 @@ public static class Game
         }
     }
 
+    /// <summary>
+    /// Создаёт список продуктов, которые сегодня будут продаваться в магазине.
+    /// </summary>
     private static void CreateAvailableProductsInShopToday()
     {
         AvailableProductsInShopToday = new Dictionary<Product, int>();
@@ -155,7 +169,7 @@ public static class Game
     }
     
     /// <summary>
-    /// Отображает список продуктов, хранящихся на складе таверны.
+    /// Отображает список продуктов, которые сегодня лежат на прилавке магазина.
     /// </summary>
     private static void ShowTheShop()
     {
@@ -166,7 +180,7 @@ public static class Game
         Console.WriteLine($"|  №   | {"Продукт",-20} | {"Цена",15} | {"Количество",14} |");
         Console.WriteLine(new string('-', 66));
         int index = 1;
-        foreach (var product in AvailableProductsInShopToday)
+        foreach (var product in AvailableProductsInShopToday.Where(product => product.Value != 0))
         {
             Console.WriteLine($"| {index,3}  | {product.Key.Name,-20} | {product.Key.Price,10} зол. | {product.Value,10} шт. |");
             index++;

@@ -55,5 +55,19 @@ namespace TavernSimulator.Menus
             Console.WriteLine("Нажмите любую клавишу для продолжения...");
             Console.ReadKey();
         }
+        
+        /// <summary>
+        /// Отображает меню магазина и позволяет покупать продукты в таверну.
+        /// </summary>
+        public static void ShowShopMenu(Action handleChoice)
+        { 
+            Console.WriteLine();
+            Console.WriteLine("1. Купить продукт");
+            Console.WriteLine("2. Назад");
+            var input = InputValidator.GetValidInput(2);
+            if (input == 1) handleChoice();
+            Console.WriteLine("Нажмите любую клавишу для продолжения...");
+            Console.ReadKey();
+        }
     }
 }
