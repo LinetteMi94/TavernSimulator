@@ -66,6 +66,9 @@ public static class Game
         Console.WriteLine("╚════════════════════════════════════╝");
     }
 
+    /// <summary>
+    /// Обрабатывает выбор игрока в утреннем меню таверны.
+    /// </summary>
     private static void HandleMorningMenuChoice(int choice)
     {
         switch (choice)
@@ -81,11 +84,37 @@ public static class Game
                 ShowTavernMenu();
                 break;
             case 4:
+               // показать достпуные для изучения блюда
+               Console.Clear();
+               Console.WriteLine("\nДоступные блюда для изучения: \n");
+               var dishes = DishCatalog.Dishes.Where(x => x.RequiredTavernLevel <= _tavern.Level && !_tavern.AvailableDishes.Contains(x)).ToList();
+               if (dishes.Count == 0) Console.WriteLine("Доступных блюд для изучения нет!");
+               else
+               {
+                   Console.WriteLine(new string('-', 60));
+                   Console.WriteLine($"|  {"Блюдо",-30}| {"Необходимые продукты",23} |");
+                   Console.WriteLine(new string('-', 60));
+                   foreach (var item in dishes)
+                   {
+                       Console.WriteLine($"|  {item.Name,-30}                          |");
+                       foreach (var ingredient in item.Ingredients)
+                       {
+                           var product = TavernService.ProductCatalog.Products.First(x => x.Id == ingredient.Key).Name;
+                           Console.WriteLine($"| {product,45} - {ingredient.Value, 4} шт. |");
+                       }
+                       Console.WriteLine(new string('-', 60));
+                   }
+               }
+               break;
+            case 5:
                 _isMorning = false;
                 break;
         }
     }
     
+    /// <summary>
+    /// Обрабатывает выбор игрока в дневном меню таверны.
+    /// </summary>
     private static void HandleDayMenuChoice(int choice)
     {
         switch (choice)
@@ -96,6 +125,9 @@ public static class Game
         }
     }
     
+    /// <summary>
+    /// Обрабатывает выбор игрока в вечернем меню таверны.
+    /// </summary>
     private static void HandleEveningMenuChoice(int choice)
     {
         switch (choice)
@@ -114,6 +146,10 @@ public static class Game
         }
     }
     
+    /// <summary>
+    /// Покупает указанное количество продукта в магазине, списывает золото
+    /// и добавляет приобретённый продукт на склад таверны.
+    /// </summary>
     private static void HandleShopMenuChoice()
     {
         Console.WriteLine("Какой продукт необходимо приобрести?");

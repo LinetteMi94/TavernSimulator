@@ -8,7 +8,7 @@ namespace TavernSimulator.Data;
 /// </summary>
 public class DishCatalog
 {
-    public List<Dish>? Dishes { get; set; } 
+    public static List<Dish>? Dishes { get; set; } 
        
     public DishCatalog()
     {
