@@ -8,10 +8,7 @@ namespace TavernSimulator.Service;
 /// </summary>
 public static class TavernService
 {
-    public static readonly ProductCatalog ProductCatalog = new ();
-    private static readonly DishCatalog DishCatalog = new ();
-    
-    public static void CreateTavern(this Tavern tavern)
+   public static void CreateTavern(this Tavern tavern)
     {
         var availiableProducts = ProductCatalog.Products.Where(x => x.RequiredTavernLevel == 1).ToList();
         foreach (var product in availiableProducts)
@@ -19,6 +16,5 @@ public static class TavernService
             tavern.Products.Add(product.Name, new Random().Next(4,10));
         }
         tavern.AvailableDishes = DishCatalog.Dishes.Where(x => x.RequiredTavernLevel == 1).ToList();
-        
     }
 }

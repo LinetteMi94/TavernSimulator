@@ -6,11 +6,11 @@ namespace TavernSimulator.Data;
 /// <summary>
 /// Содержит полный каталог блюд, доступных в игре.
 /// </summary>
-public class DishCatalog
+public static class DishCatalog
 {
     public static List<Dish>? Dishes { get; set; } 
        
-    public DishCatalog()
+    static DishCatalog()
     {
         string json = File.ReadAllText("Data/DishCatalogJSON.json");
         Dishes = JsonSerializer.Deserialize<List<Dish>>(json);
