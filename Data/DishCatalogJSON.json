@@ -1,863 +1,793 @@
 ﻿[
   {
-    "Id": "root_vegetable_soup",
     "Name": "Суп из корнеплодов",
     "Price": 17,
     "RequiredTavernLevel": 1,
     "Experience": 10,
     "Ingredients": {
-      "potato": 2,
-      "carrot": 1,
-      "onion": 1,
-      "herbs": 1
+      "Картофель": 2,
+      "Морковь": 1,
+      "Лук": 1,
+      "Травы": 1
     }
   },
   {
-    "Id": "fried_eggs_with_onion",
     "Name": "Яичница с луком",
     "Price": 14,
     "RequiredTavernLevel": 1,
     "Experience": 8,
     "Ingredients": {
-      "egg": 2,
-      "onion": 1
+      "Яйцо": 2,
+      "Лук": 1
     }
   },
   {
-    "Id": "vegetable_stew",
     "Name": "Овощное рагу",
     "Price": 14,
     "RequiredTavernLevel": 1,
     "Experience": 9,
     "Ingredients": {
-      "potato": 1,
-      "carrot": 2,
-      "onion": 1
+      "Картофель": 1,
+      "Морковь": 2,
+      "Лук": 1
     }
   },
   {
-    "Id": "chicken_stew",
     "Name": "Куриное рагу",
     "Price": 25,
     "RequiredTavernLevel": 1,
     "Experience":12,
     "Ingredients": {
-      "chicken": 1,
-      "potato": 2,
-      "carrot": 1,
-      "onion": 1
+      "Курица": 1,
+      "Картофель": 2,
+      "Морковь": 1,
+      "Лук": 1
     }
   },
   {
-    "Id": "apple_pie",
     "Name": "Яблочный пирог",
     "Price": 30,
     "RequiredTavernLevel": 1,
     "Experience":15,
     "Ingredients": {
-      "apple": 3,
-      "wheat_flour": 2,
-      "egg": 1
+      "Яблоко": 3,
+      "Пшеничная мука": 2,
+      "Яйцо": 1
     }
   },
   {
-    "Id": "tea",
     "Name": "Чай",
     "Price": 7,
     "RequiredTavernLevel": 1,
     "Experience":5,
     "Ingredients": {
-      "herbs": 2
+      "Травы": 2
     }
   },
   {
-    "Id": "tea_with_honey",
     "Name": "Чай с мёдом",
     "Price": 15,
     "RequiredTavernLevel": 2,
     "Experience":8,
     "Ingredients": {
-      "herbs": 2,
-      "honey": 1
+      "Травы": 2,
+      "Мёд": 1
     }
   },
   {
-    "Id": "milk_porridge",
     "Name": "Молочная каша",
     "Price": 24,
     "RequiredTavernLevel": 2,
     "Experience":12,
     "Ingredients": {
-      "milk": 2,
-      "wheat_flour": 1,
-      "honey": 1
+      "Молоко": 2,
+      "Пшеничная мука": 1,
+      "Мёд": 1
     }
   },
   {
-    "Id": "milk_bread",
     "Name": "Молочный хлеб",
     "Price": 20,
     "RequiredTavernLevel": 2,
     "Experience":11,
     "Ingredients": {
-      "milk": 1,
-      "bread": 1,
-      "honey": 1
+      "Молоко": 1,
+      "Хлеб": 1,
+      "Мёд": 1
     }
   },
   {
-    "Id": "chicken_with_garlic",
     "Name": "Молочный хлеб",
     "Price": 19,
     "RequiredTavernLevel": 3,
     "Experience":15,
     "Ingredients": {
-      "chicken": 1,
-      "garlic": 1,
-      "herbs": 1
+      "Курица": 1,
+      "Чеснок": 1,
+      "Травы": 1
     }
   },
   {
-    "Id": "garlic_flatbread",
     "Name": "Чесночные лепёшки",
     "Price": 19,
     "RequiredTavernLevel": 3,
     "Experience":14,
     "Ingredients": {
-      "wheat_flour": 2,
-      "egg": 1,
-      "garlic": 1
+      "Пшеничная мука": 2,
+      "Яйцо": 1,
+      "Чеснок": 1
     }
   },
   {
-    "Id": "mushroom_soup",
     "Name": "Грибной суп",
     "Price": 27,
     "RequiredTavernLevel": 4,
     "Experience":18,
     "Ingredients": {
-      "mushrooms": 2,
-      "potato": 1,
-      "onion": 1,
-      "herbs": 1
+      "Грибы": 2,
+      "Картофель": 1,
+      "Лук": 1,
+      "Травы": 1
     }
   },
   {
-    "Id": "buckwheat_with_chicken",
     "Name": "Гречка с курицей",
     "Price": 27,
     "RequiredTavernLevel": 4,
     "Experience": 18,
     "Ingredients": {
-      "buckwheat": 2,
-      "chicken": 1,
-      "onion": 1
+      "Гречка": 2,
+      "Курица": 1,
+      "Лук": 1
     }
   },
   {
-    "Id": "pork_with_onion",
     "Name": "Свинина с луком",
     "Price": 33,
     "RequiredTavernLevel": 5,
     "Experience": 22,
     "Ingredients": {
-      "pork": 2,
-      "herbs": 1,
-      "onion": 2
+      "Свинина": 2,
+      "Травы": 1,
+      "Лук": 2
     }
   },
   {
-    "Id": "chicken_soup",
     "Name": "Куриный суп",
     "Price": 23,
     "RequiredTavernLevel": 5,
     "Experience": 16,
     "Ingredients": {
-      "chicken": 1,
-      "potato": 2,
-      "carrot": 1,
-      "onion": 1
+      "Курица": 1,
+      "Картофель": 2,
+      "Морковь": 1,
+      "Лук": 1
     }
   },
   {
-    "Id": "kvass",
     "Name": "Квас",
     "Price": 15,
     "RequiredTavernLevel": 5,
     "Experience": 12,
     "Ingredients": {
-      "bread": 1,
-      "honey": 1
+      "Хлеб": 1,
+      "Мёд": 1
     }
   },
   {
-    "Id": "pear_pie",
     "Name": "Грушевый пирог",
     "Price": 35,
     "RequiredTavernLevel": 6,
     "Experience": 23,
     "Ingredients": {
-      "pear": 3,
-      "wheat_flour": 2,
-      "egg": 1,
-      "honey": 1
+      "Груша": 3,
+      "Пшеничная мука": 2,
+      "Яйцо": 1,
+      "Мёд": 1
     }
   },
   {
-    "Id": "pear_with_honey",
     "Name": "Груша с мёдом",
     "Price": 25,
     "RequiredTavernLevel": 6,
     "Experience": 18,
     "Ingredients": {
-      "pear": 2,
-      "herbs": 1,
-      "honey": 1
+      "Груша": 2,
+      "Травы": 1,
+      "Мёд": 1
     }
   },
   {
-    "Id": "potatoes_with_mushrooms",
     "Name": "Картофель с грибами",
     "Price": 35,
     "RequiredTavernLevel": 7,
     "Experience": 24,
     "Ingredients": {
-      "potato": 3,
-      "mushrooms": 2,
-      "herbs": 1,
-      "onion": 1
+      "Картофель": 3,
+      "Грибы": 2,
+      "Травы": 1,
+      "Лук": 1
     }
   },
   {
-    "Id": "pork_with_mushrooms",
     "Name": "Свинина с грибами",
     "Price": 43,
     "RequiredTavernLevel": 7,
     "Experience": 28,
     "Ingredients": {
-      "pork": 2,
-      "mushrooms": 2,
-      "onion": 1
+      "Свинина": 2,
+      "Грибы": 2,
+      "Лук": 1
     }
   },
   {
-    "Id": "rye_flatbread",
     "Name": "Ржаные лепёшки",
     "Price": 22,
     "RequiredTavernLevel": 8,
     "Experience": 20,
     "Ingredients": {
-      "rye_flour": 2,
-      "egg": 1,
-      "milk": 1
+      "Ржаная мука": 2,
+      "Яйцо": 1,
+      "Молоко": 1
     }
   },
   {
-    "Id": "apple_kvass",
     "Name": "Яблочный квас",
     "Price": 25,
     "RequiredTavernLevel": 8,
     "Experience": 19,
     "Ingredients": {
-      "bread": 1,
-      "apple": 2,
-      "honey": 1
+      "Хлеб": 1,
+      "Яблоко": 2,
+      "Мёд": 1
     }
   },
   {
-    "Id": "rye_apple_pie",
     "Name": "Ржаной пирог с яблоками",
     "Price": 35,
     "RequiredTavernLevel": 9,
     "Experience": 27,
     "Ingredients": {
-      "rye_flour": 2,
-      "apple": 3,
-      "egg": 1,
-      "honey": 1
+      "Ржаная мука": 2,
+      "Яблоко": 3,
+      "Яйцо": 1,
+      "Мёд": 1
     }
   },
   {
-    "Id": "rye_chicken_pies",
     "Name": "Ржаные пирожки с курицей",
     "Price": 29,
     "RequiredTavernLevel": 9,
     "Experience": 25,
     "Ingredients": {
-      "rye_flour": 2,
-      "chicken": 1,
-      "egg": 1,
-      "onion": 1
+      "Ржаная мука": 2,
+      "Курица": 1,
+      "Яйцо": 1,
+      "Лук": 1
     }
   },
   {
-    "Id": "goose_with_apples",
     "Name": "Гусь с яблоками",
     "Price": 39,
     "RequiredTavernLevel": 10,
     "Experience": 35,
     "Ingredients": {
-      "goose": 1,
-      "apple": 3,
-      "herbs": 2
+      "Гусь": 1,
+      "Яблоко": 3,
+      "Травы": 2
     }
   },
   {
-    "Id": "roasted_goose",
     "Name": "Запечённый гусь",
     "Price": 32,
     "RequiredTavernLevel": 10,
     "Experience": 32,
     "Ingredients": {
-      "goose": 1,
-      "garlic": 1,
-      "herbs": 2
+      "Гусь": 1,
+      "Чеснок": 1,
+      "Травы": 2
     }
   },
   {
-    "Id": "mead",
     "Name": "Медовуха",
     "Price": 17,
     "RequiredTavernLevel": 10,
     "Experience": 25,
     "Ingredients": {
-      "honey": 2
+      "Мёд": 2
     }
   },
   {
-    "Id": "cherry_pie",
     "Name": "Вишнёвый пирог",
     "Price": 40,
     "RequiredTavernLevel": 11,
     "Experience": 30,
     "Ingredients": {
-      "cherry": 3,
-      "wheat_flour": 2,
-      "egg": 1,
-      "honey": 1
+      "Вишня": 3,
+      "Пшеничная мука": 2,
+      "Яйцо": 1,
+      "Мёд": 1
     }
   },
   {
-    "Id": "cherry_drink",
     "Name": "Вишнёвый напиток",
     "Price": 33,
     "RequiredTavernLevel": 11,
     "Experience": 24,
     "Ingredients": {
-      "cherry": 3,
-      "honey": 1
+      "Вишня": 3,
+      "Мёд": 1
     }
   },
   {
-    "Id": "chicken_with_cheese",
     "Name": "Курица под сыром",
     "Price": 27,
     "RequiredTavernLevel": 12,
     "Experience": 30,
     "Ingredients": {
-      "chicken": 1,
-      "cheeze": 1,
-      "onion": 1
+      "Курица": 1,
+      "Сыр": 1,
+      "Лук": 1
     }
   },
   {
-    "Id": "cheese_flatbread",
     "Name": "Сырные лепёшки",
     "Price": 29,
     "RequiredTavernLevel": 12,
     "Experience": 18,
     "Ingredients": {
-      "wheat_flour": 2,
-      "cheeze": 1,
-      "egg": 1
+      "Пшеничная мука": 2,
+      "Сыр": 1,
+      "Яйцо": 1
     }
   },
   {
-    "Id": "stewed_cabbage_with_pork",
     "Name": "Тушёная капуста со свининой",
     "Price": 25,
     "RequiredTavernLevel": 13,
     "Experience": 29,
     "Ingredients": {
-      "cabbage": 2,
-      "pork": 1,
-      "onion": 1
+      "Капуста": 2,
+      "Свинина": 1,
+      "Лук": 1
     }
   },
   {
-    "Id": "chicken_shchi",
     "Name": "Щи с курицей",
     "Price": 25,
     "RequiredTavernLevel": 13,
     "Experience": 27,
     "Ingredients": {
-      "cabbage": 2,
-      "chicken": 1,
-      "potato": 2,
-      "carrot": 1
+      "Капуста": 2,
+      "Курица": 1,
+      "Картофель": 2,
+      "Морковь": 1
     }
   },
   {
-    "Id": "potatoes_with_butter_and_herbs",
     "Name": "Картофель с маслом и травами",
     "Price": 22,
     "RequiredTavernLevel": 14,
     "Experience": 22,
     "Ingredients": {
-      "butter": 1,
-      "potato": 3,
-      "herbs": 1
+      "Масло": 1,
+      "Картофель": 3,
+      "Травы": 1
     }
   },
   {
-    "Id": "buckwheat_with_butter_and_milk",
     "Name": "Гречка с маслом и молоком",
     "Price": 27,
     "RequiredTavernLevel": 14,
     "Experience": 25,
     "Ingredients": {
-      "buckwheat": 2,
-      "milk": 1,
-      "butter": 1
+      "Гречка": 2,
+      "Молоко": 1,
+      "Масло": 1
     }
   },
   {
-    "Id": "catfish_soup",
     "Name": "Рыбный суп",
     "Price": 24,
     "RequiredTavernLevel": 15,
     "Experience": 28,
     "Ingredients": {
-      "catfish": 1,
-      "potato": 2,
-      "carrot": 1,
-      "onion": 1
+      "Сом": 1,
+      "Картофель": 2,
+      "Морковь": 1,
+      "Лук": 1
     }
   },
   {
-    "Id": "fried_catfish_with_herbs",
     "Name": "Жареная рыба с травами",
     "Price": 30,
     "RequiredTavernLevel": 15,
     "Experience": 32,
     "Ingredients": {
-      "catfish": 2,
-      "butter": 1,
-      "herbs": 2
+      "Сом": 2,
+      "Масло": 1,
+      "Травы": 2
     }
   },
   {
-    "Id": "pea_soup_with_pork",
     "Name": "Гороховый суп со свининой",
     "Price": 27,
     "RequiredTavernLevel": 16,
     "Experience": 30,
     "Ingredients": {
-      "peas": 2,
-      "pork": 1,
-      "carrot": 1,
-      "onion": 1
+      "Горох": 2,
+      "Свинина": 1,
+      "Морковь": 1,
+      "Лук": 1
     }
   },
   {
-    "Id": "pea_porridge_with_bacon",
     "Name": "Гороховая каша с беконом",
     "Price": 29,
     "RequiredTavernLevel": 16,
     "Experience": 31,
     "Ingredients": {
-      "peas": 2,
-      "bacon": 1,
-      "butter": 1
+      "Горох": 2,
+      "Бекон": 1,
+      "Масло": 1
     }
   },
   {
-    "Id": "eggs_with_bacon",
     "Name": "Яйца с беконом",
     "Price": 29,
     "RequiredTavernLevel": 17,
     "Experience": 29,
     "Ingredients": {
-      "egg": 2,
-      "bacon": 1,
-      "onion": 1
+      "Яйцо": 2,
+      "Бекон": 1,
+      "Лук": 1
     }
   },
   {
-    "Id": "potatoes_with_bacon",
     "Name": "Картофель с беконом",
     "Price": 29,
     "RequiredTavernLevel": 17,
     "Experience": 28,
     "Ingredients": {
-      "potato": 3,
-      "bacon": 1,
-      "onion": 1
+      "Картофель": 3,
+      "Бекон": 1,
+      "Лук": 1
     }
   },
   {
-    "Id": "lingonberry_pie",
     "Name": "Брусничный пирог",
     "Price": 40,
     "RequiredTavernLevel": 18,
     "Experience": 34,
     "Ingredients": {
-      "lingonberry": 3,
-      "wheat_flour": 2,
-      "egg": 1,
-      "honey": 1
+      "Брусника": 3,
+      "Пшеничная мука": 2,
+      "Яйцо": 1,
+      "Мёд": 1
     }
   },
   {
-    "Id": "lingonberry_porridge",
     "Name": "Брусничная каша",
     "Price": 30,
     "RequiredTavernLevel": 18,
     "Experience": 30,
     "Ingredients": {
-      "lingonberry": 2,
-      "milk": 1,
-      "honey": 1
+      "Брусника": 2,
+      "Молоко": 1,
+      "Мёд": 1
     }
   },
   {
-    "Id": "spiced_mead",
     "Name": "Пряная медовуха",
     "Price": 24,
     "RequiredTavernLevel": 18,
     "Experience": 32,
     "Ingredients": {
-      "herbs": 2,
-      "honey": 2
+      "Травы": 2,
+      "Мёд": 2
     }
   },
   {
-    "Id": "rice_with_pork",
     "Name": "Рис со свининой медовуха",
     "Price": 35,
     "RequiredTavernLevel": 19,
     "Experience": 33,
     "Ingredients": {
-      "rice": 2,
-      "pork": 1,
-      "onion": 1,
-      "carrot": 1
+      "Рис": 2,
+      "Свинина": 1,
+      "Лук": 1,
+      "Морковь": 1
     }
   },
   {
-    "Id": "milk_rice_porridge",
     "Name": "Молочная рисовая каша",
     "Price": 32,
     "RequiredTavernLevel": 19,
     "Experience": 31,
     "Ingredients": {
-      "rice": 2,
-      "milk": 2,
-      "honey": 1
+      "Рис": 2,
+      "Молоко": 2,
+      "Мёд": 1
     }
   },
   {
-    "Id": "spicy_pork_soup",
     "Name": "Острый суп со свининой",
     "Price": 27,
     "RequiredTavernLevel": 20,
     "Experience": 35,
     "Ingredients": {
-      "pork": 1,
-      "potato": 1,
-      "onion": 1,
-      "hot_pepper": 1
+      "Свинина": 1,
+      "Картофель": 1,
+      "Лук": 1,
+      "Острый перец": 1
     }
   },
   {
-    "Id": "spiced_pork",
     "Name": "Пряная свинина",
     "Price": 37,
     "RequiredTavernLevel": 20,
     "Experience": 38,
     "Ingredients": {
-      "pork": 2,
-      "garlic": 1,
-      "herbs": 1,
-      "hot_pepper": 1
+      "Свинина": 2,
+      "Чеснок": 1,
+      "Травы": 1,
+      "Острый перец": 1
     }
   },
   {
-    "Id": "beef_with_mushrooms",
     "Name": "Говядина с грибами",
     "Price": 49,
     "RequiredTavernLevel": 21,
     "Experience": 42,
     "Ingredients": {
-      "beef": 2,
-      "mushrooms": 2,
-      "onion": 1
+      "Говядина": 2,
+      "Грибы": 2,
+      "Лук": 1
     }
   },
   {
-    "Id": "roast_beef_with_herbs",
     "Name": "Ростбиф с травами",
     "Price": 47,
     "RequiredTavernLevel": 21,
     "Experience": 44,
     "Ingredients": {
-      "beef": 2,
-      "herbs": 2,
-      "butter": 1
+      "Говядина": 2,
+      "Травы": 2,
+      "Масло": 1
     }
   },
   {
-    "Id": "beetroot_soup_with_beef",
     "Name": "Свекольный суп с говядиной",
     "Price": 27,
     "RequiredTavernLevel": 22,
     "Experience": 38,
     "Ingredients": {
-      "beetroot": 2,
-      "beef": 1,
-      "potato": 1,
-      "onion": 1
+      "Свёкла": 2,
+      "Говядина": 1,
+      "Картофель": 1,
+      "Лук": 1
     }
   },
   {
-    "Id": "baked_beetroot_with_honey",
     "Name": "Запечённая свёкла с мёдом",
     "Price": 20,
     "RequiredTavernLevel": 22,
     "Experience": 30,
     "Ingredients": {
-      "beetroot": 2,
-      "honey": 1,
-      "butter": 1
+      "Свёкла": 2,
+      "Мёд": 1,
+      "Масло": 1
     }
   },
   {
-    "Id": "roasted_trout",
     "Name": "Запечённая форель",
     "Price": 30,
     "RequiredTavernLevel": 23,
     "Experience": 43,
     "Ingredients": {
-      "trout": 1,
-      "herbs": 2,
-      "butter": 1
+      "Форель": 1,
+      "Травы": 2,
+      "Масло": 1
     }
   },
   {
-    "Id": "trout_with_mushrooms",
     "Name": "Форель с грибами",
     "Price": 40,
     "RequiredTavernLevel": 23,
     "Experience": 47,
     "Ingredients": {
-      "trout": 1,
-      "mushrooms": 2,
-      "herbs": 1
+      "Форель": 1,
+      "Грибы": 2,
+      "Травы": 1
     }
   },
   {
-    "Id": "nut_pie",
     "Name": "Ореховый пирог",
     "Price": 45,
     "RequiredTavernLevel": 24,
     "Experience": 45,
     "Ingredients": {
-      "nuts": 2,
-      "wheat_flour": 2,
-      "egg": 1,
-      "honey": 1
+      "Орехи": 2,
+      "Пшеничная мука": 2,
+      "Яйцо": 1,
+      "Мёд": 1
     }
   },
   {
-    "Id": "apples_with_honey_and_nuts",
     "Name": "Яблоки с мёдом и орехами",
     "Price": 30,
     "RequiredTavernLevel": 24,
     "Experience": 37,
     "Ingredients": {
-      "apple": 2,
-      "nuts": 1,
-      "honey": 1
+      "Яблоко": 2,
+      "Орехи": 1,
+      "Мёд": 1
     }
   },
   {
-    "Id": "lingonberry_mead",
     "Name": "Брусничная медовуха",
     "Price": 34,
     "RequiredTavernLevel": 24,
     "Experience": 40,
     "Ingredients": {
-      "lingonberry": 2,
-      "honey": 2
+      "Брусника": 2,
+      "Мёд": 2
     }
   },
   {
-    "Id": "strawberry_pie",
     "Name": "Клубничный пирог",
     "Price": 45,
     "RequiredTavernLevel": 25,
     "Experience": 48,
     "Ingredients": {
-      "strawberry": 3,
-      "wheat_flour": 2,
-      "egg": 1,
-      "honey": 1
+      "Клубника": 3,
+      "Пшеничная мука": 2,
+      "Яйцо": 1,
+      "Мёд": 1
     }
   },
   {
-    "Id": "strawberries_with_honey_and_milk",
     "Name": "Клубника с мёдом и молоком",
     "Price": 34,
     "RequiredTavernLevel": 25,
     "Experience": 42,
     "Ingredients": {
-      "strawberry": 2,
-      "milk": 1,
-      "honey": 1
+      "Клубника": 2,
+      "Молоко": 1,
+      "Мёд": 1
     }
   },
   {
-    "Id": "stewed_rabbit",
     "Name": "Тушёный кролик",
     "Price": 29,
     "RequiredTavernLevel": 26,
     "Experience": 45,
     "Ingredients": {
-      "rabbit": 1,
-      "potato": 2,
-      "carrot": 1,
-      "onion": 1
+      "Кролик": 1,
+      "Картофель": 2,
+      "Морковь": 1,
+      "Лук": 1
     }
   },
   {
-    "Id": "rabbit_with_mushrooms",
     "Name": "Кролик с грибами",
     "Price": 47,
     "RequiredTavernLevel": 26,
     "Experience": 52,
     "Ingredients": {
-      "rabbit": 1,
-      "mushrooms": 2,
-      "butter": 1,
-      "herbs": 1
+      "Кролик": 1,
+      "Грибы": 2,
+      "Масло": 1,
+      "Травы": 1
     }
   },
   {
-    "Id": "plum_pie",
     "Name": "Сливовый пирог",
     "Price": 35,
     "RequiredTavernLevel": 27,
     "Experience": 47,
     "Ingredients": {
-      "plum": 3,
-      "wheat_flour": 2,
-      "egg": 1,
-      "honey": 1
+      "Слива": 3,
+      "Пшеничная мука": 2,
+      "Яйцо": 1,
+      "Мёд": 1
     }
   },
   {
-    "Id": "baked_plum_with_nuts",
     "Name": "Запечённая слива с орехами",
     "Price": 34,
     "RequiredTavernLevel": 27,
     "Experience": 44,
     "Ingredients": {
-      "plum": 2,
-      "nuts": 1,
-      "honey": 1
+      "Слива": 2,
+      "Орехи": 1,
+      "Мёд": 1
     }
   },
   {
-    "Id": "venison_with_mushrooms",
     "Name": "Оленина с грибами",
     "Price": 65,
     "RequiredTavernLevel": 28,
     "Experience": 58,
     "Ingredients": {
-      "venison": 2,
-      "mushrooms": 2,
-      "onion": 1,
-      "herbs": 1
+      "Оленина": 2,
+      "Грибы": 2,
+      "Лук": 1,
+      "Травы": 1
     }
   },
   {
-    "Id": "venison_roast",
     "Name": "Жаркое из оленины",
     "Price": 58,
     "RequiredTavernLevel": 28,
     "Experience": 55,
     "Ingredients": {
-      "venison": 2,
-      "potato": 2,
-      "onion": 1,
-      "carrot": 1
+      "Оленина": 2,
+      "Картофель": 2,
+      "Лук": 1,
+      "Морковь": 1
     }
   },
   {
-    "Id": "chocolate_pie",
     "Name": "Шоколадный пирог",
     "Price": 55,
     "RequiredTavernLevel": 29,
     "Experience": 60,
     "Ingredients": {
-      "chocolate": 2,
-      "wheat_flour": 2,
-      "egg": 2,
-      "milk": 1
+      "Шоколад": 2,
+      "Пшеничная мука": 2,
+      "Яйцо": 2,
+      "Молоко": 1
     }
   },
   {
-    "Id": "chocolate_apples",
     "Name": "Яблоки в шоколаде",
     "Price": 37,
     "RequiredTavernLevel": 29,
     "Experience": 48,
     "Ingredients": {
-      "chocolate": 1,
-      "apple": 2,
-      "honey": 1
+      "Шоколад": 1,
+      "Яблоко": 2,
+      "Мёд": 1
     }
   },
   {
-    "Id": "grand_festival_roast",
     "Name": "Большое праздничное жаркое",
     "Price": 59,
     "RequiredTavernLevel": 30,
     "Experience": 75,
     "Ingredients": {
-      "beef": 1,
-      "pork": 1,
-      "potato": 2,
-      "mushrooms": 2,
-      "onion": 1
+      "Говядина": 1,
+      "Свинина": 1,
+      "Картофель": 2,
+      "Грибы": 2,
+      "Лук": 1
     }
   },
   {
-    "Id": "feast_pie",
     "Name": "Пиршественный пирог",
     "Price": 57,
     "RequiredTavernLevel": 30,
     "Experience": 78,
     "Ingredients": {
-      "chicken": 1,
-      "wheat_flour": 2,
-      "egg": 2,
-      "mushrooms": 1,
-      "cheeze": 1
+      "Курица": 1,
+      "Пшеничная мука": 2,
+      "Яйцо": 2,
+      "Грибы": 1,
+      "Сыр": 1
     }
   },
   {
-    "Id": "signature_goose",
     "Name": "Фирменное блюдо «Гусь и пирог»",
     "Price": 58,
     "RequiredTavernLevel": 30,
     "Experience": 85,
     "Ingredients": {
-      "goose": 1,
-      "apple": 2,
-      "honey": 1,
-      "mushrooms": 1,
-      "herbs": 2
+      "Гусь": 1,
+      "Яблоко": 2,
+      "Мёд": 1,
+      "Грибы": 1,
+      "Травы": 2
     }
   }
 ]

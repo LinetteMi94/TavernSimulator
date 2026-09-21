@@ -17,4 +17,37 @@ public static class TavernService
         }
         tavern.AvailableDishes = DishCatalog.Dishes.Where(x => x.RequiredTavernLevel == 1).ToList();
     }
+
+    public static bool CookDish(this Tavern tavern, string dishName)
+    {
+        var HaveProduct = true;
+        Dish dish = DishCatalog.Dishes.First(x => x.Name == dishName);
+        if (!tavern.AvailableDishes.Contains(dish))
+        {
+            Console.WriteLine($"Вы еще не изучили рецепт блюда {dishName}!");
+            return false;
+        }
+        foreach (var ingrid in dish.Ingredients)
+        {
+            if  (!tavern.Products.ContainsKey(ingrid.Key))
+            {
+                Console.WriteLine(ingrid.Key);
+                Console.WriteLine($"Вы не знаете ингридиентов, из которых готовят {dishName}!");
+                return false;
+            }
+            var product = tavern.Products.First(x => x.Key == ingrid.Key);
+            if (product.Value < ingrid.Value)
+            {
+                Console.WriteLine($"У вас недостаточно {product.Key}!");
+                return false;
+            }
+        }
+        foreach (var ingrid in dish.Ingredients)
+        {
+            var product = tavern.Products.First(x => x.Key == ingrid.Key);
+            tavern.Products[product.Key] -= ingrid.Value;
+        }
+        Console.WriteLine($"Вы приготовили {dishName}!");
+        return true;
+    }
 }
