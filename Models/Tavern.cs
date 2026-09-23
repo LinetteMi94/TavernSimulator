@@ -1,4 +1,6 @@
-﻿namespace TavernSimulator.Models;
+﻿using System.Collections.Generic;
+
+namespace TavernSimulator.Models;
 
 /// <summary>
 /// Представляет таверну, хранит её состояние, запасы продуктов,

@@ -1,4 +1,6 @@
-﻿namespace TavernSimulator.Models;
+﻿using System.Collections.Generic;
+
+namespace TavernSimulator.Models;
 
 /// <summary>
 /// Представляет блюдо, которое можно приготовить и продать в таверне.

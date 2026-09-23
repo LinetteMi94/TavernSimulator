@@ -1,4 +1,6 @@
-﻿namespace TavernSimulator.Models;
+﻿using System.Collections.Generic;
+
+namespace TavernSimulator.Models;
 
 public abstract class Visitor
 {

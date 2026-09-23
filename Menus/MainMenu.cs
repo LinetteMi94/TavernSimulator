@@ -1,4 +1,5 @@
-﻿using TavernSimulator.Input;
+﻿using System;
+using TavernSimulator.Input;
 using TavernSimulator.Models;
 
 namespace TavernSimulator.Menus
@@ -22,22 +23,6 @@ namespace TavernSimulator.Menus
             Console.WriteLine("5. Открыть таверну");
             var input = InputValidator.GetValidInput(5);
             handleChoice(input);
-            Console.WriteLine("Нажмите любую клавишу для продолжения...");
-            Console.ReadKey();
-        }
-        
-        /// <summary>
-        /// Отображает дневное меню и предоставляет игроку доступ к основным действиям во время работы таверны.
-        /// </summary>
-        public static void ShowDayMenu(Action<int> handleChoice)
-        {
-            Game.Game.ShowHeader();
-            Console.WriteLine();
-            Console.WriteLine("1. Закрыть таверну");
-            var input = InputValidator.GetValidInput(1);
-            handleChoice(input);
-            Console.WriteLine("Нажмите любую клавишу для продолжения...");
-            Console.ReadKey();
         }
 
         /// <summary>

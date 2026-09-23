@@ -1,4 +1,6 @@
-﻿namespace TavernSimulator.Models.Visitors;
+﻿using System.Collections.Generic;
+
+namespace TavernSimulator.Models.Visitors;
 
 public class Peasant : Visitor
 {
