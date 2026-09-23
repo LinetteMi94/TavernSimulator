@@ -93,7 +93,6 @@ public static class Game
                 {
                     Console.WriteLine($"Вы отдаёте {dish.Name} посетителю.");
                     _tavern.Gold += dish.Price;
-                    _tavern.Experience += dish.Experience;
                     CompletedOrdersToday++;
                 }
                 _isVisitorBeingServed = false;

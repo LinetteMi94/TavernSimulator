@@ -10,7 +10,9 @@ namespace TavernSimulator.Service;
 /// </summary>
 public static class TavernService
 {
-   public static void CreateTavern(this Tavern tavern)
+    private static int _maxExperience = 100;
+        
+    public static void CreateTavern(this Tavern tavern)
     {
         var availiableProducts = ProductCatalog.Products.Where(x => x.RequiredTavernLevel == 1).ToList();
         foreach (var product in availiableProducts)
@@ -50,6 +52,18 @@ public static class TavernService
             tavern.Products[product.Key] -= ingrid.Value;
         }
         Console.WriteLine($"Вы приготовили {dishName}!");
+        tavern.Experience += dish.Experience;
+        tavern.CheckLevelUp();
         return true;
+    }
+
+    private static void CheckLevelUp(this Tavern tavern)
+    {
+        if (tavern.Experience >= _maxExperience)
+        {
+            tavern.Level++;
+            tavern.Experience -= _maxExperience ;
+            _maxExperience *= 2;
+        }
     }
 }
