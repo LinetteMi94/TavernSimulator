@@ -22,13 +22,11 @@ public static class TavernService
         tavern.AvailableDishes = DishCatalog.Dishes.Where(x => x.RequiredTavernLevel == 1).ToList();
     }
 
-    public static bool CookDish(this Tavern tavern, string dishName)
+    private static bool CookDish(this Tavern tavern, Dish dish)
     {
-        var HaveProduct = true;
-        Dish dish = DishCatalog.Dishes.First(x => x.Name == dishName);
         if (!tavern.AvailableDishes.Contains(dish))
         {
-            Console.WriteLine($"Вы еще не изучили рецепт блюда {dishName}!");
+            Console.WriteLine($"Вы еще не изучили рецепт блюда {dish.Name}!");
             return false;
         }
         foreach (var ingrid in dish.Ingredients)
@@ -36,7 +34,7 @@ public static class TavernService
             if  (!tavern.Products.ContainsKey(ingrid.Key))
             {
                 Console.WriteLine(ingrid.Key);
-                Console.WriteLine($"Вы не знаете ингридиентов, из которых готовят {dishName}!");
+                Console.WriteLine($"Вы не знаете ингридиентов, из которых готовят {dish.Name}!");
                 return false;
             }
             var product = tavern.Products.First(x => x.Key == ingrid.Key);
@@ -51,7 +49,7 @@ public static class TavernService
             var product = tavern.Products.First(x => x.Key == ingrid.Key);
             tavern.Products[product.Key] -= ingrid.Value;
         }
-        Console.WriteLine($"Вы приготовили {dishName}!");
+        Console.WriteLine($"Вы приготовили {dish.Name}!");
         tavern.Experience += dish.Experience;
         tavern.CheckLevelUp();
         return true;
@@ -66,4 +64,14 @@ public static class TavernService
             _maxExperience *= 2;
         }
     }
+    
+    public static bool CookOrder(this Tavern tavern, List<Dish> dishes)
+    {
+        foreach (var dish in dishes)
+        {
+            if (!tavern.CookDish(dish)) return false;
+        }
+        return true;
+    }
+
 }

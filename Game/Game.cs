@@ -61,38 +61,47 @@ public static class Game
     /// <summary>
     /// Показывает необходимые ингридиенты для блюда и количество необходимых ингридиентов в таверне.
     /// </summary>
-    private static void ShowDishIngridients(Dish dish)
+    private static void ShowDishesIngridients(List<Dish> dishes)
     {
         Console.Clear();
-        Console.WriteLine($"\nИнгридиенты для блюда {dish.Name}:\n");
-        var counter = 1;
-        foreach (var ingrid in dish.Ingredients)
+        foreach (var dish in dishes)
         {
-            var product = _tavern.Products.Where(x => x.Key == ingrid.Key).Select(x =>  x.Value).First();
-            Console.WriteLine($"{counter++}. {ingrid.Key, -20} -{ingrid.Value,3} шт.     (В наличии {product,2} шт.)");
+            Console.WriteLine($"\nИнгридиенты для блюда {dish.Name}:\n");
+            var counter = 1;
+            foreach (var ingrid in dish.Ingredients)
+            { 
+                var product = _tavern.Products.Where(x => x.Key == ingrid.Key).Select(x =>  x.Value).First();
+                Console.WriteLine($"{counter++}. {ingrid.Key, -20} -{ingrid.Value,3} шт.     (В наличии {product,2} шт.)");
+            }
+
+            Console.WriteLine();
         }
     }
     
     /// <summary>
     /// Организует взаимодействие с посетителем до завершения его обслуживания.
     /// </summary>
-    private static void ServeVisitor(this Visitor visitor, Dish dish)
+    private static void ServeVisitor(this Visitor visitor, List<Dish> dishes)
     {
-        Console.WriteLine(visitor.Name + " хочет заказать : " + dish.Name);
-        Console.WriteLine("\n1. Посмотреть рецепт\n2. Накормить\n2. Прогнать");
-        var choice = InputValidator.GetValidInput(2);
+        Console.WriteLine(visitor.Name + " хочет заказать : ");
+        for (var i=0; i<dishes.Count; i++)
+        {
+            Console.Write($"{i+1}. {dishes[i].Name}\n");
+        }
+        Console.WriteLine("\n1. Посмотреть рецепты\n2. Накормить\n2. Прогнать");
+        var choice = InputValidator.GetValidInput(3);
         switch (choice)
         {
             case 1:
-                ShowDishIngridients(dish);
+                ShowDishesIngridients(dishes);
                 break;
             case 2:
-                var IsCooking = _tavern.CookDish(dish.Name);
+                var IsCooking = _tavern.CookOrder(dishes);
                 if (!IsCooking) Console.WriteLine("Посетитель уходит голодный");
                 else
                 {
-                    Console.WriteLine($"Вы отдаёте {dish.Name} посетителю.");
-                    _tavern.Gold += dish.Price;
+                    Console.WriteLine($"Вы отдаёте заказ посетителю.");
+                    _tavern.Gold += dishes.Sum(x => x.Price);
                     CompletedOrdersToday++;
                 }
                 _isVisitorBeingServed = false;
@@ -120,10 +129,10 @@ public static class Game
             visitor.CreateVisitor();
             Console.WriteLine("Новый посетитель: " + visitor.TypeName + " " +  visitor.Name);
             _isVisitorBeingServed = true;
-            var dish = visitor.ChooseDish(_tavern);
+            var dishes = visitor.ChooseOrder(_tavern);
             while (_isVisitorBeingServed)
             {
-                visitor.ServeVisitor(dish);
+                visitor.ServeVisitor(dishes);
             }
         }
     }

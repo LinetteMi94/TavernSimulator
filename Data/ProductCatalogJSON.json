@@ -80,6 +80,11 @@
     "RequiredTavernLevel": 6
   },
   {
+    "Name": "Лимон",
+    "Price": 5,
+    "RequiredTavernLevel": 7
+  },
+  {
     "Name": "Ржаная мука",
     "Price": 3,
     "RequiredTavernLevel": 9

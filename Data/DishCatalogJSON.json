@@ -210,25 +210,35 @@
     }
   },
   {
+    "Name": "Лимонад",
+    "Price": 35,
+    "RequiredTavernLevel": 7,
+    "Experience": 30,
+    "Ingredients": {
+      "Лимон": 3,
+      "Мёд": 2
+    }
+  },
+  {
+    "Name": "Чай с лимоном и мёдом",
+    "Price": 21,
+    "RequiredTavernLevel": 7,
+    "Experience": 15,
+    "Ingredients": {
+      "Травы": 2,
+      "Лимон": 1,
+      "Мёд": 1
+    }
+  },
+  {
     "Name": "Свинина с грибами",
     "Price": 43,
-    "RequiredTavernLevel": 7,
+    "RequiredTavernLevel": 8,
     "Experience": 28,
     "Ingredients": {
       "Свинина": 2,
       "Грибы": 2,
       "Лук": 1
-    }
-  },
-  {
-    "Name": "Ржаные лепёшки",
-    "Price": 22,
-    "RequiredTavernLevel": 8,
-    "Experience": 20,
-    "Ingredients": {
-      "Ржаная мука": 2,
-      "Яйцо": 1,
-      "Молоко": 1
     }
   },
   {
@@ -240,6 +250,17 @@
       "Хлеб": 1,
       "Яблоко": 2,
       "Мёд": 1
+    }
+  },
+  {
+    "Name": "Ржаные лепёшки",
+    "Price": 22,
+    "RequiredTavernLevel": 9,
+    "Experience": 20,
+    "Ingredients": {
+      "Ржаная мука": 2,
+      "Яйцо": 1,
+      "Молоко": 1
     }
   },
   {
@@ -400,11 +421,12 @@
   },
   {
     "Name": "Жареная рыба с травами",
-    "Price": 30,
+    "Price": 37,
     "RequiredTavernLevel": 15,
-    "Experience": 32,
+    "Experience": 36,
     "Ingredients": {
       "Сом": 2,
+      "Лимон": 1,
       "Масло": 1,
       "Травы": 2
     }
@@ -615,11 +637,12 @@
   },
   {
     "Name": "Яблоки с мёдом и орехами",
-    "Price": 30,
+    "Price": 37,
     "RequiredTavernLevel": 24,
-    "Experience": 37,
+    "Experience": 41,
     "Ingredients": {
       "Яблоко": 2,
+      "Лимон": 1,
       "Орехи": 1,
       "Мёд": 1
     }
