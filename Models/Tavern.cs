@@ -14,6 +14,5 @@ public class Tavern
     public int Day { get; set; } = 1;
     public int Experience { get; set; } = 0;
     public int Level { get; set; } = 1;
-    public int Customers { get; set; }
     public int Gold { get; set; } = 100;
 }

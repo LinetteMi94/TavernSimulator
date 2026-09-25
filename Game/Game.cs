@@ -88,7 +88,7 @@ public static class Game
         {
             Console.Write($"{i+1}. {dishes[i].Name}\n");
         }
-        Console.WriteLine("\n1. Посмотреть рецепты\n2. Накормить\n2. Прогнать");
+        Console.WriteLine("\n1. Посмотреть рецепты\n2. Накормить\n3. Прогнать");
         var choice = InputValidator.GetValidInput(3);
         switch (choice)
         {
@@ -125,8 +125,7 @@ public static class Game
         {
             Console.Clear();
             ShowHeader();
-            Visitor visitor = new Peasant();
-            visitor.CreateVisitor();
+            Visitor visitor = VisitorService.CreateVisitor();
             Console.WriteLine("Новый посетитель: " + visitor.TypeName + " " +  visitor.Name);
             _isVisitorBeingServed = true;
             var dishes = visitor.ChooseOrder(_tavern);

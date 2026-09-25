@@ -1,6 +1,7 @@
 ﻿[
   {
     "Name": "Суп из корнеплодов",
+    "Type": 5,
     "Price": 17,
     "RequiredTavernLevel": 1,
     "Experience": 10,
@@ -13,6 +14,7 @@
   },
   {
     "Name": "Яичница с луком",
+    "Type": 7,
     "Price": 14,
     "RequiredTavernLevel": 1,
     "Experience": 8,
@@ -23,6 +25,7 @@
   },
   {
     "Name": "Овощное рагу",
+    "Type": 8,
     "Price": 14,
     "RequiredTavernLevel": 1,
     "Experience": 9,
@@ -34,6 +37,7 @@
   },
   {
     "Name": "Куриное рагу",
+    "Type": 0,
     "Price": 25,
     "RequiredTavernLevel": 1,
     "Experience":12,
@@ -46,6 +50,7 @@
   },
   {
     "Name": "Яблочный пирог",
+    "Type": 2,
     "Price": 30,
     "RequiredTavernLevel": 1,
     "Experience":15,
@@ -57,6 +62,7 @@
   },
   {
     "Name": "Чай",
+    "Type": 6,
     "Price": 7,
     "RequiredTavernLevel": 1,
     "Experience":5,
@@ -66,6 +72,7 @@
   },
   {
     "Name": "Чай с мёдом",
+    "Type": 6,
     "Price": 15,
     "RequiredTavernLevel": 2,
     "Experience":8,
@@ -76,6 +83,7 @@
   },
   {
     "Name": "Молочная каша",
+    "Type": 4,
     "Price": 24,
     "RequiredTavernLevel": 2,
     "Experience":12,
@@ -87,6 +95,7 @@
   },
   {
     "Name": "Молочный хлеб",
+    "Type": 2,
     "Price": 20,
     "RequiredTavernLevel": 2,
     "Experience":11,
@@ -97,7 +106,8 @@
     }
   },
   {
-    "Name": "Молочный хлеб",
+    "Name": "Курица с чесноком",
+    "Type": 0,
     "Price": 19,
     "RequiredTavernLevel": 3,
     "Experience":15,
@@ -109,6 +119,7 @@
   },
   {
     "Name": "Чесночные лепёшки",
+    "Type": 2,
     "Price": 19,
     "RequiredTavernLevel": 3,
     "Experience":14,
@@ -120,6 +131,7 @@
   },
   {
     "Name": "Грибной суп",
+    "Type": 5,
     "Price": 27,
     "RequiredTavernLevel": 4,
     "Experience":18,
@@ -132,6 +144,7 @@
   },
   {
     "Name": "Гречка с курицей",
+    "Type": 4,
     "Price": 27,
     "RequiredTavernLevel": 4,
     "Experience": 18,
@@ -143,6 +156,7 @@
   },
   {
     "Name": "Свинина с луком",
+    "Type": 0,
     "Price": 33,
     "RequiredTavernLevel": 5,
     "Experience": 22,
@@ -154,6 +168,7 @@
   },
   {
     "Name": "Куриный суп",
+    "Type": 5,
     "Price": 23,
     "RequiredTavernLevel": 5,
     "Experience": 16,
@@ -166,6 +181,7 @@
   },
   {
     "Name": "Квас",
+    "Type": 6,
     "Price": 15,
     "RequiredTavernLevel": 5,
     "Experience": 12,
@@ -176,6 +192,7 @@
   },
   {
     "Name": "Грушевый пирог",
+    "Type": 2,
     "Price": 35,
     "RequiredTavernLevel": 6,
     "Experience": 23,
@@ -188,6 +205,7 @@
   },
   {
     "Name": "Груша с мёдом",
+    "Type": 3,
     "Price": 25,
     "RequiredTavernLevel": 6,
     "Experience": 18,
@@ -199,6 +217,7 @@
   },
   {
     "Name": "Картофель с грибами",
+    "Type": 8,
     "Price": 35,
     "RequiredTavernLevel": 7,
     "Experience": 24,
@@ -211,6 +230,7 @@
   },
   {
     "Name": "Лимонад",
+    "Type": 6,
     "Price": 35,
     "RequiredTavernLevel": 7,
     "Experience": 30,
@@ -221,6 +241,7 @@
   },
   {
     "Name": "Чай с лимоном и мёдом",
+    "Type": 6,
     "Price": 21,
     "RequiredTavernLevel": 7,
     "Experience": 15,
@@ -232,6 +253,7 @@
   },
   {
     "Name": "Свинина с грибами",
+    "Type": 0,
     "Price": 43,
     "RequiredTavernLevel": 8,
     "Experience": 28,
@@ -243,6 +265,7 @@
   },
   {
     "Name": "Яблочный квас",
+    "Type": 6,
     "Price": 25,
     "RequiredTavernLevel": 8,
     "Experience": 19,
@@ -254,6 +277,7 @@
   },
   {
     "Name": "Ржаные лепёшки",
+    "Type": 2,
     "Price": 22,
     "RequiredTavernLevel": 9,
     "Experience": 20,
@@ -265,6 +289,7 @@
   },
   {
     "Name": "Ржаной пирог с яблоками",
+    "Type": 2,
     "Price": 35,
     "RequiredTavernLevel": 9,
     "Experience": 27,
@@ -277,6 +302,7 @@
   },
   {
     "Name": "Ржаные пирожки с курицей",
+    "Type": 2,
     "Price": 29,
     "RequiredTavernLevel": 9,
     "Experience": 25,
@@ -289,6 +315,7 @@
   },
   {
     "Name": "Гусь с яблоками",
+    "Type": 0,
     "Price": 39,
     "RequiredTavernLevel": 10,
     "Experience": 35,
@@ -300,6 +327,7 @@
   },
   {
     "Name": "Запечённый гусь",
+    "Type": 0,
     "Price": 32,
     "RequiredTavernLevel": 10,
     "Experience": 32,
@@ -311,6 +339,7 @@
   },
   {
     "Name": "Медовуха",
+    "Type": 6,
     "Price": 17,
     "RequiredTavernLevel": 10,
     "Experience": 25,
@@ -320,6 +349,7 @@
   },
   {
     "Name": "Вишнёвый пирог",
+    "Type": 2,
     "Price": 40,
     "RequiredTavernLevel": 11,
     "Experience": 30,
@@ -332,6 +362,7 @@
   },
   {
     "Name": "Вишнёвый напиток",
+    "Type": 6,
     "Price": 33,
     "RequiredTavernLevel": 11,
     "Experience": 24,
@@ -342,6 +373,7 @@
   },
   {
     "Name": "Курица под сыром",
+    "Type": 0,
     "Price": 27,
     "RequiredTavernLevel": 12,
     "Experience": 30,
@@ -353,6 +385,7 @@
   },
   {
     "Name": "Сырные лепёшки",
+    "Type": 2,
     "Price": 29,
     "RequiredTavernLevel": 12,
     "Experience": 18,
@@ -364,6 +397,7 @@
   },
   {
     "Name": "Тушёная капуста со свининой",
+    "Type": 0,
     "Price": 25,
     "RequiredTavernLevel": 13,
     "Experience": 29,
@@ -375,6 +409,7 @@
   },
   {
     "Name": "Щи с курицей",
+    "Type": 5,
     "Price": 25,
     "RequiredTavernLevel": 13,
     "Experience": 27,
@@ -387,6 +422,7 @@
   },
   {
     "Name": "Картофель с маслом и травами",
+    "Type": 8,
     "Price": 22,
     "RequiredTavernLevel": 14,
     "Experience": 22,
@@ -398,6 +434,7 @@
   },
   {
     "Name": "Гречка с маслом и молоком",
+    "Type": 4,
     "Price": 27,
     "RequiredTavernLevel": 14,
     "Experience": 25,
@@ -409,6 +446,7 @@
   },
   {
     "Name": "Рыбный суп",
+    "Type": 5,
     "Price": 24,
     "RequiredTavernLevel": 15,
     "Experience": 28,
@@ -421,6 +459,7 @@
   },
   {
     "Name": "Жареная рыба с травами",
+    "Type": 1,
     "Price": 37,
     "RequiredTavernLevel": 15,
     "Experience": 36,
@@ -433,6 +472,7 @@
   },
   {
     "Name": "Гороховый суп со свининой",
+    "Type": 5,
     "Price": 27,
     "RequiredTavernLevel": 16,
     "Experience": 30,
@@ -445,6 +485,7 @@
   },
   {
     "Name": "Гороховая каша с беконом",
+    "Type": 4,
     "Price": 29,
     "RequiredTavernLevel": 16,
     "Experience": 31,
@@ -456,6 +497,7 @@
   },
   {
     "Name": "Яйца с беконом",
+    "Type": 7,
     "Price": 29,
     "RequiredTavernLevel": 17,
     "Experience": 29,
@@ -467,6 +509,7 @@
   },
   {
     "Name": "Картофель с беконом",
+    "Type": 0,
     "Price": 29,
     "RequiredTavernLevel": 17,
     "Experience": 28,
@@ -478,6 +521,7 @@
   },
   {
     "Name": "Брусничный пирог",
+    "Type": 2,
     "Price": 40,
     "RequiredTavernLevel": 18,
     "Experience": 34,
@@ -490,6 +534,7 @@
   },
   {
     "Name": "Брусничная каша",
+    "Type": 3,
     "Price": 30,
     "RequiredTavernLevel": 18,
     "Experience": 30,
@@ -501,6 +546,7 @@
   },
   {
     "Name": "Пряная медовуха",
+    "Type": 6,
     "Price": 24,
     "RequiredTavernLevel": 18,
     "Experience": 32,
@@ -510,7 +556,8 @@
     }
   },
   {
-    "Name": "Рис со свининой медовуха",
+    "Name": "Рис со свининой",
+    "Type": 0,
     "Price": 35,
     "RequiredTavernLevel": 19,
     "Experience": 33,
@@ -523,6 +570,7 @@
   },
   {
     "Name": "Молочная рисовая каша",
+    "Type": 4,
     "Price": 32,
     "RequiredTavernLevel": 19,
     "Experience": 31,
@@ -534,6 +582,7 @@
   },
   {
     "Name": "Острый суп со свининой",
+    "Type": 5,
     "Price": 27,
     "RequiredTavernLevel": 20,
     "Experience": 35,
@@ -546,6 +595,7 @@
   },
   {
     "Name": "Пряная свинина",
+    "Type": 0,
     "Price": 37,
     "RequiredTavernLevel": 20,
     "Experience": 38,
@@ -558,6 +608,7 @@
   },
   {
     "Name": "Говядина с грибами",
+    "Type": 0,
     "Price": 49,
     "RequiredTavernLevel": 21,
     "Experience": 42,
@@ -569,6 +620,7 @@
   },
   {
     "Name": "Ростбиф с травами",
+    "Type": 0,
     "Price": 47,
     "RequiredTavernLevel": 21,
     "Experience": 44,
@@ -580,6 +632,7 @@
   },
   {
     "Name": "Свекольный суп с говядиной",
+    "Type": 5,
     "Price": 27,
     "RequiredTavernLevel": 22,
     "Experience": 38,
@@ -592,6 +645,7 @@
   },
   {
     "Name": "Запечённая свёкла с мёдом",
+    "Type": 3,
     "Price": 20,
     "RequiredTavernLevel": 22,
     "Experience": 30,
@@ -603,6 +657,7 @@
   },
   {
     "Name": "Запечённая форель",
+    "Type": 1,
     "Price": 30,
     "RequiredTavernLevel": 23,
     "Experience": 43,
@@ -614,6 +669,7 @@
   },
   {
     "Name": "Форель с грибами",
+    "Type": 1,
     "Price": 40,
     "RequiredTavernLevel": 23,
     "Experience": 47,
@@ -625,6 +681,7 @@
   },
   {
     "Name": "Ореховый пирог",
+    "Type": 2,
     "Price": 45,
     "RequiredTavernLevel": 24,
     "Experience": 45,
@@ -637,6 +694,7 @@
   },
   {
     "Name": "Яблоки с мёдом и орехами",
+    "Type": 3,
     "Price": 37,
     "RequiredTavernLevel": 24,
     "Experience": 41,
@@ -649,6 +707,7 @@
   },
   {
     "Name": "Брусничная медовуха",
+    "Type": 6,
     "Price": 34,
     "RequiredTavernLevel": 24,
     "Experience": 40,
@@ -659,6 +718,7 @@
   },
   {
     "Name": "Клубничный пирог",
+    "Type": 2,
     "Price": 45,
     "RequiredTavernLevel": 25,
     "Experience": 48,
@@ -671,6 +731,7 @@
   },
   {
     "Name": "Клубника с мёдом и молоком",
+    "Type": 3,
     "Price": 34,
     "RequiredTavernLevel": 25,
     "Experience": 42,
@@ -682,6 +743,7 @@
   },
   {
     "Name": "Тушёный кролик",
+    "Type": 0,
     "Price": 29,
     "RequiredTavernLevel": 26,
     "Experience": 45,
@@ -694,6 +756,7 @@
   },
   {
     "Name": "Кролик с грибами",
+    "Type": 0,
     "Price": 47,
     "RequiredTavernLevel": 26,
     "Experience": 52,
@@ -706,6 +769,7 @@
   },
   {
     "Name": "Сливовый пирог",
+    "Type": 2,
     "Price": 35,
     "RequiredTavernLevel": 27,
     "Experience": 47,
@@ -718,6 +782,7 @@
   },
   {
     "Name": "Запечённая слива с орехами",
+    "Type": 3,
     "Price": 34,
     "RequiredTavernLevel": 27,
     "Experience": 44,
@@ -729,6 +794,7 @@
   },
   {
     "Name": "Оленина с грибами",
+    "Type": 0,
     "Price": 65,
     "RequiredTavernLevel": 28,
     "Experience": 58,
@@ -741,6 +807,7 @@
   },
   {
     "Name": "Жаркое из оленины",
+    "Type": 0,
     "Price": 58,
     "RequiredTavernLevel": 28,
     "Experience": 55,
@@ -753,6 +820,7 @@
   },
   {
     "Name": "Шоколадный пирог",
+    "Type": 2,
     "Price": 55,
     "RequiredTavernLevel": 29,
     "Experience": 60,
@@ -765,6 +833,7 @@
   },
   {
     "Name": "Яблоки в шоколаде",
+    "Type": 3,
     "Price": 37,
     "RequiredTavernLevel": 29,
     "Experience": 48,
@@ -776,6 +845,7 @@
   },
   {
     "Name": "Большое праздничное жаркое",
+    "Type": 0,
     "Price": 59,
     "RequiredTavernLevel": 30,
     "Experience": 75,
@@ -789,6 +859,7 @@
   },
   {
     "Name": "Пиршественный пирог",
+    "Type": 2,
     "Price": 57,
     "RequiredTavernLevel": 30,
     "Experience": 78,
@@ -802,6 +873,7 @@
   },
   {
     "Name": "Фирменное блюдо «Гусь и пирог»",
+    "Type": 0,
     "Price": 58,
     "RequiredTavernLevel": 30,
     "Experience": 85,

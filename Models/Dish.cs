@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using TavernSimulator.Enums;
 
 namespace TavernSimulator.Models;
 
@@ -8,6 +9,7 @@ namespace TavernSimulator.Models;
 public class Dish
 {
     public string? Name { get; set; } 
+    public DishTypes Type { get; set; } 
     public int Price { get; set; } 
     public int RequiredTavernLevel { get; set; }
     public int Experience { get; set; }

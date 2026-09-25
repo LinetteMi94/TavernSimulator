@@ -2,14 +2,22 @@
 using System.Linq;
 using TavernSimulator.Data;
 using TavernSimulator.Models;
+using TavernSimulator.Models.Visitors;
 
 namespace TavernSimulator.Service;
 
 public static class VisitorService
 {
-    public static void CreateVisitor(this Visitor visitor)
+    public static Visitor CreateVisitor()
     {
+        var choice = Random.Shared.Next(100);
+        Visitor visitor = choice switch
+        {
+            < 60 => new Peasant(),
+            _ => new Woodcutter()
+        };
         visitor.Name = visitor.PossibleNames[new Random().Next(0, visitor.PossibleNames.Count)];
+        return visitor;
     }
     
     public static List<Dish> ChooseOrder(this Visitor visitor, Tavern tavern)
