@@ -24,23 +24,6 @@ namespace TavernSimulator.Menus
             var input = InputValidator.GetValidInput(5);
             handleChoice(input);
         }
-
-        /// <summary>
-        /// Отображает вечернее меню с итогами игрового дня и позволяет завершить день.
-        /// </summary>
-        public static void ShowEveningMenu(int day, Action<int> handleChoice)
-        {
-            Game.Game.ShowHeader();
-            Console.WriteLine($"День {day} завершён!");
-            Console.WriteLine();
-            Console.WriteLine("1. Посмотреть запасы");
-            Console.WriteLine("2. Купить продукты");
-            Console.WriteLine("3. Идти спать");
-            var input = InputValidator.GetValidInput(3);
-            handleChoice(input);
-            Console.WriteLine("Нажмите любую клавишу для продолжения...");
-            Console.ReadKey();
-        }
         
         /// <summary>
         /// Отображает меню магазина и позволяет покупать продукты в таверну.
@@ -54,6 +37,19 @@ namespace TavernSimulator.Menus
             if (input == 1) handleChoice();
             Console.WriteLine("Нажмите любую клавишу для продолжения...");
             Console.ReadKey();
+        }
+        
+        /// <summary>
+        /// Отображает меню обслуживания посетителя и действия, необходимые для его обслуживания.
+        /// </summary>
+        public static void ServeVisitorMenu(Action<int, List<Dish>> handleChoice, List<Dish> dishes)
+        {
+            Console.WriteLine();
+            Console.WriteLine("1. Посмотреть рецепты");
+            Console.WriteLine("2. Накормить");
+            Console.WriteLine("3. Прогнать");
+            var input = InputValidator.GetValidInput(3);
+            handleChoice(input, dishes);
         }
     }
 }

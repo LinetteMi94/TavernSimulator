@@ -17,11 +17,12 @@ public static class Game
 {
     private static bool _isRunning = true;
     private static bool _isMorning;
-    private static bool _isEvening;
     private static bool _isVisitorBeingServed;
     private static Tavern _tavern = new();
     private static int _visitorsToday;
-    private static int CompletedOrdersToday { get; set; }
+    private static int _moneyToday;
+    private static int _experienceToday;
+    private static int _completedOrdersToday;
     private static Dictionary<Product, int> _availableProductsInShopToday = new ();
     
     public static void Start()
@@ -33,7 +34,9 @@ public static class Game
         while (_isRunning)
         {
             Console.Clear();
-            CompletedOrdersToday = 0;
+            _completedOrdersToday = 0;
+            _moneyToday = 0;
+            _experienceToday = 0;
             ShowHeader();
             CreateAvailableProductsInShopToday();
             _isMorning = true;
@@ -42,11 +45,7 @@ public static class Game
                 MainMenu.ShowMorningMenu(HandleMorningMenuChoice);
             }
             OpenTavern();
-            _isEvening = true;
-            while (_isEvening)
-            {
-                MainMenu.ShowEveningMenu(_tavern.Day, HandleEveningMenuChoice);
-            }
+            ViewDailyStatistics();
         }
     }
 
@@ -88,8 +87,17 @@ public static class Game
         {
             Console.Write($"{i+1}. {dishes[i].Name}\n");
         }
-        Console.WriteLine("\n1. Посмотреть рецепты\n2. Накормить\n3. Прогнать");
-        var choice = InputValidator.GetValidInput(3);
+
+        MainMenu.ServeVisitorMenu(HandleServeVisitorMenuChoice, dishes); 
+        Console.ReadKey();
+        Console.Clear();
+    }
+
+    /// <summary>
+    /// Обрабатывает выбор игрока в утреннем меню таверны.
+    /// </summary>
+    private static void HandleServeVisitorMenuChoice(int choice, List<Dish> dishes)
+    {
         switch (choice)
         {
             case 1:
@@ -102,7 +110,9 @@ public static class Game
                 {
                     Console.WriteLine($"Вы отдаёте заказ посетителю.");
                     _tavern.Gold += dishes.Sum(x => x.Price);
-                    CompletedOrdersToday++;
+                    _moneyToday += dishes.Sum(x => x.Price);
+                    _experienceToday += dishes.Sum(x => x.Experience);
+                    _completedOrdersToday++;
                 }
                 _isVisitorBeingServed = false;
                 break;
@@ -111,8 +121,6 @@ public static class Game
                 _isVisitorBeingServed = false;
                 break;
         }
-        Console.ReadKey();
-        Console.Clear();
     }
     
     /// <summary>
@@ -151,7 +159,7 @@ public static class Game
         Console.WriteLine($"║ Уровень: {_tavern.Level}                         ║");
         Console.WriteLine($"║ Опыт: {_tavern.Experience}                            ║");
         Console.WriteLine($"║ Посетителей сегодня: {_visitorsToday}             ║");
-        Console.WriteLine($"║ Выполнено заказов: {CompletedOrdersToday}               ║");
+        Console.WriteLine($"║ Выполнено заказов: {_completedOrdersToday}               ║");
         Console.WriteLine("╚════════════════════════════════════╝");
     }
 
@@ -182,24 +190,18 @@ public static class Game
     }
     
     /// <summary>
-    /// Обрабатывает выбор игрока в вечернем меню таверны.
+    /// Выводит в консоль статистику за день.
     /// </summary>
-    private static void HandleEveningMenuChoice(int choice)
+    private static void ViewDailyStatistics()
     {
-        switch (choice)
-        {
-            case 1:
-                ShowTheFoodStorage();
-                break;
-            case 2:
-                ShowTheShop();
-                MainMenu.ShowShopMenu(HandleShopMenuChoice);
-                break;
-            case 3:
-                _tavern.Day++;
-                _isEvening = false;
-                break;
-        }
+        ShowHeader();
+        Console.WriteLine($"День {_tavern.Day} завершён!");
+        Console.WriteLine();
+        Console.WriteLine($"Обслужено посетителей: {_completedOrdersToday}");
+        Console.WriteLine($"Заработано золотых: {_moneyToday}");
+        Console.WriteLine($"Получено опыта: {_experienceToday}");
+        Console.WriteLine("\nНажмите любую клавишу для завершения дня...");
+        Console.ReadKey();
     }
     
     /// <summary>
