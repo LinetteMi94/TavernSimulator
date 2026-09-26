@@ -25,6 +25,9 @@ public static class Game
     private static int _completedOrdersToday;
     private static Dictionary<Product, int> _availableProductsInShopToday = new ();
     
+    /// <summary>
+    /// Запускает игровой процесс и управляет основным циклом игры.
+    /// </summary>
     public static void Start()
     {
         _tavern.CreateTavern();
@@ -52,19 +55,22 @@ public static class Game
     /// <summary>
     /// Определяет количество посетителей на сегодняшний день.
     /// </summary>
-    private static void GetVisitorsToday()
-    {
-        _visitorsToday = new Random().Next(2, 6);
-    }
+    private static void GetVisitorsToday() => _visitorsToday = new Random().Next(2, 6);
     
     /// <summary>
     /// Показывает необходимые ингридиенты для блюда и количество необходимых ингридиентов в таверне.
     /// </summary>
+    /// <param name="dishes">Список блюд, ингредиенты которых необходимо отобразить.</param>
     private static void ShowDishesIngridients(List<Dish> dishes)
     {
         Console.Clear();
         foreach (var dish in dishes)
         {
+            if (!_tavern.AvailableDishes.Contains(dish))
+            {
+                Console.WriteLine($"Вы не знаете рецепта для блюда {dish.Name}");
+                continue;
+            }
             Console.WriteLine($"\nИнгридиенты для блюда {dish.Name}:\n");
             var counter = 1;
             foreach (var ingrid in dish.Ingredients)
@@ -182,6 +188,7 @@ public static class Game
                 break;
             case 4:
                ShowAvailableDishesToLearn();
+               MainMenu.ShowLearnDishesMenu(HandleLearnDishesMenuChoice);
                break;
             case 5:
                 _isMorning = false;
@@ -194,6 +201,7 @@ public static class Game
     /// </summary>
     private static void ViewDailyStatistics()
     {
+        _tavern.Day++;
         ShowHeader();
         Console.WriteLine($"День {_tavern.Day} завершён!");
         Console.WriteLine();
@@ -317,23 +325,50 @@ public static class Game
         if (dishes.Count == 0) Console.WriteLine("Доступных блюд для изучения нет!");
         else
         {
-            Console.WriteLine(new string('-', 66));
-            Console.WriteLine($"|  №  |  {"Блюдо",-30}| {"Необходимые продукты",23} |");
-            Console.WriteLine(new string('-', 66));
+            Console.WriteLine(new string('-', 79));
+            Console.WriteLine($"|  №  |  {"Блюдо",-30}| {"Необходимые продукты для изучения",36} |");
+            Console.WriteLine(new string('-', 79));
             var index = 1;
             foreach (var item in dishes)
             {
-                Console.WriteLine($"| {index,2}  | {item.Name,-30}                           |");
+                Console.WriteLine($"| {index,2}  | {item.Name,-43}                           |");
                 foreach (var ingredient in item.Ingredients)
                 {
                     var product = ProductCatalog.Products.First(x => x.Name == ingredient.Key).Name;
-                    Console.WriteLine($"|     | {product,48} - 1 шт. |");
+                    Console.WriteLine($"|     | {product,61} - 1 шт. |");
                 }
-                Console.WriteLine(new string('-', 66));
+                Console.WriteLine(new string('-', 79));
                 index++;
             }
         }
-        Console.WriteLine("\nНажмите любую клавишу для продолжения...");
-        Console.ReadKey();
+    }
+    
+    /// <summary>
+    /// Изучает указанный рецепт, списывает продукты на изучение
+    /// и добавляет изученный рецепт в меню таверны.
+    /// </summary>
+    private static void HandleLearnDishesMenuChoice()
+    {
+        Console.WriteLine("Какой рецепт хотите выучить сегодня?");
+        var dishes = DishCatalog.Dishes.Where(x => x.RequiredTavernLevel <= _tavern.Level && !_tavern.AvailableDishes.Contains(x)).ToList();
+        var index = InputValidator.GetValidInput(dishes.Count);
+        var dish = dishes.ElementAt(index - 1);
+        
+        foreach (var ingrid in dish.Ingredients)
+        {
+            if  (!_tavern.Products.ContainsKey(ingrid.Key))
+            {
+                Console.WriteLine(ingrid.Key);
+                Console.WriteLine($"Вы не знаете ингридиентов, из которых готовят {dish.Name}!");
+                return;
+            }
+            var product = _tavern.Products.First(x => x.Key == ingrid.Key);
+            if (product.Value < 1)
+            {
+                Console.WriteLine($"У вас недостаточно {product.Key}!");
+                return;
+            }
+        }
+        _tavern.LearnDish(dish);
     }
 }

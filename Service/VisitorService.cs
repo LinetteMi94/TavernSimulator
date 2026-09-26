@@ -6,20 +6,33 @@ using TavernSimulator.Models.Visitors;
 
 namespace TavernSimulator.Service;
 
+/// <summary>
+/// Содержит логику создания посетителей и формирования их заказов.
+/// </summary>
 public static class VisitorService
 {
+    /// <summary>
+    /// Создаёт нового посетителя случайного типа.
+    /// </summary>
     public static Visitor CreateVisitor()
     {
         var choice = Random.Shared.Next(100);
         Visitor visitor = choice switch
         {
-            < 60 => new Peasant(),
+            < 30 => new Peasant(),
+            < 60 => new Herbalist(),
             _ => new Woodcutter()
         };
         visitor.Name = visitor.PossibleNames[new Random().Next(0, visitor.PossibleNames.Count)];
         return visitor;
     }
     
+    /// <summary>
+    /// Формирует заказ посетителя с учётом его предпочтений и доступных блюд.
+    /// </summary>
+    /// <param name="visitor">Посетитель, для которого формируется заказ.</param>
+    /// <param name="tavern">Таверна, в которой посетитель делает заказ.</param>
+    /// <returns>Список блюд, выбранных посетителем.</returns>
     public static List<Dish> ChooseOrder(this Visitor visitor, Tavern tavern)
     {
         int count = new Random().Next(1, 4);

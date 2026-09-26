@@ -2,6 +2,9 @@
 
 namespace TavernSimulator.Models;
 
+/// <summary>
+/// Представляет базовый класс для посетителей таверны.
+/// </summary>
 public abstract class Visitor
 {
     public abstract string TypeName { get; set; } 

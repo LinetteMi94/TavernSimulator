@@ -1,5 +1,8 @@
 ﻿namespace TavernSimulator.Enums;
 
+/// <summary>
+/// Определяет тип блюда и используется для классификации блюд и предпочтений посетителей.
+/// </summary>
 public enum DishTypes
 {
     Мясное,

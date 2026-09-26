@@ -3,6 +3,10 @@ using TavernSimulator.Data;
 
 namespace TavernSimulator.Models.Visitors;
 
+/// <summary>
+/// Представляет крестьянина, который посещает таверну.
+/// Предпочитает простые и недорогие блюда.
+/// </summary>
 public class Peasant : Visitor
 {
    public override string TypeName { get; set; } =  "Крестьянин"; 

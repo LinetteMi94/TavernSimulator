@@ -3,6 +3,10 @@ using TavernSimulator.Enums;
 
 namespace TavernSimulator.Models.Visitors;
 
+/// <summary>
+/// Представляет лесоруба, который посещает таверну.
+/// Предпочитает сытные мясные блюда, а также напитки.
+/// </summary>
 public class Woodcutter: Visitor
 {
     public override string TypeName { get; set; } = "Лесоруб";

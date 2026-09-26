@@ -12,6 +12,7 @@ namespace TavernSimulator.Menus
         /// <summary>
         /// Отображает утреннее меню и действия, необходимые для подготовки таверны к открытию.
         /// </summary>
+        /// <param name="handleChoice">Метод, обрабатывающий выбранный пользователем пункт меню.</param>
         public static void ShowMorningMenu(Action<int> handleChoice)
         {
             Game.Game.ShowHeader();
@@ -28,6 +29,7 @@ namespace TavernSimulator.Menus
         /// <summary>
         /// Отображает меню магазина и позволяет покупать продукты в таверну.
         /// </summary>
+        /// <param name="handleChoice">Метод, обрабатывающий выбранный пользователем пункт меню.</param>
         public static void ShowShopMenu(Action handleChoice)
         { 
             Console.WriteLine();
@@ -42,6 +44,8 @@ namespace TavernSimulator.Menus
         /// <summary>
         /// Отображает меню обслуживания посетителя и действия, необходимые для его обслуживания.
         /// </summary>
+        /// <param name="handleChoice">Метод, обрабатывающий выбор пользователя и список выбранных блюд.</param>
+        /// <param name="dishes">Список блюд, доступных для заказа.</param>
         public static void ServeVisitorMenu(Action<int, List<Dish>> handleChoice, List<Dish> dishes)
         {
             Console.WriteLine();
@@ -50,6 +54,21 @@ namespace TavernSimulator.Menus
             Console.WriteLine("3. Прогнать");
             var input = InputValidator.GetValidInput(3);
             handleChoice(input, dishes);
+        }
+        
+        /// <summary>
+        /// Отображает меню выбора блюд, доступных для изучения, и позволяет изучать их.
+        /// </summary>
+        /// <param name="handleChoice">Метод, обрабатывающий выбранный пользователем пункт меню.</param>
+        public static void ShowLearnDishesMenu(Action handleChoice)
+        { 
+            Console.WriteLine();
+            Console.WriteLine("1. Изучить рецепт");
+            Console.WriteLine("2. Назад");
+            var input = InputValidator.GetValidInput(2);
+            if (input == 1) handleChoice();
+            Console.WriteLine("Нажмите любую клавишу для продолжения...");
+            Console.ReadKey();
         }
     }
 }

@@ -12,6 +12,9 @@ public static class TavernService
 {
     private static int _maxExperience = 100;
         
+    /// <summary>
+    /// Создаёт новую таверну с начальными параметрами.
+    /// </summary>
     public static void CreateTavern(this Tavern tavern)
     {
         var availiableProducts = ProductCatalog.Products.Where(x => x.RequiredTavernLevel == 1).ToList();
@@ -22,6 +25,10 @@ public static class TavernService
         tavern.AvailableDishes = DishCatalog.Dishes.Where(x => x.RequiredTavernLevel == 1).ToList();
     }
 
+    /// <summary>
+    /// Готовит выбранное блюдо и изменяет запасы необходимых ингредиентов.
+    /// </summary>
+    /// <returns>Приготовлено ли блюдо.</returns>
     private static bool CookDish(this Tavern tavern, Dish dish)
     {
         if (!tavern.AvailableDishes.Contains(dish))
@@ -55,6 +62,9 @@ public static class TavernService
         return true;
     }
 
+    /// <summary>
+    /// Проверяет, достаточно ли опыта для повышения уровня таверны.
+    /// </summary>
     private static void CheckLevelUp(this Tavern tavern)
     {
         if (tavern.Experience >= _maxExperience)
@@ -65,6 +75,10 @@ public static class TavernService
         }
     }
     
+    /// <summary>
+    /// Обрабатывает приготовление всех блюд, входящих в заказ посетителя.
+    /// </summary>
+    /// <returns>Приготовлен ли заказ.</returns>
     public static bool CookOrder(this Tavern tavern, List<Dish> dishes)
     {
         foreach (var dish in dishes)
@@ -74,4 +88,28 @@ public static class TavernService
         return true;
     }
 
+    /// <summary>
+    /// Изучает новое блюдо и добавляет его в список освоенных блюд таверны.
+    /// </summary>
+    public static void LearnDish(this Tavern tavern, Dish dish)
+    {
+        foreach (var ingrid in dish.Ingredients)
+        {
+            var product = tavern.Products.First(x => x.Key == ingrid.Key);
+            tavern.Products[product.Key]--;
+        }
+        var choice = Random.Shared.Next(100);
+        bool isLearned = choice switch
+        {
+            < 40 => true,
+            _ => false
+        };
+
+        if (isLearned)
+        {
+            tavern.AvailableDishes.Add(dish);
+            Console.WriteLine($"Вы изучили {dish.Name}!");
+        }
+        else Console.WriteLine($"Изучить {dish.Name} не удалось! Попробуйте ещё раз");
+    }
 }
