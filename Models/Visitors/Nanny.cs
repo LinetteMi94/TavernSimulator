@@ -14,4 +14,8 @@ public class Nanny : Visitor
     public override List<string> PossibleNames { get; set; } = ["Матрёна","Евдокия","Прасковья","Устинья","Феврония","Агафья",
         "Пелагея","Акулина","Марфа","Степанида","Феодора","Гликерия","Фёкла","Домна","Анфиса","Василиса","Меланья","Евпраксия","Дарья","Параскева"];
     public override List<Dish> PreferredDishes => DishCatalog.Dishes.Where(x =>x.Type is DishTypes.Суп or DishTypes.Напиток or DishTypes.Каша ).ToList();
+    public override void OnEvent(Tavern tavern)
+    {
+        Console.WriteLine("event");
+    }
 }

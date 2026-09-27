@@ -18,4 +18,6 @@ public abstract class Visitor
     public abstract List<Dish> PreferredDishes { get;  }
 
     public List<Dish> Order { get; set; } = new();
+
+    public abstract void OnEvent(Tavern tavern);
 }

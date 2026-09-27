@@ -94,7 +94,7 @@ public static class Game
             Console.Write($"{i+1}. {dishes[i].Name}\n");
         }
 
-        MainMenu.ServeVisitorMenu(HandleServeVisitorMenuChoice, dishes); 
+        MainMenu.ServeVisitorMenu(HandleServeVisitorMenuChoice, dishes, visitor); 
         Console.ReadKey();
         Console.Clear();
     }
@@ -102,7 +102,7 @@ public static class Game
     /// <summary>
     /// Обрабатывает выбор игрока в утреннем меню таверны.
     /// </summary>
-    private static void HandleServeVisitorMenuChoice(int choice, List<Dish> dishes)
+    private static void HandleServeVisitorMenuChoice(int choice, List<Dish> dishes, Visitor visitor)
     {
         switch (choice)
         {
@@ -119,6 +119,7 @@ public static class Game
                     _moneyToday += dishes.Sum(x => x.Price);
                     _experienceToday += dishes.Sum(x => x.Experience);
                     _completedOrdersToday++;
+                    visitor.TriggerEvent(_tavern);
                 }
                 _isVisitorBeingServed = false;
                 break;
@@ -225,11 +226,8 @@ public static class Game
         var count = InputValidator.GetValidInput(_availableProductsInShopToday.ElementAt(index-1).Value);
         if (_tavern.Gold >= product.Price * count)
         {
-            _tavern.Gold -= product.Price * count;
             _availableProductsInShopToday[product] -= count;
-            _tavern.Products.TryAdd(product.Name, 0);
-            _tavern.Products[product.Name] += count;
-            Console.WriteLine($"Куплено {product.Name} - {count} шт.!");
+            _tavern.BuyProducts(product, count);
             if (_availableProductsInShopToday.ElementAt(index - 1).Value == 0) _availableProductsInShopToday.Remove(product);
         }
         else Console.WriteLine("Недостаточно золота!");
@@ -271,7 +269,7 @@ public static class Game
         {
             if (product.RequiredTavernLevel < 3)
             {
-                _availableProductsInShopToday.Add(product, new Random().Next(5,18));
+                _availableProductsInShopToday.Add(product, new Random().Next(5,12));
                 continue;
             }
             _availableProductsInShopToday.Add(product, new Random().Next(4,9));

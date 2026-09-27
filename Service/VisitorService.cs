@@ -52,4 +52,10 @@ public static class VisitorService
         }
         return visitor.Order;
     }
+    
+    public static void TriggerEvent(this Visitor visitor, Tavern tavern)
+    {
+        var choice = Random.Shared.Next(100);
+        if (choice < 25) visitor.OnEvent(tavern);
+    }
 }

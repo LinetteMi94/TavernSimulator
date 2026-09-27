@@ -46,14 +46,14 @@ namespace TavernSimulator.Menus
         /// </summary>
         /// <param name="handleChoice">Метод, обрабатывающий выбор пользователя и список выбранных блюд.</param>
         /// <param name="dishes">Список блюд, доступных для заказа.</param>
-        public static void ServeVisitorMenu(Action<int, List<Dish>> handleChoice, List<Dish> dishes)
+        public static void ServeVisitorMenu(Action<int, List<Dish>, Visitor> handleChoice, List<Dish> dishes, Visitor visitor)
         {
             Console.WriteLine();
             Console.WriteLine("1. Посмотреть рецепты");
             Console.WriteLine("2. Накормить");
             Console.WriteLine("3. Прогнать");
             var input = InputValidator.GetValidInput(3);
-            handleChoice(input, dishes);
+            handleChoice(input, dishes, visitor);
         }
         
         /// <summary>
