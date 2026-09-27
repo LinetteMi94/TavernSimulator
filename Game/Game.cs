@@ -248,7 +248,7 @@ public static class Game
             Console.WriteLine(new string('-', 40));
             Console.WriteLine($"|  {"Продукт",-20}|{"Количество",14} |");
             Console.WriteLine(new string('-', 40));
-            foreach (var item in _tavern.Products)
+            foreach (var item in _tavern.Products.OrderBy(pr => pr.Key))
             {
                 Console.WriteLine($"|  {item.Key,-20}|{item.Value,10} шт. |");
             }
@@ -266,9 +266,14 @@ public static class Game
         _availableProductsInShopToday = new Dictionary<Product, int>();
         var availableProducts = ProductCatalog.Products
             .Where(product => product.RequiredTavernLevel <= _tavern.Level)
-            .OrderBy(x => new Random().Next()).Take(7).ToList();
+            .OrderBy(_ => Random.Shared.Next()).Take(7).OrderBy(x => x.Name).ToList();
         foreach (var product in availableProducts)
         {
+            if (product.RequiredTavernLevel < 3)
+            {
+                _availableProductsInShopToday.Add(product, new Random().Next(5,18));
+                continue;
+            }
             _availableProductsInShopToday.Add(product, new Random().Next(4,9));
         }
     }
