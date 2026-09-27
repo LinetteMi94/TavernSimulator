@@ -119,6 +119,17 @@ public static class TavernService
         }
         else Console.WriteLine($"Изучить {dish.Name} не удалось! Попробуйте ещё раз");
     }
+    
+    /// <summary>
+    /// Изучает новое секретное блюдо и добавляет его в список освоенных блюд таверны.
+    /// </summary>
+    public static void LearnSecretDish(this Tavern tavern, Dish dish)
+    {
+        tavern.AvailableDishes.Add(dish);
+        DishCatalog.Dishes.Add(dish);
+        Console.WriteLine($"Вы изучили {dish.Name}!");
+        
+    }
 
     /// <summary>
     /// Покупает продукт в указанном количестве, добавляет его в список имеющихся продуктов таверны и списывает у таверны золото за покупку.
@@ -127,10 +138,21 @@ public static class TavernService
     /// <param name="product">Продукт, который сейчас покупается.</param>
     /// <param name="count">Количество покупаемого продукта.</param>
     /// <param name="price">Цена продукта, если он покупается не за фиксированную цену.</param>
-    public static void BuyProducts(this Tavern tavern, Product product, int count, int price = 0)
+    public static void BuyProducts(this Tavern tavern, Product product, int count, int price = -1)
     {
-        if (price == 0) tavern.Gold -= product.Price * count;
-        else  tavern.Gold -= price * count;
+        if (price == 0)
+        {
+            Console.WriteLine($"Получено {product.Name} - {count} шт.!");
+            return;
+        }
+        if (price == -1)
+        {
+            tavern.Gold -= product.Price * count;
+        }
+        else
+        {
+            tavern.Gold -= price * count;
+        }
         tavern.Products.TryAdd(product.Name, 0);
         tavern.Products[product.Name] += count;
         Console.WriteLine($"Куплено {product.Name} - {count} шт.!");

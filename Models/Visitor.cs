@@ -19,5 +19,8 @@ public abstract class Visitor
 
     public List<Dish> Order { get; set; } = new();
 
+    /// <summary>
+    /// Запускает случайное событие после посещения таверны.
+    /// </summary>
     public abstract void OnEvent(Tavern tavern);
 }
