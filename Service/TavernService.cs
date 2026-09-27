@@ -30,7 +30,7 @@ public static class TavernService
     /// Готовит выбранное блюдо и изменяет запасы необходимых ингредиентов.
     /// </summary>
     /// <returns>Приготовлено ли блюдо.</returns>
-    private static bool CookDish(this Tavern tavern, Dish dish)
+    public static bool CookDish(this Tavern tavern, Dish dish)
     {
         if (!tavern.AvailableDishes.Contains(dish))
         {
@@ -156,5 +156,39 @@ public static class TavernService
         tavern.Products.TryAdd(product.Name, 0);
         tavern.Products[product.Name] += count;
         Console.WriteLine($"Куплено {product.Name} - {count} шт.!");
+    }
+    
+    /// <summary>
+    /// Показывает необходимые ингридиенты для списка блюд и количество необходимых ингридиентов в таверне.
+    /// </summary>
+    /// <param name="dishes">Список блюд, ингредиенты которых необходимо отобразить.</param>
+    public static void ShowDishesIngridients(this Tavern tavern, List<Dish> dishes)
+    {
+        Console.Clear();
+        foreach (var dish in dishes)
+        {
+            tavern.ShowDishIngridients(dish);
+        }
+    }
+    
+    /// <summary>
+    /// Показывает необходимые ингридиенты для блюда и количество необходимых ингридиентов в таверне.
+    /// </summary>
+    /// <param name="dish">Блюдо, ингредиенты которых необходимо отобразить.</param>
+    public static void ShowDishIngridients(this Tavern tavern, Dish dish)
+    {
+        if (!tavern.AvailableDishes.Contains(dish))
+        {
+            Console.WriteLine($"Вы не знаете рецепта для блюда {dish.Name}");
+            return;
+        }
+        Console.WriteLine($"\nИнгридиенты для блюда {dish.Name}:\n");
+        var counter = 1;
+        foreach (var ingrid in dish.Ingredients)
+        { 
+            var product = tavern.Products.Where(x => x.Key == ingrid.Key).Select(x =>  x.Value).First();
+            Console.WriteLine($"{counter++}. {ingrid.Key, -20} -{ingrid.Value,3} шт.     (В наличии {product,2} шт.)");
+        }
+        Console.WriteLine();
     }
 }

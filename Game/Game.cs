@@ -57,31 +57,7 @@ public static class Game
     /// </summary>
     private static void GetVisitorsToday() => _visitorsToday = new Random().Next(2, 6);
     
-    /// <summary>
-    /// Показывает необходимые ингридиенты для блюда и количество необходимых ингридиентов в таверне.
-    /// </summary>
-    /// <param name="dishes">Список блюд, ингредиенты которых необходимо отобразить.</param>
-    private static void ShowDishesIngridients(List<Dish> dishes)
-    {
-        Console.Clear();
-        foreach (var dish in dishes)
-        {
-            if (!_tavern.AvailableDishes.Contains(dish))
-            {
-                Console.WriteLine($"Вы не знаете рецепта для блюда {dish.Name}");
-                continue;
-            }
-            Console.WriteLine($"\nИнгридиенты для блюда {dish.Name}:\n");
-            var counter = 1;
-            foreach (var ingrid in dish.Ingredients)
-            { 
-                var product = _tavern.Products.Where(x => x.Key == ingrid.Key).Select(x =>  x.Value).First();
-                Console.WriteLine($"{counter++}. {ingrid.Key, -20} -{ingrid.Value,3} шт.     (В наличии {product,2} шт.)");
-            }
-
-            Console.WriteLine();
-        }
-    }
+    
     
     /// <summary>
     /// Организует взаимодействие с посетителем до завершения его обслуживания.
@@ -107,7 +83,7 @@ public static class Game
         switch (choice)
         {
             case 1:
-                ShowDishesIngridients(dishes);
+                _tavern.ShowDishesIngridients(dishes);
                 break;
             case 2:
                 var IsCooking = _tavern.CookOrder(dishes);

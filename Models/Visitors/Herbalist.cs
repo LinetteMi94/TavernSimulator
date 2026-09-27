@@ -127,14 +127,15 @@ public class Herbalist : Visitor
         Console.WriteLine("1. Купить\n2. Отказаться\n");
         var herbs = ProductCatalog.Products.First(x => x.Name == "Травы");
         var choice = Input.InputValidator.GetValidInput(2);
-        if (choice == 1)
+        switch (choice)
         {
-            tavern.BuyProducts(herbs, count, 1);
-            Console.WriteLine("Вот и славно. Хорошие травы, свежие. Пригодятся тебе на кухне.");
-        }
-        if (choice == 2)
-        {
-            Console.WriteLine("Ну что ж, дело твоё. Если передумаешь, заходи, пока травы не завяли.");
+            case 1:
+                tavern.BuyProducts(herbs, count, 1);
+                Console.WriteLine("Вот и славно. Хорошие травы, свежие. Пригодятся тебе на кухне.");
+                break;
+            case 2:
+                Console.WriteLine("Ну что ж, дело твоё. Если передумаешь, заходи, пока травы не завяли.");
+                break;
         }
     }
 
@@ -162,22 +163,22 @@ public class Herbalist : Visitor
             var dish = SecretRecipes.Where(x => x.RequiredTavernLevel <= tavern.Level).OrderBy(_ => Random.Shared.Next())
                 .FirstOrDefault();;
             Console.WriteLine($"\nТравница {Name} хитро на тебя смотрит:\n" +
-                                      $"««Знаешь, есть у меня один старый рецепт. Бабушка его от своей бабушки получила. Я редко кому его рассказываю… Но тебе, пожалуй, могу доверить.»");
+                                      $"«Знаешь, есть у меня один старый рецепт. Бабушка его от своей бабушки получила. Я редко кому его рассказываю… Но тебе, пожалуй, могу доверить.»");
             Console.WriteLine($"\nНазывается блюдо - {dish.Name}. Хочешь научу?");
             Console.WriteLine("1. Да\n2. Нет\n");
             var choice = Input.InputValidator.GetValidInput(2);
-            if (choice == 1)
+            switch (choice)
             {
-                Console.WriteLine("Тогда слушай внимательно. Рецепт простой, но вся хитрость в травах. Без них получится обычное блюдо, а с ними совсем другое.");
-                tavern.LearnSecretDish(dish);
-                SecretRecipes.Remove(dish);
-            }
-            if (choice == 2)
-            {
-                Console.WriteLine("Как знаешь. Может, ещё передумаешь. Такие рецепты второй раз не всякому предлагаю.");
+                case 1:
+                    Console.WriteLine("Тогда слушай внимательно. Рецепт простой, но вся хитрость в травах. Без них получится обычное блюдо, а с ними совсем другое.");
+                    tavern.LearnSecretDish(dish);
+                    SecretRecipes.Remove(dish);
+                    break;
+                case 2:
+                    Console.WriteLine("Как знаешь. Может, ещё передумаешь. Такие рецепты второй раз не всякому предлагаю.");
+                    break;
             }
         }
         catch { GiveHerbs(tavern);}
-        
     }
 }
