@@ -15,6 +15,7 @@ public class Nanny : Visitor
     public override List<string> PossibleNames { get; set; } = ["Матрёна","Евдокия","Прасковья","Устинья","Феврония","Агафья",
         "Пелагея","Акулина","Марфа","Степанида","Феодора","Гликерия","Фёкла","Домна","Анфиса","Василиса","Меланья","Евпраксия","Дарья","Параскева"];
     public override List<Dish> PreferredDishes => DishCatalog.Dishes.Where(x =>x.Type is DishTypes.Суп or DishTypes.Напиток or DishTypes.Каша ).ToList();
+    private bool _hasRecipes = true;
     
     private List<Dish> SecretRecipes = 
         [
@@ -157,28 +158,33 @@ public class Nanny : Visitor
     /// </summary>
     private void ShareRecipe(Tavern tavern)
     {
-        if (SecretRecipes.Count == 0) return;
-        try
+        if (!_hasRecipes) return; 
+        Dish? dish = null;
+        while(_hasRecipes)
         {
-            var dish = SecretRecipes.Where(x => x.RequiredTavernLevel <= tavern.Level).OrderBy(_ => Random.Shared.Next())
-                .FirstOrDefault();;
-            Console.WriteLine($"\nНянька {Name} хитро на тебя смотрит:\n" +
-                              $"«Знаешь, я тут подумала… Есть у меня несколько рецептов, которые дети особенно любят. Ничего мудрёного, всё простое, домашнее. Но если правильно приготовить, тарелка потом пустая за минуту.»");
-            Console.WriteLine($"\nМогу одним поделиться. Называется блюдо - {dish.Name}. Хочешь научу?");
-            Console.WriteLine("1. Да\n2. Нет\n");
-            var choice = Input.InputValidator.GetValidInput(2);
-            switch (choice)
+            dish = SecretRecipes.Where(x => x.RequiredTavernLevel <= tavern.Level).OrderBy(_ => Random.Shared.Next())
+                            .FirstOrDefault();
+            if (tavern.AvailableDishes.Contains(dish))
             {
-                case 1:
-                    Console.WriteLine("Вот и хорошо! Тогда слушай внимательно. Рецепт простой, но я тебе его не просто так рассказываю. Дети его обожают, особенно когда приготовишь с мёдом. Запоминай, пригодится.");
-                    tavern.LearnSecretDish(dish);
-                    SecretRecipes.Remove(dish);
-                    break;
-                case 2:
-                    Console.WriteLine("Как знаешь. Может, когда-нибудь передумаешь. А я пока поберегу свои маленькие семейные секреты.");
-                    break;
+                SecretRecipes.Remove(dish);
+                if (SecretRecipes.Count == 0) _hasRecipes = false;
             }
+            else break;
         }
-        catch { BringProducts(tavern);}
+        Console.WriteLine($"\nНянька {Name} хитро на тебя смотрит:\n" +
+                              $"«Знаешь, я тут подумала… Есть у меня несколько рецептов, которые дети особенно любят. Ничего мудрёного, всё простое, домашнее. Но если правильно приготовить, тарелка потом пустая за минуту.»");
+        Console.WriteLine($"\nМогу одним поделиться. Называется блюдо - {dish.Name}. Хочешь научу?");
+        Console.WriteLine("1. Да\n2. Нет\n");
+        var choice = Input.InputValidator.GetValidInput(2);
+        switch (choice)
+        {
+            case 1:
+                Console.WriteLine("Вот и хорошо! Тогда слушай внимательно. Рецепт простой, но я тебе его не просто так рассказываю. Дети его обожают, особенно когда приготовишь с мёдом. Запоминай, пригодится.");
+                tavern.LearnSecretDish(dish);
+                break;
+            case 2:
+                Console.WriteLine("Как знаешь. Может, когда-нибудь передумаешь. А я пока поберегу свои маленькие семейные секреты.");
+                break;
+        }
     }
 }

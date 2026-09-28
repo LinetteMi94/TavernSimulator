@@ -177,7 +177,7 @@ public static class TavernService
             tempPrice = count * tempProduct.Price;
         }
         tavern.Gold += tempPrice;
-        Console.WriteLine($"Вы продали {product.Value} и заработали {tempPrice} зол.");
+        Console.WriteLine($"Вы продали {product.Key} {count} шт. и заработали {tempPrice} зол.");
         return true;
     }
     
@@ -209,7 +209,7 @@ public static class TavernService
         var counter = 1;
         foreach (var ingrid in dish.Ingredients)
         { 
-            var product = tavern.Products.Where(x => x.Key == ingrid.Key).Select(x =>  x.Value).First();
+            var product = tavern.Products.Where(x => x.Key == ingrid.Key).Select(x =>  x.Value).FirstOrDefault();
             Console.WriteLine($"{counter++}. {ingrid.Key, -20} -{ingrid.Value,3} шт.     (В наличии {product,2} шт.)");
         }
         Console.WriteLine();

@@ -62,7 +62,7 @@
   {
     "Name": "Тыква",
     "Price": 4,
-    "RequiredTavernLevel": 3
+    "RequiredTavernLevel": 3 
   },
   {
     "Name": "Грибы",

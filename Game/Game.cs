@@ -206,6 +206,8 @@ public static class Game
         if (dishes.Count == 0)
         {
             Console.WriteLine("Доступных блюд для изучения нет!");
+            Console.WriteLine("\nНажмите любую клавишу для продолжения...");
+            Console.ReadKey();
             return false;
         }
         Console.WriteLine(new string('-', 79));
@@ -295,7 +297,13 @@ public static class Game
     /// <returns> Имеются ли продукты в магазине для покупки </returns>
     private static bool ShowTheShop()
     {
-        if (_availableProductsInShopToday.Count == 0) return false;
+        if (_availableProductsInShopToday.Count == 0)
+        {
+            Console.WriteLine("\nМагазин пуст!");
+            Console.WriteLine("\nНажмите любую клавишу для продолжения...");
+            Console.ReadKey();
+            return false;
+        }
         Console.Clear();
         Console.WriteLine($"\nТаверна может потратить {_tavern.Gold} зол.");
         Console.WriteLine("\nМагазин: \n");
