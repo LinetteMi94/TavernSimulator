@@ -13,19 +13,45 @@ public static class TavernService
     private static int _maxExperience = 100;
 
     /// <summary>
-    /// Создаёт новую таверну с начальными параметрами.
+    /// Покупает продукт в указанном количестве, добавляет его в список имеющихся продуктов таверны и списывает у таверны золото за покупку.
     /// </summary>
-    public static void CreateTavern(this Tavern tavern)
+    /// <param name="tavern">Таверна, в которой посетитель делает заказ.</param>
+    /// <param name="product">Продукт, который сейчас покупается.</param>
+    /// <param name="count">Количество покупаемого продукта.</param>
+    /// <param name="price">Цена продукта, если он покупается не за фиксированную цену.</param>
+    public static void BuyProducts(this Tavern tavern, Product product, int count, int price = -1)
     {
-        var availiableProducts = ProductCatalog.Products.Where(x => x.RequiredTavernLevel == 1).ToList();
-        foreach (var product in availiableProducts)
+        tavern.Products.TryAdd(product.Name, 0);
+        tavern.Products[product.Name] += count;
+        if (price == 0)
         {
-            tavern.Products.Add(product.Name, new Random().Next(4, 10));
+            Console.WriteLine($"Получено {product.Name} - {count} шт.!");
+            return;
         }
-
-        tavern.AvailableDishes = DishCatalog.Dishes.Where(x => x.RequiredTavernLevel == 1).ToList();
+        if (price == -1)
+        {
+            tavern.Gold -= product.Price * count;
+        }
+        else
+        {
+            tavern.Gold -= price * count;
+        }
+        Console.WriteLine($"Куплено {product.Name} - {count} шт.!");
     }
-
+    
+    /// <summary>
+    /// Проверяет, достаточно ли опыта для повышения уровня таверны.
+    /// </summary>
+    private static void CheckLevelUp(this Tavern tavern)
+    {
+        if (tavern.Experience >= _maxExperience)
+        {
+            tavern.Level++;
+            tavern.Experience -= _maxExperience;
+            _maxExperience *= 2;
+        }
+    }
+    
     /// <summary>
     /// Готовит выбранное блюдо и изменяет запасы необходимых ингредиентов.
     /// </summary>
@@ -66,20 +92,7 @@ public static class TavernService
         tavern.CheckLevelUp();
         return true;
     }
-
-    /// <summary>
-    /// Проверяет, достаточно ли опыта для повышения уровня таверны.
-    /// </summary>
-    private static void CheckLevelUp(this Tavern tavern)
-    {
-        if (tavern.Experience >= _maxExperience)
-        {
-            tavern.Level++;
-            tavern.Experience -= _maxExperience;
-            _maxExperience *= 2;
-        }
-    }
-
+    
     /// <summary>
     /// Обрабатывает приготовление всех блюд, входящих в заказ посетителя.
     /// </summary>
@@ -93,7 +106,21 @@ public static class TavernService
 
         return true;
     }
+    
+    /// <summary>
+    /// Создаёт новую таверну с начальными параметрами.
+    /// </summary>
+    public static void CreateTavern(this Tavern tavern)
+    {
+        var availiableProducts = ProductCatalog.Products.Where(x => x.RequiredTavernLevel == 1).ToList();
+        foreach (var product in availiableProducts)
+        {
+            tavern.Products.Add(product.Name, new Random().Next(4, 10));
+        }
 
+        tavern.AvailableDishes = DishCatalog.Dishes.Where(x => x.RequiredTavernLevel == 1).ToList();
+    }
+    
     /// <summary>
     /// Изучает новое блюдо и добавляет его в список освоенных блюд таверны.
     /// </summary>
@@ -132,30 +159,26 @@ public static class TavernService
     }
 
     /// <summary>
-    /// Покупает продукт в указанном количестве, добавляет его в список имеющихся продуктов таверны и списывает у таверны золото за покупку.
+    /// Продаёт посетителю необходимый продукт.
     /// </summary>
-    /// <param name="tavern">Таверна, в которой посетитель делает заказ.</param>
-    /// <param name="product">Продукт, который сейчас покупается.</param>
-    /// <param name="count">Количество покупаемого продукта.</param>
-    /// <param name="price">Цена продукта, если он покупается не за фиксированную цену.</param>
-    public static void BuyProducts(this Tavern tavern, Product product, int count, int price = -1)
+    public static bool SellRequestedProduct(this Tavern tavern, KeyValuePair<string, int> product, int count = 1, int price = -1)
     {
-        if (price == 0)
+        if (product.Value < count)
         {
-            Console.WriteLine($"Получено {product.Name} - {count} шт.!");
-            return;
+            Console.WriteLine($"На складе недостаточно продукта {product.Key}!");
+            return false;
         }
-        if (price == -1)
-        {
-            tavern.Gold -= product.Price * count;
-        }
+        tavern.Products[product.Key] -= count;
+        int tempPrice;
+        if (price > 0) tempPrice = count * price;
         else
         {
-            tavern.Gold -= price * count;
+            var tempProduct = ProductCatalog.Products.First(x => x.Name == product.Key);
+            tempPrice = count * tempProduct.Price;
         }
-        tavern.Products.TryAdd(product.Name, 0);
-        tavern.Products[product.Name] += count;
-        Console.WriteLine($"Куплено {product.Name} - {count} шт.!");
+        tavern.Gold += tempPrice;
+        Console.WriteLine($"Вы продали {product.Value} и заработали {tempPrice} зол.");
+        return true;
     }
     
     /// <summary>

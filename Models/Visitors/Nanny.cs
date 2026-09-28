@@ -103,14 +103,14 @@ public class Nanny : Visitor
             case < 90 :
                 AskForFoodForSickChild(tavern);
                 break;
-            case < 100 :
+            case < 101 :
                 ShareRecipe(tavern);
                 break;
         }
     }
     
     /// <summary>
-    /// Даёт в дар таверне продукты, собранные детьми.
+    /// Даёт в дар таверне яблоки, собранные детьми.
     /// </summary>
     private void BringProducts(Tavern tavern)
     {
@@ -127,7 +127,6 @@ public class Nanny : Visitor
     /// </summary>
     private void AskForFoodForSickChild(Tavern tavern)
     {
-        var count = new Random().Next(2, 5);
         Console.WriteLine($"\nНянька {Name} грустно смотрит:\n«Слушай, у меня малыш приболел. Ничего тяжёлого ему сейчас нельзя, " +
                           $"а есть всё равно нужно. Не мог бы ты приготовить что-нибудь простое и тёплое? Может, кашку или лёгкий супчик?»");
         var dish = DishCatalog.Dishes.Where(x => x.Type is DishTypes.Каша or DishTypes.Суп && x.RequiredTavernLevel <= tavern.Level)

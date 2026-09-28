@@ -26,55 +26,84 @@ public static class Game
     private static Dictionary<Product, int> _availableProductsInShopToday = new ();
     
     /// <summary>
-    /// Запускает игровой процесс и управляет основным циклом игры.
+    /// Создаёт список продуктов, которые сегодня будут продаваться в магазине.
     /// </summary>
-    public static void Start()
+    private static void CreateAvailableProductsInShopToday()
     {
-        _tavern.CreateTavern();
-        Console.WriteLine("Добро пожаловать в таверну!");
-        Console.WriteLine("Нажмите любую клавишу для продолжения...");
-        Console.ReadKey();
-        while (_isRunning)
+        _availableProductsInShopToday = new Dictionary<Product, int>();
+        var availableProducts = ProductCatalog.Products
+            .Where(product => product.RequiredTavernLevel <= _tavern.Level)
+            .OrderBy(_ => Random.Shared.Next()).Take(7).OrderBy(x => x.Name).ToList();
+        foreach (var product in availableProducts)
         {
-            Console.Clear();
-            _completedOrdersToday = 0;
-            _moneyToday = 0;
-            _experienceToday = 0;
-            ShowHeader();
-            CreateAvailableProductsInShopToday();
-            _isMorning = true;
-            while (_isMorning)
+            if (product.RequiredTavernLevel < 3)
             {
-                MainMenu.ShowMorningMenu(HandleMorningMenuChoice);
+                _availableProductsInShopToday.Add(product, new Random().Next(5,12));
+                continue;
             }
-            OpenTavern();
-            ViewDailyStatistics();
+            _availableProductsInShopToday.Add(product, new Random().Next(4,9));
         }
     }
-
+    
     /// <summary>
     /// Определяет количество посетителей на сегодняшний день.
     /// </summary>
     private static void GetVisitorsToday() => _visitorsToday = new Random().Next(2, 6);
     
-    
+    /// <summary>
+    /// Изучает указанный рецепт, списывает продукты на изучение
+    /// и добавляет изученный рецепт в меню таверны.
+    /// </summary>
+    private static void HandleLearnDishesMenuChoice()
+    {
+        Console.WriteLine("Какой рецепт хотите выучить сегодня?");
+        var dishes = DishCatalog.Dishes.Where(x => x.RequiredTavernLevel <= _tavern.Level && !_tavern.AvailableDishes.Contains(x)).ToList();
+        var index = InputValidator.GetValidInput(dishes.Count);
+        var dish = dishes.ElementAt(index - 1);
+        
+        foreach (var ingrid in dish.Ingredients)
+        {
+            if  (!_tavern.Products.ContainsKey(ingrid.Key))
+            {
+                Console.WriteLine(ingrid.Key);
+                Console.WriteLine($"Вы не знаете ингридиентов, из которых готовят {dish.Name}!");
+                return;
+            }
+            var product = _tavern.Products.First(x => x.Key == ingrid.Key);
+            if (product.Value < 1)
+            {
+                Console.WriteLine($"У вас недостаточно {product.Key}!");
+                return;
+            }
+        }
+        _tavern.LearnDish(dish);
+    }
     
     /// <summary>
-    /// Организует взаимодействие с посетителем до завершения его обслуживания.
+    /// Обрабатывает выбор игрока в утреннем меню таверны.
     /// </summary>
-    private static void ServeVisitor(this Visitor visitor, List<Dish> dishes)
+    private static void HandleMorningMenuChoice(int choice)
     {
-        Console.WriteLine(visitor.Name + " хочет заказать : ");
-        for (var i=0; i<dishes.Count; i++)
+        switch (choice)
         {
-            Console.Write($"{i+1}. {dishes[i].Name}\n");
+            case 1:
+                ShowTheFoodStorage();
+                break;
+            case 2:
+                if (ShowTheShop()) MainMenu.ShowShopMenu(HandleShopMenuChoice);
+                break;
+            case 3:
+                ShowTavernMenu();
+                break;
+            case 4:
+                if(ShowAvailableDishesToLearn()) MainMenu.ShowLearnDishesMenu(HandleLearnDishesMenuChoice);
+                break;
+            case 5:
+                _isMorning = false;
+                break;
         }
-
-        MainMenu.ServeVisitorMenu(HandleServeVisitorMenuChoice, dishes, visitor); 
-        Console.ReadKey();
-        Console.Clear();
     }
-
+    
     /// <summary>
     /// Обрабатывает выбор игрока в утреннем меню таверны.
     /// </summary>
@@ -107,6 +136,28 @@ public static class Game
     }
     
     /// <summary>
+    /// Покупает указанное количество продукта в магазине, списывает золото
+    /// и добавляет приобретённый продукт на склад таверны.
+    /// </summary>
+    private static void HandleShopMenuChoice()
+    {
+        Console.WriteLine("Какой продукт необходимо приобрести? (Или нажать 0 для выхода в меню)");
+        var index = InputValidator.GetValidInput(_availableProductsInShopToday.Count, 0);
+        if (index == 0) return;
+        var product = _availableProductsInShopToday.ElementAt(index - 1).Key;
+        Console.WriteLine("В каком количестве? (Или нажать 0 для выхода в меню)");
+        var count = InputValidator.GetValidInput(_availableProductsInShopToday.ElementAt(index-1).Value, 0);
+        if (count == 0) return;
+        if (_tavern.Gold >= product.Price * count)
+        {
+            _availableProductsInShopToday[product] -= count;
+            _tavern.BuyProducts(product, count);
+            if (_availableProductsInShopToday.ElementAt(index - 1).Value == 0) _availableProductsInShopToday.Remove(product);
+        }
+        else Console.WriteLine("Недостаточно золота!");
+    }
+    
+    /// <summary>
     /// Открывает таверну и организует обслуживание посетителей в течение дня.
     /// </summary>
     private static void OpenTavern()
@@ -128,6 +179,54 @@ public static class Game
     }
     
     /// <summary>
+    /// Организует взаимодействие с посетителем до завершения его обслуживания.
+    /// </summary>
+    private static void ServeVisitor(this Visitor visitor, List<Dish> dishes)
+    {
+        Console.WriteLine(visitor.Name + " хочет заказать : ");
+        for (var i=0; i<dishes.Count; i++)
+        {
+            Console.Write($"{i+1}. {dishes[i].Name}\n");
+        }
+
+        MainMenu.ServeVisitorMenu(HandleServeVisitorMenuChoice, dishes, visitor); 
+        Console.ReadKey();
+        Console.Clear();
+    }
+    
+    /// <summary>
+    /// Отображает рецепты, доступные для изучения.
+    /// </summary>
+    /// <returns> Имеются ли блюда для изучения </returns>
+    private static bool ShowAvailableDishesToLearn()
+    {
+        Console.Clear();
+        Console.WriteLine("\nДоступные блюда для изучения: \n");
+        var dishes = DishCatalog.Dishes.Where(x => x.RequiredTavernLevel <= _tavern.Level && !_tavern.AvailableDishes.Contains(x)).ToList();
+        if (dishes.Count == 0)
+        {
+            Console.WriteLine("Доступных блюд для изучения нет!");
+            return false;
+        }
+        Console.WriteLine(new string('-', 79));
+        Console.WriteLine($"|  №  |  {"Блюдо",-30}| {"Необходимые продукты для изучения",36} |");
+        Console.WriteLine(new string('-', 79));
+        var index = 1;
+        foreach (var item in dishes)
+        {
+            Console.WriteLine($"| {index,2}  | {item.Name,-43}                           |");
+            foreach (var ingredient in item.Ingredients)
+            {
+                var product = ProductCatalog.Products.First(x => x.Name == ingredient.Key).Name;
+                Console.WriteLine($"|     | {product,61} - 1 шт. |");
+            }
+            Console.WriteLine(new string('-', 79));
+            index++;
+        }
+        return true;
+    }
+    
+    /// <summary>
     /// Отображает заголовок таверны и основную информацию о её текущем состоянии.
     /// </summary>
     public static void ShowHeader()
@@ -144,132 +243,6 @@ public static class Game
         Console.WriteLine($"║ Посетителей сегодня: {_visitorsToday}             ║");
         Console.WriteLine($"║ Выполнено заказов: {_completedOrdersToday}               ║");
         Console.WriteLine("╚════════════════════════════════════╝");
-    }
-
-    /// <summary>
-    /// Обрабатывает выбор игрока в утреннем меню таверны.
-    /// </summary>
-    private static void HandleMorningMenuChoice(int choice)
-    {
-        switch (choice)
-        {
-            case 1:
-                ShowTheFoodStorage();
-                break;
-            case 2:
-                ShowTheShop();
-                MainMenu.ShowShopMenu(HandleShopMenuChoice);
-                break;
-            case 3:
-                ShowTavernMenu();
-                break;
-            case 4:
-               ShowAvailableDishesToLearn();
-               MainMenu.ShowLearnDishesMenu(HandleLearnDishesMenuChoice);
-               break;
-            case 5:
-                _isMorning = false;
-                break;
-        }
-    }
-    
-    /// <summary>
-    /// Выводит в консоль статистику за день.
-    /// </summary>
-    private static void ViewDailyStatistics()
-    {
-        _tavern.Day++;
-        ShowHeader();
-        Console.WriteLine($"День {_tavern.Day} завершён!");
-        Console.WriteLine();
-        Console.WriteLine($"Обслужено посетителей: {_completedOrdersToday}");
-        Console.WriteLine($"Заработано золотых: {_moneyToday}");
-        Console.WriteLine($"Получено опыта: {_experienceToday}");
-        Console.WriteLine("\nНажмите любую клавишу для завершения дня...");
-        Console.ReadKey();
-    }
-    
-    /// <summary>
-    /// Покупает указанное количество продукта в магазине, списывает золото
-    /// и добавляет приобретённый продукт на склад таверны.
-    /// </summary>
-    private static void HandleShopMenuChoice()
-    {
-        Console.WriteLine("Какой продукт необходимо приобрести?");
-        var index = InputValidator.GetValidInput(_availableProductsInShopToday.Count);
-        var product = _availableProductsInShopToday.ElementAt(index - 1).Key;
-        Console.WriteLine("В каком количестве?");
-        var count = InputValidator.GetValidInput(_availableProductsInShopToday.ElementAt(index-1).Value);
-        if (_tavern.Gold >= product.Price * count)
-        {
-            _availableProductsInShopToday[product] -= count;
-            _tavern.BuyProducts(product, count);
-            if (_availableProductsInShopToday.ElementAt(index - 1).Value == 0) _availableProductsInShopToday.Remove(product);
-        }
-        else Console.WriteLine("Недостаточно золота!");
-    }
-
-    /// <summary>
-    /// Отображает список продуктов, хранящихся на складе таверны.
-    /// </summary>
-    private static void ShowTheFoodStorage()
-    {
-        Console.Clear();
-        Console.WriteLine("\nПродуктовый склад: \n");
-        if (_tavern.Products.Count == 0) Console.WriteLine("Продуктовый склад пуст!");
-        else
-        {
-            Console.WriteLine(new string('-', 40));
-            Console.WriteLine($"|  {"Продукт",-20}|{"Количество",14} |");
-            Console.WriteLine(new string('-', 40));
-            foreach (var item in _tavern.Products.OrderBy(pr => pr.Key))
-            {
-                Console.WriteLine($"|  {item.Key,-20}|{item.Value,10} шт. |");
-            }
-            Console.WriteLine(new string('-', 40));
-        }
-        Console.WriteLine("\nНажмите любую клавишу для продолжения...");
-        Console.ReadKey();
-    }
-
-    /// <summary>
-    /// Создаёт список продуктов, которые сегодня будут продаваться в магазине.
-    /// </summary>
-    private static void CreateAvailableProductsInShopToday()
-    {
-        _availableProductsInShopToday = new Dictionary<Product, int>();
-        var availableProducts = ProductCatalog.Products
-            .Where(product => product.RequiredTavernLevel <= _tavern.Level)
-            .OrderBy(_ => Random.Shared.Next()).Take(7).OrderBy(x => x.Name).ToList();
-        foreach (var product in availableProducts)
-        {
-            if (product.RequiredTavernLevel < 3)
-            {
-                _availableProductsInShopToday.Add(product, new Random().Next(5,12));
-                continue;
-            }
-            _availableProductsInShopToday.Add(product, new Random().Next(4,9));
-        }
-    }
-    
-    /// <summary>
-    /// Отображает список продуктов, которые сегодня лежат на прилавке магазина.
-    /// </summary>
-    private static void ShowTheShop()
-    {
-        Console.Clear();
-        Console.WriteLine($"\nТаверна может потратить {_tavern.Gold} зол.");
-        Console.WriteLine("\nМагазин: \n");
-        Console.WriteLine(new string('-', 66));
-        Console.WriteLine($"|  №   | {"Продукт",-20} | {"Цена",15} | {"Количество",14} |");
-        Console.WriteLine(new string('-', 66));
-        int index = 1;
-        foreach (var product in _availableProductsInShopToday.Where(product => product.Value != 0))
-        {
-            Console.WriteLine($"| {index,3}  | {product.Key.Name,-20} | {product.Key.Price,10} зол. | {product.Value,10} шт. |");
-            index++;
-        }
-        Console.WriteLine(new string('-', 66));
     }
     
     /// <summary>
@@ -294,60 +267,91 @@ public static class Game
     }
     
     /// <summary>
-    /// Отображает рецепты, доступные для изучения.
+    /// Отображает список продуктов, хранящихся на складе таверны.
     /// </summary>
-    private static void ShowAvailableDishesToLearn()
+    private static void ShowTheFoodStorage()
     {
         Console.Clear();
-        Console.WriteLine("\nДоступные блюда для изучения: \n");
-        var dishes = DishCatalog.Dishes.Where(x => x.RequiredTavernLevel <= _tavern.Level && !_tavern.AvailableDishes.Contains(x)).ToList();
-        if (dishes.Count == 0) Console.WriteLine("Доступных блюд для изучения нет!");
+        Console.WriteLine("\nПродуктовый склад: \n");
+        if (_tavern.Products.Count == 0) Console.WriteLine("Продуктовый склад пуст!");
         else
         {
-            Console.WriteLine(new string('-', 79));
-            Console.WriteLine($"|  №  |  {"Блюдо",-30}| {"Необходимые продукты для изучения",36} |");
-            Console.WriteLine(new string('-', 79));
-            var index = 1;
-            foreach (var item in dishes)
+            Console.WriteLine(new string('-', 40));
+            Console.WriteLine($"|  {"Продукт",-20}|{"Количество",14} |");
+            Console.WriteLine(new string('-', 40));
+            foreach (var item in _tavern.Products.OrderBy(pr => pr.Key))
             {
-                Console.WriteLine($"| {index,2}  | {item.Name,-43}                           |");
-                foreach (var ingredient in item.Ingredients)
-                {
-                    var product = ProductCatalog.Products.First(x => x.Name == ingredient.Key).Name;
-                    Console.WriteLine($"|     | {product,61} - 1 шт. |");
-                }
-                Console.WriteLine(new string('-', 79));
-                index++;
+                Console.WriteLine($"|  {item.Key,-20}|{item.Value,10} шт. |");
             }
+            Console.WriteLine(new string('-', 40));
+        }
+        Console.WriteLine("\nНажмите любую клавишу для продолжения...");
+        Console.ReadKey();
+    }
+    
+    /// <summary>
+    /// Отображает список продуктов, которые сегодня лежат на прилавке магазина.
+    /// </summary>
+    /// <returns> Имеются ли продукты в магазине для покупки </returns>
+    private static bool ShowTheShop()
+    {
+        if (_availableProductsInShopToday.Count == 0) return false;
+        Console.Clear();
+        Console.WriteLine($"\nТаверна может потратить {_tavern.Gold} зол.");
+        Console.WriteLine("\nМагазин: \n");
+        Console.WriteLine(new string('-', 66));
+        Console.WriteLine($"|  №   | {"Продукт",-20} | {"Цена",15} | {"Количество",14} |");
+        Console.WriteLine(new string('-', 66));
+        int index = 1;
+        foreach (var product in _availableProductsInShopToday.Where(product => product.Value != 0))
+        {
+            Console.WriteLine($"| {index,3}  | {product.Key.Name,-20} | {product.Key.Price,10} зол. | {product.Value,10} шт. |");
+            index++;
+        }
+        Console.WriteLine(new string('-', 66));
+        return true;
+    }
+    
+    /// <summary>
+    /// Запускает игровой процесс и управляет основным циклом игры.
+    /// </summary>
+    public static void Start()
+    {
+        _tavern.CreateTavern();
+        Console.WriteLine("Добро пожаловать в таверну!");
+        Console.WriteLine("Нажмите любую клавишу для продолжения...");
+        Console.ReadKey();
+        while (_isRunning)
+        {
+            Console.Clear();
+            _completedOrdersToday = 0;
+            _moneyToday = 0;
+            _experienceToday = 0;
+            ShowHeader();
+            CreateAvailableProductsInShopToday();
+            _isMorning = true;
+            while (_isMorning)
+            {
+                MainMenu.ShowMorningMenu(HandleMorningMenuChoice);
+            }
+            OpenTavern();
+            ViewDailyStatistics();
         }
     }
     
     /// <summary>
-    /// Изучает указанный рецепт, списывает продукты на изучение
-    /// и добавляет изученный рецепт в меню таверны.
+    /// Выводит в консоль статистику за день.
     /// </summary>
-    private static void HandleLearnDishesMenuChoice()
+    private static void ViewDailyStatistics()
     {
-        Console.WriteLine("Какой рецепт хотите выучить сегодня?");
-        var dishes = DishCatalog.Dishes.Where(x => x.RequiredTavernLevel <= _tavern.Level && !_tavern.AvailableDishes.Contains(x)).ToList();
-        var index = InputValidator.GetValidInput(dishes.Count);
-        var dish = dishes.ElementAt(index - 1);
-        
-        foreach (var ingrid in dish.Ingredients)
-        {
-            if  (!_tavern.Products.ContainsKey(ingrid.Key))
-            {
-                Console.WriteLine(ingrid.Key);
-                Console.WriteLine($"Вы не знаете ингридиентов, из которых готовят {dish.Name}!");
-                return;
-            }
-            var product = _tavern.Products.First(x => x.Key == ingrid.Key);
-            if (product.Value < 1)
-            {
-                Console.WriteLine($"У вас недостаточно {product.Key}!");
-                return;
-            }
-        }
-        _tavern.LearnDish(dish);
+        _tavern.Day++;
+        ShowHeader();
+        Console.WriteLine($"День {_tavern.Day} завершён!");
+        Console.WriteLine();
+        Console.WriteLine($"Обслужено посетителей: {_completedOrdersToday}");
+        Console.WriteLine($"Заработано золотых: {_moneyToday}");
+        Console.WriteLine($"Получено опыта: {_experienceToday}");
+        Console.WriteLine("\nНажмите любую клавишу для завершения дня...");
+        Console.ReadKey();
     }
 }

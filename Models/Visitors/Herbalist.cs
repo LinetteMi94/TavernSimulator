@@ -110,7 +110,7 @@ public class Herbalist : Visitor
             case < 90 :
                 GiveHerbs(tavern);
                 break;
-            case < 100 :
+            case < 101 :
                 OfferRecipe(tavern);
                 break;
         }
