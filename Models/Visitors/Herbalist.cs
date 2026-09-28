@@ -8,7 +8,7 @@ namespace TavernSimulator.Models.Visitors;
 /// Представляет травницу, которая посещает таверну.
 /// Предпочитает блюда с овощами, травами и лёгкие напитки.
 /// </summary>
-public class Herbalist : Visitor
+public class Herbalist : Visitor, IRecipeTeacher
 {
     public override string TypeName { get; set; } = "Травница";
     public override int Money { get; } = new Random().Next(30,40);
@@ -16,7 +16,8 @@ public class Herbalist : Visitor
         "Матрёна","Евдокия","Прасковья","Домника","Феодосия","Марфа","Устинья","Евпраксия","Василиса","Агафья","Ксения","Степанида","Соломонида"];
     public override List<Dish> PreferredDishes => DishCatalog.Dishes.Where(x =>x.Type is DishTypes.Овощное or DishTypes.Суп || x.Ingredients.ContainsKey("Травы") || x.Name.Contains("Чай") ).ToList();
 
-    private List<Dish> SecretRecipes = 
+    public bool HasRecipes { get; set; } = true;
+    public List<Dish> SecretRecipes { get; set; } = 
         [
             new () {
                 Name = "Травяной суп",
@@ -111,7 +112,7 @@ public class Herbalist : Visitor
                 GiveHerbs(tavern);
                 break;
             case < 101 :
-                OfferRecipe(tavern);
+                ShareRecipe(tavern);
                 break;
         }
     }
@@ -155,13 +156,12 @@ public class Herbalist : Visitor
     /// <summary>
     /// Предлагает таверне изучить случайный секретный рецепт травницы.
     /// </summary>
-    private void OfferRecipe(Tavern tavern)
+    public void ShareRecipe(Tavern tavern)
     {
-        if (SecretRecipes.Count == 0) return;
-        try
+        Dish? dish = null;
+        if (this is IRecipeTeacher visitor) dish = visitor.TrySetRecipeToTeach(dish, tavern);
+        if (dish != null)
         {
-            var dish = SecretRecipes.Where(x => x.RequiredTavernLevel <= tavern.Level).OrderBy(_ => Random.Shared.Next())
-                .FirstOrDefault();;
             Console.WriteLine($"\nТравница {Name} хитро на тебя смотрит:\n" +
                                       $"«Знаешь, есть у меня один старый рецепт. Бабушка его от своей бабушки получила. Я редко кому его рассказываю… Но тебе, пожалуй, могу доверить.»");
             Console.WriteLine($"\nНазывается блюдо - {dish.Name}. Хочешь научу?");
@@ -179,6 +179,5 @@ public class Herbalist : Visitor
                     break;
             }
         }
-        catch { GiveHerbs(tavern);}
     }
 }
