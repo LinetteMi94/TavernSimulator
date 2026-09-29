@@ -1,5 +1,6 @@
 ﻿using TavernSimulator.Data;
 using TavernSimulator.Enums;
+using TavernSimulator.Game;
 using TavernSimulator.Service;
 
 namespace TavernSimulator.Models.Visitors;
@@ -120,7 +121,8 @@ public class Nanny : Visitor, IRecipeTeacher
                           $"\nДержи-ка, принесла тебе немного яблок из сада. Дети помогали собирать, так что считай, это их маленький вклад в твою таверну. " +
                           $"Яблоки сами выбирали, правда половину по дороге чуть не съели»");
         var apples = ProductCatalog.Products.First(x => x.Name == "Яблоко");
-        tavern.BuyProducts(apples, count, 0);
+        var result = tavern.BuyProducts(apples, count, 0);
+        GameOutput.ShowBuyProductResult(result, apples, count);
     }
     
     /// <summary>
@@ -134,13 +136,15 @@ public class Nanny : Visitor, IRecipeTeacher
             .OrderBy(_ => Random.Shared.Next())
             .FirstOrDefault();
         Console.WriteLine($"\nНянька просит приготовить\n {dish.Name}");
-        tavern.ShowDishIngridients(dish);
+        Game.Game.ShowDishIngridients(dish);
         Console.WriteLine("1. Да\n2. Нет\n");
         var choice = Input.InputValidator.GetValidInput(2);
         switch (choice)
         {
             case 1:
-                if (tavern.CookDish(dish))
+                var result = tavern.CookDish(dish);
+                GameOutput.ShowCookResult(result, dish);
+                if (result == CookResult.Success)
                 {
                     tavern.Gold += dish.Price;
                     Console.WriteLine("Спасибо тебе большое. Думаю, ему сейчас как раз такая еда и нужна. Только положи порцию небольшую, он у меня малоежка.");

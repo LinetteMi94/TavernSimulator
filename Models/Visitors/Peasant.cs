@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using TavernSimulator.Data;
+using TavernSimulator.Game;
 using TavernSimulator.Service;
 
 namespace TavernSimulator.Models.Visitors;
@@ -23,6 +24,7 @@ public class Peasant : Visitor
         var count = new Random().Next(5, 20);
         Console.WriteLine($"\nКрестьянин {Name} достаёт из под стула мешок:\n«Кабачков столько выросло, что я уже не знаю, куда их девать. " +
                           $"В магазине таких всё равно нет. Забирай несколько, а то жена скоро из них стены начнёт строить»");
-        tavern.BuyProducts(secretProduct, count, 0);
+        var result = tavern.BuyProducts(secretProduct, count, 0);
+        GameOutput.ShowBuyProductResult(result, secretProduct, count);
     }
 }

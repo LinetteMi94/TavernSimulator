@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Linq;
 using TavernSimulator.Data;
+using TavernSimulator.Enums;
+using TavernSimulator.Game;
 using TavernSimulator.Models;
 
 namespace TavernSimulator.Service;
@@ -19,15 +21,11 @@ public static class TavernService
     /// <param name="product">Продукт, который сейчас покупается.</param>
     /// <param name="count">Количество покупаемого продукта.</param>
     /// <param name="price">Цена продукта, если он покупается не за фиксированную цену.</param>
-    public static void BuyProducts(this Tavern tavern, Product product, int count, int price = -1)
+    public static PurchaseProductResult BuyProducts(this Tavern tavern, Product product, int count, int price = -1)
     {
         tavern.Products.TryAdd(product.Name, 0);
         tavern.Products[product.Name] += count;
-        if (price == 0)
-        {
-            Console.WriteLine($"Получено {product.Name} - {count} шт.!");
-            return;
-        }
+        if (price == 0) return PurchaseProductResult.PurchaseSuccess;
         if (price == -1)
         {
             tavern.Gold -= product.Price * count;
@@ -36,7 +34,7 @@ public static class TavernService
         {
             tavern.Gold -= price * count;
         }
-        Console.WriteLine($"Куплено {product.Name} - {count} шт.!");
+        return PurchaseProductResult.ReceiveSuccess;
     }
     
     /// <summary>
@@ -55,30 +53,19 @@ public static class TavernService
     /// <summary>
     /// Готовит выбранное блюдо и изменяет запасы необходимых ингредиентов.
     /// </summary>
-    /// <returns>Приготовлено ли блюдо.</returns>
-    public static bool CookDish(this Tavern tavern, Dish dish)
+    /// <param name="tavern">Таверна, в которой готовится блюдо.</param>
+    /// <param name="dish">Блюдо, которое необходимо приготовить.</param>
+    /// <returns>Результат попытки приготовления блюда.</returns>
+    public static CookResult CookDish(this Tavern tavern, Dish dish)
     {
-        if (!tavern.AvailableDishes.Contains(dish))
-        {
-            Console.WriteLine($"Вы еще не изучили рецепт блюда {dish.Name}!");
-            return false;
-        }
+        if (!tavern.AvailableDishes.Contains(dish)) return CookResult.RecipeNotLearned;
 
         foreach (var ingrid in dish.Ingredients)
         {
-            if (!tavern.Products.ContainsKey(ingrid.Key))
-            {
-                Console.WriteLine(ingrid.Key);
-                Console.WriteLine($"Вы не знаете ингридиентов, из которых готовят {dish.Name}!");
-                return false;
-            }
+            if (!tavern.Products.ContainsKey(ingrid.Key)) return CookResult.UnknownIngredient;
 
             var product = tavern.Products.First(x => x.Key == ingrid.Key);
-            if (product.Value < ingrid.Value)
-            {
-                Console.WriteLine($"У вас недостаточно {product.Key}!");
-                return false;
-            }
+            if (product.Value < ingrid.Value) return CookResult.NotEnoughIngredients;
         }
 
         foreach (var ingrid in dish.Ingredients)
@@ -86,11 +73,9 @@ public static class TavernService
             var product = tavern.Products.First(x => x.Key == ingrid.Key);
             tavern.Products[product.Key] -= ingrid.Value;
         }
-
-        Console.WriteLine($"Вы приготовили {dish.Name}!");
         tavern.Experience += dish.Experience;
         tavern.CheckLevelUp();
-        return true;
+        return CookResult.Success;
     }
     
     /// <summary>
@@ -101,9 +86,10 @@ public static class TavernService
     {
         foreach (var dish in dishes)
         {
-            if (!tavern.CookDish(dish)) return false;
+            var result = tavern.CookDish(dish);
+            GameOutput.ShowCookResult(result, dish);
+            if (result != CookResult.Success) return false;
         }
-
         return true;
     }
     
@@ -124,7 +110,7 @@ public static class TavernService
     /// <summary>
     /// Изучает новое блюдо и добавляет его в список освоенных блюд таверны.
     /// </summary>
-    public static void LearnDish(this Tavern tavern, Dish dish)
+    public static LearnDishResult LearnDish(this Tavern tavern, Dish dish)
     {
         foreach (var ingrid in dish.Ingredients)
         {
@@ -142,9 +128,9 @@ public static class TavernService
         if (isLearned)
         {
             tavern.AvailableDishes.Add(dish);
-            Console.WriteLine($"Вы изучили {dish.Name}!");
+            return LearnDishResult.Success;
         }
-        else Console.WriteLine($"Изучить {dish.Name} не удалось! Попробуйте ещё раз");
+        return LearnDishResult.RecipeNotLearned;
     }
     
     /// <summary>
@@ -154,20 +140,15 @@ public static class TavernService
     {
         tavern.AvailableDishes.Add(dish);
         DishCatalog.Dishes.Add(dish);
-        Console.WriteLine($"Вы изучили {dish.Name}!");
-        
+        GameOutput.ShowLearnDishResult(LearnDishResult.Success, dish);
     }
 
     /// <summary>
     /// Продаёт посетителю необходимый продукт.
     /// </summary>
-    public static bool SellRequestedProduct(this Tavern tavern, KeyValuePair<string, int> product, int count = 1, int price = -1)
+    public static SellProductResult SellRequestedProduct(this Tavern tavern, KeyValuePair<string, int> product, int count = 1, int price = -1)
     {
-        if (product.Value < count)
-        {
-            Console.WriteLine($"На складе недостаточно продукта {product.Key}!");
-            return false;
-        }
+        if (product.Value < count) return SellProductResult.NotEnoughProducts;
         tavern.Products[product.Key] -= count;
         int tempPrice;
         if (price > 0) tempPrice = count * price;
@@ -177,41 +158,8 @@ public static class TavernService
             tempPrice = count * tempProduct.Price;
         }
         tavern.Gold += tempPrice;
-        Console.WriteLine($"Вы продали {product.Key} {count} шт. и заработали {tempPrice} зол.");
-        return true;
+        return SellProductResult.SaleSuccess;
     }
     
-    /// <summary>
-    /// Показывает необходимые ингридиенты для списка блюд и количество необходимых ингридиентов в таверне.
-    /// </summary>
-    /// <param name="dishes">Список блюд, ингредиенты которых необходимо отобразить.</param>
-    public static void ShowDishesIngridients(this Tavern tavern, List<Dish> dishes)
-    {
-        Console.Clear();
-        foreach (var dish in dishes)
-        {
-            tavern.ShowDishIngridients(dish);
-        }
-    }
     
-    /// <summary>
-    /// Показывает необходимые ингридиенты для блюда и количество необходимых ингридиентов в таверне.
-    /// </summary>
-    /// <param name="dish">Блюдо, ингредиенты которых необходимо отобразить.</param>
-    public static void ShowDishIngridients(this Tavern tavern, Dish dish)
-    {
-        if (!tavern.AvailableDishes.Contains(dish))
-        {
-            Console.WriteLine($"Вы не знаете рецепта для блюда {dish.Name}");
-            return;
-        }
-        Console.WriteLine($"\nИнгридиенты для блюда {dish.Name}:\n");
-        var counter = 1;
-        foreach (var ingrid in dish.Ingredients)
-        { 
-            var product = tavern.Products.Where(x => x.Key == ingrid.Key).Select(x =>  x.Value).FirstOrDefault();
-            Console.WriteLine($"{counter++}. {ingrid.Key, -20} -{ingrid.Value,3} шт.     (В наличии {product,2} шт.)");
-        }
-        Console.WriteLine();
-    }
 }

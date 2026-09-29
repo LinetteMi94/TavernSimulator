@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using TavernSimulator.Data;
+using TavernSimulator.Enums;
 using TavernSimulator.Input;
 using TavernSimulator.Menus;
 using TavernSimulator.Models;
@@ -76,7 +77,8 @@ public static class Game
                 return;
             }
         }
-        _tavern.LearnDish(dish);
+        var result = _tavern.LearnDish(dish);
+        GameOutput.ShowLearnDishResult(result, dish);
     }
     
     /// <summary>
@@ -151,10 +153,11 @@ public static class Game
         if (_tavern.Gold >= product.Price * count)
         {
             _availableProductsInShopToday[product] -= count;
-            _tavern.BuyProducts(product, count);
+             var result = _tavern.BuyProducts(product, count);
+             GameOutput.ShowBuyProductResult(result, product,count);
             if (_availableProductsInShopToday.ElementAt(index - 1).Value == 0) _availableProductsInShopToday.Remove(product);
         }
-        else Console.WriteLine("Недостаточно золота!");
+        else GameOutput.ShowBuyProductResult(PurchaseProductResult.NotEnoughGold, product,count);
     }
     
     /// <summary>
@@ -226,6 +229,40 @@ public static class Game
             index++;
         }
         return true;
+    }
+    
+    /// <summary>
+    /// Показывает необходимые ингридиенты для списка блюд и количество необходимых ингридиентов в таверне.
+    /// </summary>
+    /// <param name="dishes">Список блюд, ингредиенты которых необходимо отобразить.</param>
+    public static void ShowDishesIngridients(this Tavern tavern, List<Dish> dishes)
+    {
+        Console.Clear();
+        foreach (var dish in dishes)
+        {
+            ShowDishIngridients(dish);
+        }
+    }
+    
+    /// <summary>
+    /// Показывает необходимые ингридиенты для блюда и количество необходимых ингридиентов в таверне.
+    /// </summary>
+    /// <param name="dish">Блюдо, ингредиенты которых необходимо отобразить.</param>
+    public static void ShowDishIngridients(Dish dish)
+    {
+        if (!_tavern.AvailableDishes.Contains(dish))
+        {
+            Console.WriteLine($"Вы не знаете рецепта для блюда {dish.Name}");
+            return;
+        }
+        Console.WriteLine($"\nИнгридиенты для блюда {dish.Name}:\n");
+        var counter = 1;
+        foreach (var ingrid in dish.Ingredients)
+        { 
+            var product = _tavern.Products.Where(x => x.Key == ingrid.Key).Select(x =>  x.Value).FirstOrDefault();
+            Console.WriteLine($"{counter++}. {ingrid.Key, -20} -{ingrid.Value,3} шт.     (В наличии {product,2} шт.)");
+        }
+        Console.WriteLine();
     }
     
     /// <summary>

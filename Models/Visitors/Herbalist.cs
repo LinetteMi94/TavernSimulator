@@ -1,5 +1,6 @@
 ﻿using TavernSimulator.Data;
 using TavernSimulator.Enums;
+using TavernSimulator.Game;
 using TavernSimulator.Service;
 
 namespace TavernSimulator.Models.Visitors;
@@ -131,7 +132,8 @@ public class Herbalist : Visitor, IRecipeTeacher
         switch (choice)
         {
             case 1:
-                tavern.BuyProducts(herbs, count, 1);
+                var result = tavern.BuyProducts(herbs, count, 1);
+                GameOutput.ShowBuyProductResult(result, herbs, count);
                 Console.WriteLine("Вот и славно. Хорошие травы, свежие. Пригодятся тебе на кухне.");
                 break;
             case 2:
@@ -150,7 +152,8 @@ public class Herbalist : Visitor, IRecipeTeacher
                           $"\nВот, держи Травы. Лес нынче щедрый, набрала целую охапку. Не всё же мне одной сушить да перебирать. " +
                           $"Пригодятся тебе для чая и стряпни»");
         var herbs = ProductCatalog.Products.First(x => x.Name == "Травы");
-        tavern.BuyProducts(herbs, count, 0);
+        var result = tavern.BuyProducts(herbs, count, 0);
+        GameOutput.ShowBuyProductResult(result, herbs, count);
     }
 
     /// <summary>
