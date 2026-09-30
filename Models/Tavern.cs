@@ -10,7 +10,8 @@ public class Tavern
 {
     public const string Name = "Гусь и пирог";
     public Dictionary<string, int> Products { get; set; } = new();
-    public List<Dish>? AvailableDishes { get; set; } 
+    public List<Dish>? AvailableDishes { get; set; }
+    public List<Item>? FoundItems { get; set; } = [];
     public int Day { get; set; } = 1;
     public int Experience { get; set; } = 0;
     public int Level { get; set; } = 1;

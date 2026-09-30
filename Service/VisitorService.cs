@@ -55,11 +55,30 @@ public static class VisitorService
         return visitor;
     }
     
-    public static void TriggerEvent(this Visitor visitor, Tavern tavern)
+    /// <summary>
+    /// Случайно выбирает предмет, который посетитель может оставить в таверне.
+    /// </summary>
+    public static Item? LeaveRandomItem(this Visitor visitor)
     {
-        var choice = Random.Shared.Next(100);
-        if (choice < 25) visitor.OnEvent(tavern);
+        if (!ShouldTriggerEvent(30)) return null;
+        var item = visitor.AvaliableItemsForLeave[new Random().Next(0, visitor.AvaliableItemsForLeave.Count)];
+        item.OwnerName = visitor.Name;
+        item.OwnerType = visitor.TypeName;
+        return item;
     }
     
+    public static void TriggerEvent(this Visitor visitor, Tavern tavern)
+    {
+        if (ShouldTriggerEvent(25)) visitor.OnEvent(tavern);
+    }
     
+    /// <summary>
+    /// Определяет, произойдёт ли случайное событие на основе заданной вероятности.
+    /// </summary>
+    /// <param name="chance">Вероятность наступления события в процентах.</param>
+    /// <returns>True, если событие должно произойти.</returns>
+    private static bool ShouldTriggerEvent(int chance)
+    {
+        return Random.Shared.Next(100) < chance;
+    }
 }

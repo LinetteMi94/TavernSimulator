@@ -128,6 +128,12 @@ public static class Game
                     _completedOrdersToday++;
                     visitor.TriggerEvent(_tavern);
                 }
+                var item = visitor.LeaveRandomItem();
+                if (item != null)
+                {
+                    MainMenu.ShowFoundItemMenu(item, _tavern.AddFoundItem);
+                    
+                } 
                 _isVisitorBeingServed = false;
                 break;
             case 3:
@@ -235,7 +241,7 @@ public static class Game
     /// Показывает необходимые ингридиенты для списка блюд и количество необходимых ингридиентов в таверне.
     /// </summary>
     /// <param name="dishes">Список блюд, ингредиенты которых необходимо отобразить.</param>
-    public static void ShowDishesIngridients(this Tavern tavern, List<Dish> dishes)
+    private static void ShowDishesIngridients(this Tavern tavern, List<Dish> dishes)
     {
         Console.Clear();
         foreach (var dish in dishes)

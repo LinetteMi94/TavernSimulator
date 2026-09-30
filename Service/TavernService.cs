@@ -15,6 +15,21 @@ public static class TavernService
     private static int _maxExperience = 100;
 
     /// <summary>
+    /// Добавляет найденный предмет в список вещей, оставленных на хранение в таверне.
+    /// </summary>
+    /// <param name="tavern">Таверна, в которой найден предмет.</param>
+    /// <param name="item">Найденный предмет.</param
+    public static FoundItemResult AddFoundItem(this Tavern tavern, int choice, Item item)
+    {
+        if (choice == 1)
+        {
+            tavern.FoundItems?.Add(item);
+            return FoundItemResult.Kept;
+        }
+        return FoundItemResult.ThrownAway;
+    }
+    
+    /// <summary>
     /// Покупает продукт в указанном количестве, добавляет его в список имеющихся продуктов таверны и списывает у таверны золото за покупку.
     /// </summary>
     /// <param name="tavern">Таверна, в которой посетитель делает заказ.</param>

@@ -1,4 +1,6 @@
 ﻿using System;
+using TavernSimulator.Enums;
+using TavernSimulator.Game;
 using TavernSimulator.Input;
 using TavernSimulator.Models;
 
@@ -9,6 +11,20 @@ namespace TavernSimulator.Menus
     /// </summary>
     public static class MainMenu
     {
+        
+        // <summary>
+        /// Отображает меню находки предмета, забытого после ухода посетителя.
+        /// </summary>
+        public static void ShowFoundItemMenu(Item item, Func<int, Item, FoundItemResult> handleChoice)
+        {
+            GameOutput.ShowFoundItem(FoundItemResult.Found, item);
+            Console.WriteLine("1. Оставить себе");
+            Console.WriteLine("2. Выбросить");
+            var input = InputValidator.GetValidInput(2);
+            FoundItemResult result = handleChoice(input, item);
+            GameOutput.ShowFoundItem(result, item);
+        }
+        
         /// <summary>
         /// Отображает утреннее меню и действия, необходимые для подготовки таверны к открытию.
         /// </summary>

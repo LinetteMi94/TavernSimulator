@@ -17,6 +17,14 @@ public class Nanny : Visitor, IRecipeTeacher
         "Пелагея","Акулина","Марфа","Степанида","Феодора","Гликерия","Фёкла","Домна","Анфиса","Василиса","Меланья","Евпраксия","Дарья","Параскева"];
     public override List<Dish> PreferredDishes => DishCatalog.Dishes.Where(x =>x.Type is DishTypes.Суп or DishTypes.Напиток or DishTypes.Каша ).ToList();
     public bool HasRecipes { get; set; } = true;
+    public override List<Item> AvaliableItemsForLeave { get; set; } = 
+    [
+        new ("Детская ленточка", "Яркая ленточка для волос.", 2, 8),
+        new ("Деревянная игрушка", "Небольшая игрушка, вырезанная из дерева.", 5, 15),
+        new ("Вышитый платок", "Аккуратно вышитый платок.", 6, 18),
+        new ("Детская пуговица", "Маленькая пуговица с изображением цветка.", 1, 10),
+        new ("Старая книжка", "Небольшая детская книжка с потёртой обложкой.", 5, 20)
+    ];
     
     public List<Dish> SecretRecipes { get; set; } = 
         [

@@ -17,6 +17,15 @@ public class Herbalist : Visitor, IRecipeTeacher
         "Матрёна","Евдокия","Прасковья","Домника","Феодосия","Марфа","Устинья","Евпраксия","Василиса","Агафья","Ксения","Степанида","Соломонида"];
     public override List<Dish> PreferredDishes => DishCatalog.Dishes.Where(x =>x.Type is DishTypes.Овощное or DishTypes.Суп || x.Ingredients.ContainsKey("Травы") || x.Name.Contains("Чай") ).ToList();
 
+    public override List<Item> AvaliableItemsForLeave { get; set; } = 
+    [
+        new ("Мешочек с травами", "Небольшой льняной мешочек с сушёными травами.", 4, 12),
+        new ("Стеклянный флакон", "Маленький флакон с остатками лечебной настойки.", 3, 10),
+        new ("Старая ступка", "Небольшая каменная ступка для измельчения трав.", 8, 20),
+        new ("Серебряная игла", "Тонкая игла, которой травница зашивает мешочки с травами.", 12, 30),
+        new ("Засушенный цветок", "Редкий цветок, аккуратно высушенный между страницами книги.", 2, 18)
+    ];
+    
     public bool HasRecipes { get; set; } = true;
     public List<Dish> SecretRecipes { get; set; } = 
         [

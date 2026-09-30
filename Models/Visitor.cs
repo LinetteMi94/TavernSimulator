@@ -18,6 +18,8 @@ public abstract class Visitor
     public abstract List<Dish> PreferredDishes { get;  }
 
     public List<Dish> Order { get; set; } = new();
+    
+    public abstract List<Item> AvaliableItemsForLeave { get; set; } 
 
     /// <summary>
     /// Запускает случайное событие после посещения таверны.

@@ -55,7 +55,31 @@ public static class GameOutput
         }
     } 
     
- 
+    /// <summary>
+    /// Отображает информацию о найденном предмете и доступные действия с ним.
+    /// </summary>
+    /// <param name="item">Найденный предмет.</param>
+    public static void ShowFoundItem(FoundItemResult result, Item item)
+    {
+        switch (result)
+        {
+            case FoundItemResult.Kept:
+                Console.WriteLine($"Вы убрали «{item.Name}» за прилавок. Авось пригодится.");
+                break;
+            case FoundItemResult.ThrownAway:
+                Console.WriteLine($"«{item.Name}» отправился прямиком в мусорное ведро.");
+                break;
+            case FoundItemResult.Found:
+                Console.WriteLine($"После ухода посетителя вы обнаружили: {item.Name}.\n{item.Description}");
+                break; 
+            case FoundItemResult.ReturnedToOwner:
+                Console.WriteLine($"Вы вернули «{item.Name}» владельцу. Тот в благодарность заплатил вам {item.OwnerPrice} золотых.");
+                break;
+            case FoundItemResult.Sold:
+                Console.WriteLine($"Торговец забрал «{item.Name}» и отсчитал вам {item.Value} зол.");
+                break;
+        }
+    }
     
     /// <summary>
     /// Отображает результат изучения рецепта блюда в консоли.

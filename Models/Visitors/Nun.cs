@@ -15,6 +15,14 @@ public class Nun : Visitor, IRecipeTeacher
         "Марта","Матильда","Розалия","Эльза","Хильда","Эльвира","Адела","Гертруда","Бригитта"];
      public override List<Dish> PreferredDishes => DishCatalog.Dishes.Where(x =>x.Type is DishTypes.Сладкое or DishTypes.Напиток or DishTypes.Выпечка ).ToList();
      public bool HasRecipes { get; set; } = true;
+     public override List<Item> AvaliableItemsForLeave { get; set; } = 
+     [
+         new ("Деревянные чётки", "Небольшие чётки из светлого дерева.", 5, 20),
+         new ("Маленький крестик", "Простой деревянный крестик на шнурке.", 4, 18),
+         new ("Монастырская свеча", "Небольшая свеча из пчелиного воска.", 3, 12),
+         new ("Мешочек с лавандой", "Льняной мешочек с сушёной лавандой.", 4, 15),
+         new ("Старая молитвенная книга", "Небольшая книга с потёртой обложкой.", 10, 35)
+     ];
     
      public List<Dish> SecretRecipes { get; set; } = 
         [

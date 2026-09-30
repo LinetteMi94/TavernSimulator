@@ -16,6 +16,15 @@ public class Woodcutter: Visitor
     public override List<string> PossibleNames { get; set; } = [ "Прохор", "Тихон", "Фёдор", "Степан", "Трофим", "Кузьма", "Макар",
         "Ефим", "Гаврила", "Лука", "Яков", "Пахом", "Савва", "Елисей", "Мирон", "Игнат", "Наум", "Фома", "Данила", "Егор"];
     public override List<Dish> PreferredDishes => DishCatalog.Dishes.Where(x => x.Type is DishTypes.Мясное or DishTypes.Напиток).ToList();
+
+    public override List<Item> AvaliableItemsForLeave { get; set; } = 
+        [
+            new ("Точильный камень", "Небольшой камень для заточки топора.", 5, 10),
+            new ("Кожаный ремешок", "Старый, но крепкий ремешок.", 3, 8),
+            new ("Деревянная фигурка", "Небольшая фигурка, вырезанная из дерева.", 7, 25),
+            new ("Перо", "Большое серое перо.", 1, 15),
+            new ("Старая пуговица", "Потёртая деревянная пуговица.", 1, 20)
+        ];
     
     public override void OnEvent(Tavern tavern)
     {   
