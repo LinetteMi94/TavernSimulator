@@ -89,7 +89,7 @@ public static class Game
         switch (choice)
         {
             case 1:
-                ShowTheFoodStorage();
+                CheckProductAvailability();
                 break;
             case 2:
                 if (ShowTheShop()) MainMenu.ShowShopMenu(HandleShopMenuChoice);
@@ -226,8 +226,7 @@ public static class Game
         if (dishes.Count == 0)
         {
             Console.WriteLine("Доступных блюд для изучения нет!");
-            Console.WriteLine("\nНажмите любую клавишу для продолжения...");
-            Console.ReadKey();
+            InputValidator.Continue();
             return false;
         }
         Console.WriteLine(new string('-', 79));
@@ -318,31 +317,15 @@ public static class Game
             index++;
         }
         Console.WriteLine(new string('-', 47));
-        Console.WriteLine("\nНажмите любую клавишу для продолжения...");
-        Console.ReadKey();
+        InputValidator.Continue();
     }
     
     /// <summary>
     /// Отображает список продуктов, хранящихся на складе таверны.
     /// </summary>
-    private static void ShowTheFoodStorage()
+    private static void CheckProductAvailability()
     {
-        Console.Clear();
-        Console.WriteLine("\nПродуктовый склад: \n");
-        if (_tavern.Products.Count == 0) Console.WriteLine("Продуктовый склад пуст!");
-        else
-        {
-            Console.WriteLine(new string('-', 40));
-            Console.WriteLine($"|  {"Продукт",-20}|{"Количество",14} |");
-            Console.WriteLine(new string('-', 40));
-            foreach (var item in _tavern.Products.OrderBy(pr => pr.Key))
-            {
-                Console.WriteLine($"|  {item.Key,-20}|{item.Value,10} шт. |");
-            }
-            Console.WriteLine(new string('-', 40));
-        }
-        Console.WriteLine("\nНажмите любую клавишу для продолжения...");
-        Console.ReadKey();
+        GameOutput.ShowTheFoodStorage(_tavern);
     }
     
     /// <summary>
@@ -354,8 +337,7 @@ public static class Game
         if (_availableProductsInShopToday.Count == 0)
         {
             Console.WriteLine("\nМагазин пуст!");
-            Console.WriteLine("\nНажмите любую клавишу для продолжения...");
-            Console.ReadKey();
+            InputValidator.Continue();
             return false;
         }
         Console.Clear();
@@ -413,7 +395,6 @@ public static class Game
         Console.WriteLine($"Обслужено посетителей: {_completedOrdersToday}");
         Console.WriteLine($"Заработано золотых: {_moneyToday}");
         Console.WriteLine($"Получено опыта: {_experienceToday}");
-        Console.WriteLine("\nНажмите любую клавишу для завершения дня...");
-        Console.ReadKey();
+        InputValidator.Continue();
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using TavernSimulator.Enums;
+using TavernSimulator.Input;
 using TavernSimulator.Models;
 
 namespace TavernSimulator.Game;
@@ -102,8 +103,29 @@ public static class GameOutput
                 Console.WriteLine($"Владелец: {item.OwnerType} {item.OwnerName}\n");
             }
         }
-        Console.WriteLine("\nНажмите любую клавишу для выхода в главное меню...");
-        Console.ReadKey();
+        InputValidator.Continue();
+    }
+    
+    // <summary>
+    /// Отображает список продуктов, хранящихся на складе таверны.
+    /// </summary>
+    public static void ShowTheFoodStorage(Tavern tavern)
+    {
+        Console.Clear();
+        Console.WriteLine("\nПродуктовый склад: \n");
+        if (tavern.Products.Count == 0) Console.WriteLine("Продуктовый склад пуст!");
+        else
+        {
+            Console.WriteLine(new string('-', 40));
+            Console.WriteLine($"|  {"Продукт",-20}|{"Количество",14} |");
+            Console.WriteLine(new string('-', 40));
+            foreach (var item in tavern.Products.OrderBy(pr => pr.Key))
+            {
+                Console.WriteLine($"|  {item.Key,-20}|{item.Value,10} шт. |");
+            }
+            Console.WriteLine(new string('-', 40));
+        }
+        InputValidator.Continue();
     }
     
     /// <summary>

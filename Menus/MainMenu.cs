@@ -55,8 +55,7 @@ namespace TavernSimulator.Menus
             Console.WriteLine("2. Назад");
             var input = InputValidator.GetValidInput(2);
             if (input == 1) handleChoice();
-            Console.WriteLine("Нажмите любую клавишу для продолжения...");
-            Console.ReadKey();
+            InputValidator.Continue();
         }
         
         /// <summary>
@@ -85,8 +84,7 @@ namespace TavernSimulator.Menus
             Console.WriteLine("2. Назад");
             var input = InputValidator.GetValidInput(2);
             if (input == 1) handleChoice();
-            Console.WriteLine("Нажмите любую клавишу для продолжения...");
-            Console.ReadKey();
+            InputValidator.Continue();
         }
     }
 }

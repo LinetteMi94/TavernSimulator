@@ -1,4 +1,6 @@
-﻿namespace TavernSimulator.Input;
+﻿using System;
+
+namespace TavernSimulator.Input;
 
 /// <summary>
 /// Содержит методы для проверки и обработки пользовательского ввода.
@@ -25,5 +27,11 @@ public static class InputValidator
             }
             Console.WriteLine($"Пожалуйста, введите число от {min} до {max}!");
         }
+    }
+
+    public static void Continue()
+    {
+        Console.WriteLine("\nНажмите любую клавишу для продолжения...");
+        Console.ReadKey();
     }
 }
