@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using TavernSimulator.Enums;
 using TavernSimulator.Game;
 using TavernSimulator.Input;
@@ -35,10 +36,11 @@ namespace TavernSimulator.Menus
             Console.WriteLine();
             Console.WriteLine("1. Посмотреть запасы");
             Console.WriteLine("2. Купить продукты");
-            Console.WriteLine("3. Посмотреть меню");
-            Console.WriteLine("4. Изучить новые рецепты");
-            Console.WriteLine("5. Открыть таверну");
-            var input = InputValidator.GetValidInput(5);
+            Console.WriteLine("3. Заглянуть под прилавок");
+            Console.WriteLine("4. Посмотреть меню");
+            Console.WriteLine("5. Изучить новые рецепты");
+            Console.WriteLine("6. Открыть таверну");
+            var input = InputValidator.GetValidInput(6);
             handleChoice(input);
         }
         

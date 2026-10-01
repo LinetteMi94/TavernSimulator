@@ -1,4 +1,6 @@
-﻿using TavernSimulator.Enums;
+﻿using System;
+using System.Linq;
+using TavernSimulator.Enums;
 using TavernSimulator.Models;
 
 namespace TavernSimulator.Game;
@@ -79,6 +81,29 @@ public static class GameOutput
                 Console.WriteLine($"Торговец забрал «{item.Name}» и отсчитал вам {item.Value} зол.");
                 break;
         }
+    }
+
+    /// <summary>
+    /// Отображает список найденных вещей, оставленных на хранение в таверне.
+    /// </summary>
+    /// <param name="tavern">Таверна, список найденных вещей которой необходимо отобразить.</param>
+    public static void ShowFoundItems(Tavern tavern)
+    {
+        Console.Clear();
+        Console.WriteLine("\nХлам под прилавком: \n");
+        if (tavern.FoundItems.Count == 0) Console.WriteLine("Под прилавком лежит лишь пыль...");
+        else
+        {
+            var counter = 1;
+            foreach (var item in tavern.FoundItems.OrderBy(pr => pr.Name))
+            {
+                Console.WriteLine($"{counter}. {item.Name} - ({item.Value} зол.)");
+                Console.WriteLine($"{item.Description}");
+                Console.WriteLine($"Владелец: {item.OwnerType} {item.OwnerName}\n");
+            }
+        }
+        Console.WriteLine("\nНажмите любую клавишу для выхода в главное меню...");
+        Console.ReadKey();
     }
     
     /// <summary>

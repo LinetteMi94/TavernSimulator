@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using TavernSimulator.Data;
 using TavernSimulator.Enums;
@@ -69,7 +70,7 @@ public static class VisitorService
     
     public static void TriggerEvent(this Visitor visitor, Tavern tavern)
     {
-        if (ShouldTriggerEvent(25)) visitor.OnEvent(tavern);
+        if (ShouldTriggerEvent(20)) visitor.OnEvent(tavern);
     }
     
     /// <summary>

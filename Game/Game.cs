@@ -95,12 +95,15 @@ public static class Game
                 if (ShowTheShop()) MainMenu.ShowShopMenu(HandleShopMenuChoice);
                 break;
             case 3:
-                ShowTavernMenu();
+                LookUnderCounter();
                 break;
             case 4:
-                if(ShowAvailableDishesToLearn()) MainMenu.ShowLearnDishesMenu(HandleLearnDishesMenuChoice);
+                ShowTavernMenu();
                 break;
             case 5:
+                if(ShowAvailableDishesToLearn()) MainMenu.ShowLearnDishesMenu(HandleLearnDishesMenuChoice);
+                break;
+            case 6:
                 _isMorning = false;
                 break;
         }
@@ -164,6 +167,14 @@ public static class Game
             if (_availableProductsInShopToday.ElementAt(index - 1).Value == 0) _availableProductsInShopToday.Remove(product);
         }
         else GameOutput.ShowBuyProductResult(PurchaseProductResult.NotEnoughGold, product,count);
+    }
+
+    /// <summary>
+    /// Отображает список найденных вещей, оставленных на хранение в таверне.
+    /// </summary>
+    private static void LookUnderCounter()
+    {
+        GameOutput.ShowFoundItems(_tavern);
     }
     
     /// <summary>
