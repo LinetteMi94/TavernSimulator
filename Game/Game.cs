@@ -120,6 +120,7 @@ public static class Game
                 _tavern.ShowDishesIngridients(dishes);
                 break;
             case 2:
+                ReturnVisitorItem(visitor);
                 var IsCooking = _tavern.CookOrder(dishes);
                 if (!IsCooking) Console.WriteLine("Посетитель уходит голодный");
                 else
@@ -131,10 +132,10 @@ public static class Game
                     _completedOrdersToday++;
                     visitor.TriggerEvent(_tavern);
                 }
-                var item = visitor.LeaveRandomItem();
-                if (item != null)
+                var leaveItem = visitor.LeaveRandomItem();
+                if (leaveItem != null)
                 {
-                    MainMenu.ShowFoundItemMenu(item, _tavern.AddFoundItem);
+                    MainMenu.ShowFoundItemMenu(leaveItem, _tavern.AddFoundItem);
                     
                 } 
                 _isVisitorBeingServed = false;
@@ -196,6 +197,21 @@ public static class Game
                 visitor.ServeVisitor(dishes);
             }
         }
+    }
+
+    /// <summary>
+    /// Обрабатывает возвращение найденной вещи посетителю.
+    /// </summary>
+    /// <param name="visitor">Посетитель, которому принадлежит найденная вещь.</param>
+    private static void ReturnVisitorItem(Visitor visitor)
+    {
+        var item = _tavern.FindVisitorItem(visitor);
+        if (item == null) return;
+        Console.WriteLine("\nВы: Кажется, это ваше. Нашлось под прилавком. Хорошо, что вы вернулись!");
+        Console.WriteLine($"Вы достаёте {item.Name} и подталкиваете к посетителю.");
+        Console.WriteLine($"{visitor.Name} удивленно смотрит.");
+        Console.WriteLine($"{visitor.Name}: Вы сохранили мою вещь? Благодарю. Подобная честность встречается нечасто. Примите мою благодарность.");
+        Console.WriteLine($"В благодарность {visitor.Name} оставляет на прилавке {item.OwnerPrice} зол.");
     }
     
     /// <summary>

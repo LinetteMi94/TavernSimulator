@@ -124,6 +124,19 @@ public static class TavernService
     }
     
     /// <summary>
+    /// Находит найденную вещь, принадлежащую указанному посетителю.
+    /// </summary>
+    /// <param name="tavern">Таверна, в которой выполняется поиск.</param>
+    /// <param name="visitor">Посетитель, чью вещь необходимо найти.</param>
+    /// <returns>Найденная вещь или null, если вещь не найдена.</returns>
+    public static Item? FindVisitorItem(this Tavern tavern, Visitor visitor)
+    {
+        var item = tavern.FoundItems.FirstOrDefault(item => item.OwnerType == visitor.TypeName && item.OwnerName == visitor.Name);
+        if(item != null) tavern.ReturnItemToOwner(item);
+        return item;
+    }
+    
+    /// <summary>
     /// Изучает новое блюдо и добавляет его в список освоенных блюд таверны.
     /// </summary>
     public static LearnDishResult LearnDish(this Tavern tavern, Dish dish)
@@ -159,6 +172,17 @@ public static class TavernService
         GameOutput.ShowLearnDishResult(LearnDishResult.Success, dish);
     }
 
+    /// <summary>
+    /// Возвращает найденную вещь её владельцу и начисляет таверне вознаграждение.
+    /// </summary>
+    /// <param name="tavern">Таверна, в которой хранится найденная вещь.</param>
+    /// <param name="item">Вещь, которую необходимо вернуть владельцу.</param>
+    private static void ReturnItemToOwner(this Tavern tavern, Item item)
+    {
+        tavern.FoundItems!.Remove(item);
+        tavern.Gold += item.OwnerPrice;
+    }
+    
     /// <summary>
     /// Продаёт посетителю необходимый продукт.
     /// </summary>
