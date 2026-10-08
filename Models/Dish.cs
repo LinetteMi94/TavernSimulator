@@ -8,6 +8,7 @@ namespace TavernSimulator.Models;
 /// </summary>
 public class Dish
 {
+    public string? Id { get; set; } 
     public string? Name { get; set; } 
     public DishTypes Type { get; set; } 
     public int Price { get; set; } 

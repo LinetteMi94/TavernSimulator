@@ -29,81 +29,8 @@ public class Nanny : Visitor, IRecipeTeacher
         new ("Старая книжка", "Небольшая детская книжка с потёртой обложкой.", 5, 20)
     ];
     
-    public List<Dish> SecretRecipes { get; set; } = 
-        [
-            new () {
-                Name = "Яблочные лепёшки",
-                Type = DishTypes.Выпечка,
-                Price = 25,
-                RequiredTavernLevel = 2,
-                Experience = 14,
-                Ingredients = new Dictionary<string, int> { ["Пшеничная мука"] = 2, ["Яблоко"] = 1, ["Яйцо"] = 1, ["Мёд"] = 1  }
-            },
-            new () {
-                Name = "Медовые булочки",
-                Type = DishTypes.Выпечка,
-                Price = 28,
-                RequiredTavernLevel = 3,
-                Experience = 18,
-                Ingredients = new Dictionary<string, int> { ["Пшеничная мука"] = 2, ["Молоко"] = 1, ["Яйцо"] = 1, ["Мёд"] = 2  }
-            },
-            new () {
-                Name = "Тыквенная кашка",
-                Type = DishTypes.Каша,
-                Price = 17,
-                RequiredTavernLevel = 4,
-                Experience = 7,
-                Ingredients = new Dictionary<string, int> { ["Тыква"] = 2, ["Молоко"] = 1 }
-            },
-            new () {
-                Name = "Тыквенные пирожки",
-                Type = DishTypes.Выпечка,
-                Price = 29,
-                RequiredTavernLevel = 5,
-                Experience = 16,
-                Ingredients = new Dictionary<string, int> { ["Пшеничная мука"] = 2, ["Тыква"] = 2, ["Яйцо"] = 1, ["Мёд"] = 1 }
-            },
-            new () {
-                Name = "Тыквенное печенье",
-                Type = DishTypes.Выпечка,
-                Price = 25,
-                RequiredTavernLevel = 6,
-                Experience = 13,
-                Ingredients = new Dictionary<string, int> { ["Пшеничная мука"] = 2, ["Тыква"] = 1, ["Яйцо"] = 1, ["Мёд"] = 1 }
-            },
-            new () {
-                Name = "Сладкая тыквенная запеканка",
-                Type = DishTypes.Сладкое,
-                Price = 26,
-                RequiredTavernLevel = 7,
-                Experience = 14,
-                Ingredients = new Dictionary<string, int> { ["Тыква"] = 2, ["Молоко"] = 2, ["Яйцо"] = 1, ["Мёд"] = 1 }
-            },
-            new () {
-                Name = "Грушевые пирожки",
-                Type = DishTypes.Выпечка,
-                Price = 20,
-                RequiredTavernLevel = 8,
-                Experience = 13,
-                Ingredients = new Dictionary<string, int> { ["Пшеничная мука"] = 2, ["Груша"] = 1, ["Яйцо"] = 1, ["Мёд"] = 1 }
-            },
-            new () {
-                Name = "Нежная яблочная каша",
-                Type = DishTypes.Каша,
-                Price = 21,
-                RequiredTavernLevel = 9,
-                Experience = 11,
-                Ingredients = new Dictionary<string, int> {["Яблоко"] = 1, ["Молоко"] = 1, ["Мёд"] = 1, ["Гречка"] = 1 }
-            },
-            new () {
-                Name = "Ржаные тыквенные кексики",
-                Type = DishTypes.Выпечка,
-                Price = 35,
-                RequiredTavernLevel = 10,
-                Experience = 24,
-                Ingredients = new Dictionary<string, int> { ["Ржаная мука"] = 2, ["Тыква"] = 2, ["Яйцо"] = 1, ["Молоко"] = 1, ["Мёд"] = 1, }
-            }
-        ];
+    public List<Dish> SecretRecipes { get; set; } = DishCatalog.Dishes
+        .Where(x => x.Id.StartsWith("nanny_")).ToList();
     
     public override void OnEvent(Tavern tavern)
     {

@@ -1,5 +1,6 @@
 ﻿[
   {
+    "Id": "base_root_vegetable_soup",
     "Name": "Суп из корнеплодов",
     "Type": 5,
     "Price": 17,
@@ -13,6 +14,35 @@
     }
   },
   {
+    "Id": "nun_zucchini_stew",
+    "Name": "Рагу с кабачком",
+    "Type": 8,
+    "Price": 18,
+    "RequiredTavernLevel": 1,
+    "Experience": 8,
+    "Ingredients": {
+      "Кабачок": 2,
+      "Картофель": 1,
+      "Морковь": 1,
+      "Лук": 1
+    }
+  },
+  {
+    "Id": "herbalist_herb_soup",
+    "Name": "Травяной суп",
+    "Type": 5,
+    "Price": 18,
+    "RequiredTavernLevel": 1,
+    "Experience": 9,
+    "Ingredients": {
+      "Картофель": 1,
+      "Морковь": 1,
+      "Лук": 1,
+      "Травы": 1
+    }
+  },
+  {
+    "Id": "base_onion_omelette",
     "Name": "Яичница с луком",
     "Type": 7,
     "Price": 14,
@@ -24,6 +54,19 @@
     }
   },
   {
+    "Id": "herbalist_herb_omelette",
+    "Name": "Яичница с травами",
+    "Type": 7,
+    "Price": 17,
+    "RequiredTavernLevel": 1,
+    "Experience": 9,
+    "Ingredients": {
+      "Яйцо": 2,
+      "Травы": 1
+    }
+  },
+  {
+    "Id": "base_vegetable_stew",
     "Name": "Овощное рагу",
     "Type": 8,
     "Price": 14,
@@ -36,6 +79,7 @@
     }
   },
   {
+    "Id": "base_chicken_stew",
     "Name": "Куриное рагу",
     "Type": 0,
     "Price": 25,
@@ -49,6 +93,7 @@
     }
   },
   {
+    "Id": "base_apple_pie",
     "Name": "Яблочный пирог",
     "Type": 2,
     "Price": 30,
@@ -61,6 +106,7 @@
     }
   },
   {
+    "Id": "base_tea",
     "Name": "Чай",
     "Type": 6,
     "Price": 7,
@@ -71,6 +117,7 @@
     }
   },
   {
+    "Id": "base_honey_tea",
     "Name": "Чай с мёдом",
     "Type": 6,
     "Price": 15,
@@ -82,6 +129,7 @@
     }
   },
   {
+    "Id": "base_milk_porridge",
     "Name": "Молочная каша",
     "Type": 4,
     "Price": 24,
@@ -94,6 +142,47 @@
     }
   },
   {
+    "Id": "herbalist_fragrant_potatoes",
+    "Name": "Душистая картошка",
+    "Type": 8,
+    "Price": 19,
+    "RequiredTavernLevel": 2,
+    "Experience": 10,
+    "Ingredients": {
+      "Картофель": 2,
+      "Травы": 2,
+      "Лук": 1
+    }
+  },
+  {
+    "Id": "nun_zucchini_pancakes",
+    "Name": "Кабачковые оладьи",
+    "Type": 2,
+    "Price": 16,
+    "RequiredTavernLevel": 2,
+    "Experience": 7,
+    "Ingredients": {
+      "Кабачок": 1,
+      "Пшеничная мука": 1,
+      "Яйцо": 1
+    }
+  },
+  {
+    "Id": "nanny_apple_flatbread",
+    "Name": "Яблочные лепёшки",
+    "Type": 2,
+    "Price": 25,
+    "RequiredTavernLevel": 2,
+    "Experience": 14,
+    "Ingredients": {
+      "Пшеничная мука": 2,
+      "Яблоко": 1,
+      "Яйцо": 1,
+      "Мёд": 1
+    }
+  },
+  {
+    "Id": "base_milk_bread",
     "Name": "Молочный хлеб",
     "Type": 2,
     "Price": 20,
@@ -106,6 +195,7 @@
     }
   },
   {
+    "Id": "base_garlic_chicken",
     "Name": "Курица с чесноком",
     "Type": 0,
     "Price": 19,
@@ -118,6 +208,7 @@
     }
   },
   {
+    "Id": "base_garlic_flatbread",
     "Name": "Чесночные лепёшки",
     "Type": 2,
     "Price": 19,
@@ -130,6 +221,47 @@
     }
   },
   {
+    "Id": "nun_zucchini_with_garlic",
+    "Name": "Кабачки с чесноком",
+    "Type": 8,
+    "Price": 18,
+    "RequiredTavernLevel": 3,
+    "Experience": 10,
+    "Ingredients": {
+      "Кабачок": 2,
+      "Чеснок": 1,
+      "Травы": 1
+    }
+  },
+  {
+    "Id": "nanny_honey_buns",
+    "Name": "Медовые булочки",
+    "Type": 2,
+    "Price": 28,
+    "RequiredTavernLevel": 3,
+    "Experience": 18,
+    "Ingredients": {
+      "Пшеничная мука": 2,
+      "Молоко": 1,
+      "Яйцо": 1,
+      "Мёд": 2
+    }
+  },
+  {
+    "Id": "herbalist_vegetable_chowder",
+    "Name": "Овощная похлёбка",
+    "Type": 5,
+    "Price": 17,
+    "RequiredTavernLevel": 3,
+    "Experience":10,
+    "Ingredients": {
+      "Морковь": 2,
+      "Лук": 1,
+      "Травы": 2
+    }
+  },
+  {
+    "Id": "base_mushroom_soup",
     "Name": "Грибной суп",
     "Type": 5,
     "Price": 27,
@@ -143,6 +275,7 @@
     }
   },
   {
+    "Id": "base_buckwheat_with_chicken",
     "Name": "Гречка с курицей",
     "Type": 4,
     "Price": 27,
@@ -155,6 +288,45 @@
     }
   },
   {
+    "Id": "nanny_pumpkin_porridge",
+    "Name": "Тыквенная кашка",
+    "Type": 4,
+    "Price": 17,
+    "RequiredTavernLevel": 4,
+    "Experience": 7,
+    "Ingredients": {
+      "Тыква": 2,
+      "Молоко": 1
+    }
+  },
+  {
+    "Id": "nun_zucchini_with_mushrooms",
+    "Name": "Кабачки с грибами",
+    "Type": 8,
+    "Price": 20,
+    "RequiredTavernLevel": 4,
+    "Experience": 11,
+    "Ingredients": {
+      "Кабачок": 2,
+      "Грибы": 2,
+      "Лук": 1
+    }
+  },
+  {
+    "Id": "herbalist_chicken_with_fragrant_herbs",
+    "Name": "Курица с душистыми травами",
+    "Type": 0,
+    "Price": 26,
+    "RequiredTavernLevel": 4,
+    "Experience": 18,
+    "Ingredients": {
+      "Курица": 1,
+      "Травы": 2,
+      "Лук": 1
+    }
+  },
+  {
+    "Id": "base_pork_with_onions",
     "Name": "Свинина с луком",
     "Type": 0,
     "Price": 33,
@@ -167,6 +339,35 @@
     }
   },
   {
+    "Id": "nanny_pumpkin_pies",
+    "Name": "Тыквенные пирожки",
+    "Type": 2,
+    "Price": 29,
+    "RequiredTavernLevel": 5,
+    "Experience": 16,
+    "Ingredients": {
+      "Пшеничная мука": 2,
+      "Тыква": 2,
+      "Яйцо": 1,
+      "Мёд": 1
+    }
+  },
+  {
+    "Id": "nun_zucchini_pie",
+    "Name": "Кабачковый пирог",
+    "Type": 2,
+    "Price": 24,
+    "RequiredTavernLevel": 5,
+    "Experience": 13,
+    "Ingredients": {
+      "Кабачок": 2,
+      "Пшеничная мука": 2,
+      "Яйцо": 1,
+      "Мёд": 1
+    }
+  },
+  {
+    "Id": "base_chicken_soup",
     "Name": "Куриный суп",
     "Type": 5,
     "Price": 23,
@@ -180,6 +381,20 @@
     }
   },
   {
+    "Id": "herbalist_herb_porridge_with_apple",
+    "Name": "Травяная каша с яблоком",
+    "Type": 4,
+    "Price": 19,
+    "RequiredTavernLevel": 5,
+    "Experience": 14,
+    "Ingredients": {
+      "Яблоко": 1,
+      "Пшеничная мука": 1,
+      "Травы": 2
+    }
+  },
+  {
+    "Id": "base_kvass",
     "Name": "Квас",
     "Type": 6,
     "Price": 15,
@@ -191,6 +406,7 @@
     }
   },
   {
+    "Id": "base_pear_pie",
     "Name": "Грушевый пирог",
     "Type": 2,
     "Price": 35,
@@ -204,6 +420,34 @@
     }
   },
   {
+    "Id": "herbalist_herb_flatbread",
+    "Name": "Травяные лепёшки",
+    "Type": 2,
+    "Price": 20,
+    "RequiredTavernLevel": 6,
+    "Experience": 15,
+    "Ingredients": {
+      "Пшеничная мука": 2,
+      "Яйцо": 1,
+      "Травы": 1
+    }
+  },
+  {
+    "Id": "nanny_pumpkin_cookies",
+    "Name": "Тыквенное печенье",
+    "Type": 2,
+    "Price": 25,
+    "RequiredTavernLevel": 6,
+    "Experience": 13,
+    "Ingredients": {
+      "Пшеничная мука": 2,
+      "Тыква": 1,
+      "Яйцо": 1,
+      "Мёд": 1
+    }
+  },
+  {
+    "Id": "base_pear_with_honey",
     "Name": "Груша с мёдом",
     "Type": 3,
     "Price": 25,
@@ -216,6 +460,7 @@
     }
   },
   {
+    "Id": "base_potatoes_with_mushrooms",
     "Name": "Картофель с грибами",
     "Type": 8,
     "Price": 35,
@@ -229,6 +474,7 @@
     }
   },
   {
+    "Id": "base_lemonade",
     "Name": "Лимонад",
     "Type": 6,
     "Price": 35,
@@ -240,6 +486,19 @@
     }
   },
   {
+    "Id": "herbalist_pear_with_fragrant_herbs",
+    "Name": "Груша с душистыми травами",
+    "Type": 3,
+    "Price": 17,
+    "RequiredTavernLevel": 7,
+    "Experience": 9,
+    "Ingredients": {
+      "Груша": 2,
+      "Травы": 1
+    }
+  },
+  {
+    "Id": "base_lemon_honey_tea",
     "Name": "Чай с лимоном и мёдом",
     "Type": 6,
     "Price": 21,
@@ -252,6 +511,21 @@
     }
   },
   {
+    "Id": "nanny_sweet_pumpkin_casserole",
+    "Name": "Сладкая тыквенная запеканка",
+    "Type": 3,
+    "Price": 26,
+    "RequiredTavernLevel": 7,
+    "Experience": 14,
+    "Ingredients": {
+      "Тыква": 2,
+      "Молоко": 2,
+      "Яйцо": 1,
+      "Мёд": 1
+    }
+  },
+  {
+    "Id": "base_pork_with_mushrooms",
     "Name": "Свинина с грибами",
     "Type": 0,
     "Price": 43,
@@ -264,6 +538,7 @@
     }
   },
   {
+    "Id": "base_apple_kvass",
     "Name": "Яблочный квас",
     "Type": 6,
     "Price": 25,
@@ -276,6 +551,35 @@
     }
   },
   {
+    "Id": "nanny_pear_pies",
+    "Name": "Грушевые пирожки",
+    "Type": 2,
+    "Price": 20,
+    "RequiredTavernLevel": 8,
+    "Experience": 13,
+    "Ingredients": {
+      "Пшеничная мука": 2,
+      "Груша": 1,
+      "Яйцо": 1,
+      "Мёд": 1
+    }
+  },
+  {
+    "Id": "herbalist_fried_mushrooms_with_garlic",
+    "Name": "Жареные грибы с чесноком",
+    "Type": 8,
+    "Price": 25,
+    "RequiredTavernLevel": 8,
+    "Experience": 16,
+    "Ingredients": {
+      "Грибы": 2,
+      "Чеснок": 1,
+      "Лук": 1,
+      "Травы": 1
+    }
+  },
+  {
+    "Id": "base_rye_flatbread",
     "Name": "Ржаные лепёшки",
     "Type": 2,
     "Price": 22,
@@ -288,6 +592,35 @@
     }
   },
   {
+    "Id": "nanny_gentle_apple_porridge",
+    "Name": "Нежная яблочная каша",
+    "Type": 4,
+    "Price": 21,
+    "RequiredTavernLevel": 9,
+    "Experience": 11,
+    "Ingredients": {
+      "Яблоко": 1,
+      "Молоко": 1,
+      "Мёд": 1,
+      "Гречка": 1
+    }
+  },
+  {
+    "Id": "herbalist_lemon_infusion_with_honey_and_pear",
+    "Name": "Лимонный настой с мёдом и грушей",
+    "Type": 6,
+    "Price": 21,
+    "RequiredTavernLevel": 9,
+    "Experience": 12,
+    "Ingredients": {
+      "Груша": 1,
+      "Лимон": 1,
+      "Травы": 2,
+      "Мёд": 1
+    }
+  },
+  {
+    "Id": "base_rye_apple_pie",
     "Name": "Ржаной пирог с яблоками",
     "Type": 2,
     "Price": 35,
@@ -301,6 +634,7 @@
     }
   },
   {
+    "Id": "base_rye_chicken_pies",
     "Name": "Ржаные пирожки с курицей",
     "Type": 2,
     "Price": 29,
@@ -314,6 +648,22 @@
     }
   },
   {
+    "Id": "nanny_rye_pumpkin_cupcakes",
+    "Name": "Ржаные тыквенные кексики",
+    "Type": 2,
+    "Price": 35,
+    "RequiredTavernLevel": 10,
+    "Experience": 24,
+    "Ingredients": {
+      "Ржаная мука": 2,
+      "Тыква": 2,
+      "Яйцо": 1,
+      "Молоко": 1,
+      "Мёд": 1
+    }
+  },
+  {
+    "Id": "base_roast_goose_with_apples",
     "Name": "Гусь с яблоками",
     "Type": 0,
     "Price": 39,
@@ -326,6 +676,7 @@
     }
   },
   {
+    "Id": "base_roast_goose",
     "Name": "Запечённый гусь",
     "Type": 0,
     "Price": 32,
@@ -338,6 +689,7 @@
     }
   },
   {
+    "Id": "base_mead",
     "Name": "Медовуха",
     "Type": 6,
     "Price": 17,
@@ -348,6 +700,7 @@
     }
   },
   {
+    "Id": "base_cherry_pie",
     "Name": "Вишнёвый пирог",
     "Type": 2,
     "Price": 40,
@@ -361,6 +714,7 @@
     }
   },
   {
+    "Id": "base_cherry_drink",
     "Name": "Вишнёвый напиток",
     "Type": 6,
     "Price": 33,
@@ -372,6 +726,7 @@
     }
   },
   {
+    "Id": "base_cheese_chicken",
     "Name": "Курица под сыром",
     "Type": 0,
     "Price": 27,
@@ -384,6 +739,7 @@
     }
   },
   {
+    "Id": "base_cheese_flatbread",
     "Name": "Сырные лепёшки",
     "Type": 2,
     "Price": 29,
@@ -396,6 +752,7 @@
     }
   },
   {
+    "Id": "base_cabbage_with_pork",
     "Name": "Тушёная капуста со свининой",
     "Type": 0,
     "Price": 25,
@@ -408,6 +765,21 @@
     }
   },
   {
+    "Id": "nun_zucchini_cheese_casserole",
+    "Name": "Кабачковая запеканка с сыром",
+    "Type": 2,
+    "Price": 23,
+    "RequiredTavernLevel": 13,
+    "Experience": 12,
+    "Ingredients": {
+      "Кабачок": 2,
+      "Сыр": 1,
+      "Яйцо": 1,
+      "Молоко": 1
+    }
+  },
+  {
+    "Id": "base_chicken_shchi",
     "Name": "Щи с курицей",
     "Type": 5,
     "Price": 25,
@@ -421,6 +793,7 @@
     }
   },
   {
+    "Id": "base_potatoes_with_butter_and_herbs",
     "Name": "Картофель с маслом и травами",
     "Type": 8,
     "Price": 22,
@@ -433,6 +806,21 @@
     }
   },
   {
+    "Id": "nun_stewed_zucchini_with_cabbage",
+    "Name": "Тушёные кабачки с капустой",
+    "Type": 8,
+    "Price": 26,
+    "RequiredTavernLevel": 14,
+    "Experience": 14,
+    "Ingredients": {
+      "Кабачок": 2,
+      "Капуста": 1,
+      "Лук": 1,
+      "Масло": 1
+    }
+  },
+  {
+    "Id": "base_buckwheat_with_butter_and_milk",
     "Name": "Гречка с маслом и молоком",
     "Type": 4,
     "Price": 27,
@@ -445,6 +833,7 @@
     }
   },
   {
+    "Id": "base_fish_soup",
     "Name": "Рыбный суп",
     "Type": 5,
     "Price": 24,
@@ -458,6 +847,7 @@
     }
   },
   {
+    "Id": "base_fried_fish_with_herbs",
     "Name": "Жареная рыба с травами",
     "Type": 1,
     "Price": 37,
@@ -471,6 +861,19 @@
     }
   },
   {
+    "Id": "nun_fried_zucchini",
+    "Name": "Жареные кабачки",
+    "Type": 8,
+    "Price": 21,
+    "RequiredTavernLevel": 15,
+    "Experience": 10,
+    "Ingredients": {
+      "Кабачок": 2,
+      "Масло": 1
+    }
+  },
+  {
+    "Id": "base_pea_soup_with_pork",
     "Name": "Гороховый суп со свининой",
     "Type": 5,
     "Price": 27,
@@ -484,6 +887,7 @@
     }
   },
   {
+    "Id": "base_pea_porridge_with_bacon",
     "Name": "Гороховая каша с беконом",
     "Type": 4,
     "Price": 29,
@@ -496,6 +900,7 @@
     }
   },
   {
+    "Id": "base_eggs_with_bacon",
     "Name": "Яйца с беконом",
     "Type": 7,
     "Price": 29,
@@ -508,6 +913,7 @@
     }
   },
   {
+    "Id": "base_potatoes_with_bacon",
     "Name": "Картофель с беконом",
     "Type": 0,
     "Price": 29,
@@ -520,6 +926,7 @@
     }
   },
   {
+    "Id": "base_lingonberry_pie",
     "Name": "Брусничный пирог",
     "Type": 2,
     "Price": 40,
@@ -533,6 +940,7 @@
     }
   },
   {
+    "Id": "base_lingonberry_porridge",
     "Name": "Брусничная каша",
     "Type": 3,
     "Price": 30,
@@ -545,6 +953,7 @@
     }
   },
   {
+    "Id": "base_spiced_mead",
     "Name": "Пряная медовуха",
     "Type": 6,
     "Price": 24,
@@ -556,6 +965,7 @@
     }
   },
   {
+    "Id": "base_rice_with_pork",
     "Name": "Рис со свининой",
     "Type": 0,
     "Price": 35,
@@ -569,6 +979,7 @@
     }
   },
   {
+    "Id": "base_milk_rice_porridge",
     "Name": "Молочная рисовая каша",
     "Type": 4,
     "Price": 32,
@@ -581,6 +992,7 @@
     }
   },
   {
+    "Id": "base_spicy_pork_soup",
     "Name": "Острый суп со свининой",
     "Type": 5,
     "Price": 27,
@@ -594,6 +1006,22 @@
     }
   },
   {
+    "Id": "nun_stuffed_zucchini_with_rice_and_peas",
+    "Name": "Фаршированные кабачки с рисом и горохом",
+    "Type": 8,
+    "Price": 22,
+    "RequiredTavernLevel": 20,
+    "Experience": 10,
+    "Ingredients": {
+      "Кабачок": 2,
+      "Рис": 1,
+      "Горох": 1,
+      "Лук": 1,
+      "Масло": 1
+    }
+  },
+  {
+    "Id": "base_spicy_pork",
     "Name": "Пряная свинина",
     "Type": 0,
     "Price": 37,
@@ -607,6 +1035,7 @@
     }
   },
   {
+    "Id": "base_beef_with_mushrooms",
     "Name": "Говядина с грибами",
     "Type": 0,
     "Price": 49,
@@ -619,6 +1048,20 @@
     }
   },
   {
+    "Id": "nun_marinated_zucchini",
+    "Name": "Маринованный кабачок",
+    "Type": 8,
+    "Price": 16,
+    "RequiredTavernLevel": 21,
+    "Experience": 7,
+    "Ingredients": {
+      "Кабачок": 2,
+      "Острый перец": 1,
+      "Травы": 1
+    }
+  },
+  {
+    "Id": "base_roast_beef_with_herbs",
     "Name": "Ростбиф с травами",
     "Type": 0,
     "Price": 47,
@@ -631,6 +1074,7 @@
     }
   },
   {
+    "Id": "base_beetroot_soup_with_beef",
     "Name": "Свекольный суп с говядиной",
     "Type": 5,
     "Price": 27,
@@ -644,6 +1088,21 @@
     }
   },
   {
+    "Id": "nun_spicy_zucchini",
+    "Name": "Острые кабачки",
+    "Type": 8,
+    "Price": 21,
+    "RequiredTavernLevel": 22,
+    "Experience": 12,
+    "Ingredients": {
+      "Кабачок": 2,
+      "Острый перец": 1,
+      "Чеснок": 1,
+      "Масло": 1
+    }
+  },
+  {
+    "Id": "base_roasted_beetroot_with_honey",
     "Name": "Запечённая свёкла с мёдом",
     "Type": 3,
     "Price": 20,
@@ -656,6 +1115,7 @@
     }
   },
   {
+    "Id": "base_baked_trout",
     "Name": "Запечённая форель",
     "Type": 1,
     "Price": 30,
@@ -668,6 +1128,7 @@
     }
   },
   {
+    "Id": "base_trout_with_mushrooms",
     "Name": "Форель с грибами",
     "Type": 1,
     "Price": 40,
@@ -680,6 +1141,7 @@
     }
   },
   {
+    "Id": "base_nut_pie",
     "Name": "Ореховый пирог",
     "Type": 2,
     "Price": 45,
@@ -693,6 +1155,22 @@
     }
   },
   {
+    "Id": "nun_trout_stuffed_zucchini",
+    "Name": "Кабачки, фаршированные форелью",
+    "Type": 1,
+    "Price": 30,
+    "RequiredTavernLevel": 24,
+    "Experience": 20,
+    "Ingredients": {
+      "Кабачок": 2,
+      "Форель": 1,
+      "Рис": 1,
+      "Лук": 1,
+      "Травы": 1
+    }
+  },
+  {
+    "Id": "base_apples_with_honey_and_nuts",
     "Name": "Яблоки с мёдом и орехами",
     "Type": 3,
     "Price": 37,
@@ -706,6 +1184,7 @@
     }
   },
   {
+    "Id": "base_lingonberry_mead",
     "Name": "Брусничная медовуха",
     "Type": 6,
     "Price": 34,
@@ -717,6 +1196,7 @@
     }
   },
   {
+    "Id": "base_strawberry_pie",
     "Name": "Клубничный пирог",
     "Type": 2,
     "Price": 45,
@@ -730,6 +1210,7 @@
     }
   },
   {
+    "Id": "base_strawberries_with_honey_and_milk",
     "Name": "Клубника с мёдом и молоком",
     "Type": 3,
     "Price": 34,
@@ -742,6 +1223,7 @@
     }
   },
   {
+    "Id": "base_stewed_rabbit",
     "Name": "Тушёный кролик",
     "Type": 0,
     "Price": 29,
@@ -755,6 +1237,7 @@
     }
   },
   {
+    "Id": "base_rabbit_with_mushrooms",
     "Name": "Кролик с грибами",
     "Type": 0,
     "Price": 47,
@@ -768,6 +1251,7 @@
     }
   },
   {
+    "Id": "base_plum_pie",
     "Name": "Сливовый пирог",
     "Type": 2,
     "Price": 35,
@@ -781,6 +1265,7 @@
     }
   },
   {
+    "Id": "base_baked_plum_with_nuts",
     "Name": "Запечённая слива с орехами",
     "Type": 3,
     "Price": 34,
@@ -793,6 +1278,7 @@
     }
   },
   {
+    "Id": "base_venison_with_mushrooms",
     "Name": "Оленина с грибами",
     "Type": 0,
     "Price": 65,
@@ -806,6 +1292,7 @@
     }
   },
   {
+    "Id": "base_venison_roast",
     "Name": "Жаркое из оленины",
     "Type": 0,
     "Price": 58,
@@ -819,6 +1306,7 @@
     }
   },
   {
+    "Id": "base_chocolate_pie",
     "Name": "Шоколадный пирог",
     "Type": 2,
     "Price": 55,
@@ -832,6 +1320,7 @@
     }
   },
   {
+    "Id": "base_chocolate_apples",
     "Name": "Яблоки в шоколаде",
     "Type": 3,
     "Price": 37,
@@ -844,6 +1333,7 @@
     }
   },
   {
+    "Id": "base_great_feast_roast",
     "Name": "Большое праздничное жаркое",
     "Type": 0,
     "Price": 59,
@@ -858,6 +1348,7 @@
     }
   },
   {
+    "Id": "base_feast_pie",
     "Name": "Пиршественный пирог",
     "Type": 2,
     "Price": 57,
@@ -872,6 +1363,7 @@
     }
   },
   {
+    "Id": "base_goose_and_pie_signature",
     "Name": "Фирменное блюдо «Гусь и пирог»",
     "Type": 0,
     "Price": 58,

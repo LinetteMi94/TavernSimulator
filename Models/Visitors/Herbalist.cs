@@ -30,89 +30,9 @@ public class Herbalist : Visitor, IRecipeTeacher
     ];
     
     public bool HasRecipes { get; set; } = true;
-    public List<Dish> SecretRecipes { get; set; } = 
-        [
-            new () {
-                Name = "Травяной суп",
-                Type = DishTypes.Суп,
-                Price = 18,
-                RequiredTavernLevel = 1,
-                Experience = 9,
-                Ingredients = new Dictionary<string, int> { ["Картофель"] = 1, ["Морковь"] = 1, ["Лук"] = 1, ["Травы"] = 1 }
-            },
-            new () {
-                Name = "Яичница с травами",
-                Type = DishTypes.Яичное,
-                Price = 17,
-                RequiredTavernLevel = 1,
-                Experience = 9,
-                Ingredients = new Dictionary<string, int> { ["Яйцо"] = 2, ["Травы"] = 1 }
-            },
-            new () {
-                Name = "Душистая картошка",
-                Type = DishTypes.Овощное,
-                Price = 19,
-                RequiredTavernLevel = 2,
-                Experience = 10,
-                Ingredients = new Dictionary<string, int> { ["Картофель"] = 2, ["Лук"] = 1, ["Травы"] = 2 }
-            },
-            new () {
-                Name = "Овощная похлёбка",
-                Type = DishTypes.Суп,
-                Price = 17,
-                RequiredTavernLevel = 3,
-                Experience = 10,
-                Ingredients = new Dictionary<string, int> { ["Морковь"] = 2, ["Лук"] = 1, ["Травы"] = 2 }
-            },
-            new () {
-                Name = "Курица с душистыми травами",
-                Type = DishTypes.Мясное,
-                Price = 26,
-                RequiredTavernLevel = 4,
-                Experience = 18,
-                Ingredients = new Dictionary<string, int> { ["Курица"] = 1, ["Лук"] = 1, ["Травы"] = 2 }
-            },
-            new () {
-                Name = "Травяная каша с яблоком",
-                Type = DishTypes.Каша,
-                Price = 19,
-                RequiredTavernLevel = 5,
-                Experience = 14,
-                Ingredients = new Dictionary<string, int> { ["Пшеничная мука"] = 1, ["Яблоко"] = 1, ["Травы"] = 2 }
-            },
-            new () {
-                Name = "Травяные лепёшки",
-                Type = DishTypes.Выпечка,
-                Price = 20,
-                RequiredTavernLevel = 6,
-                Experience = 15,
-                Ingredients = new Dictionary<string, int> { ["Пшеничная мука"] = 2, ["Яйцо"] = 1, ["Травы"] = 1 }
-            },
-            new () {
-                Name = "Груша с душистыми травами",
-                Type = DishTypes.Сладкое,
-                Price = 17,
-                RequiredTavernLevel = 7,
-                Experience = 9,
-                Ingredients = new Dictionary<string, int> {["Груша"] = 2, ["Травы"] = 1 }
-            },
-            new () {
-                Name = "Жареные грибы с чесноком",
-                Type = DishTypes.Овощное,
-                Price = 25,
-                RequiredTavernLevel = 8,
-                Experience = 16,
-                Ingredients = new Dictionary<string, int> { ["Грибы"] = 2, ["Чеснок"] = 1, ["Лук"] = 1, ["Травы"] = 1 }
-            },
-            new () {
-                Name = "Лимонный настой с мёдом и грушей",
-                Type = DishTypes.Напиток,
-                Price = 21,
-                RequiredTavernLevel = 9,
-                Experience = 12,
-                Ingredients = new Dictionary<string, int> { ["Лимон"] = 1, ["Мёд"] = 1, ["Груша"] = 1, ["Травы"] = 2 }
-            },
-        ];
+    public List<Dish> SecretRecipes { get; set; } = DishCatalog.Dishes
+        .Where(x => x.Id.StartsWith("herbalist_")).ToList();
+        
     public override void OnEvent(Tavern tavern)
     {
         var random = Random.Shared.Next(100);

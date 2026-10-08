@@ -24,7 +24,8 @@ public static class VisitorService
     {
         int count = new Random().Next(2, 4);
         int money = visitor.Money;
-        var dishes = visitor.PreferredDishes.Where(x => x.RequiredTavernLevel<= tavern.Level && x.Price<=money).ToList();
+        var dishes = visitor.PreferredDishes
+            .Where(x => x.RequiredTavernLevel<= tavern.Level && x.Price<=money && (x.Id.StartsWith("base_") || tavern.AvailableDishes.Contains(x))).ToList();
         for (int i = 0; i < count; i++)
         {
             dishes = dishes.Where(x => x.Price<=money).ToList();

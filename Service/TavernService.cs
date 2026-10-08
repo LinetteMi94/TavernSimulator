@@ -114,13 +114,17 @@ public static class TavernService
     /// </summary>
     public static void CreateTavern(this Tavern tavern)
     {
-        var availiableProducts = ProductCatalog.Products.Where(x => x.RequiredTavernLevel == 1).ToList();
+        var availiableProducts = ProductCatalog.Products
+            .Where(x => x.RequiredTavernLevel == 1)
+            .ToList();
         foreach (var product in availiableProducts)
         {
             tavern.Products.Add(product.Name, new Random().Next(4, 10));
         }
 
-        tavern.AvailableDishes = DishCatalog.Dishes.Where(x => x.RequiredTavernLevel == 1).ToList();
+        tavern.AvailableDishes = DishCatalog.Dishes
+            .Where(x => x.RequiredTavernLevel == 1 && x.Id.StartsWith("base_"))
+            .ToList();
     }
     
     /// <summary>

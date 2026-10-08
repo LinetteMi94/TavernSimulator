@@ -238,7 +238,7 @@ public static class Game
     {
         Console.Clear();
         Console.WriteLine("\nДоступные блюда для изучения: \n");
-        var dishes = DishCatalog.Dishes.Where(x => x.RequiredTavernLevel <= _tavern.Level && !_tavern.AvailableDishes.Contains(x)).ToList();
+        var dishes = DishCatalog.Dishes.Where(x => x.RequiredTavernLevel <= _tavern.Level && !_tavern.AvailableDishes.Contains(x) && x.Id.StartsWith("base_")).ToList();
         if (dishes.Count == 0)
         {
             Console.WriteLine("Доступных блюд для изучения нет!");
