@@ -89,6 +89,9 @@ public static class TavernService
             var product = tavern.Products.First(x => x.Key == ingrid.Key);
             tavern.Products[product.Key] -= ingrid.Value;
         }
+
+        tavern.TotalDishesCooked++;
+        AchievementService.IsAchievementUnlocked(AchievementRequirementType.DishesCooked, tavern);
         tavern.Experience += dish.Experience;
         tavern.CheckLevelUp();
         return CookResult.Success;

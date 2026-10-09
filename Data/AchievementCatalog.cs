@@ -1,4 +1,5 @@
-﻿using TavernSimulator.Enums;
+﻿using System.Collections.Generic;
+using TavernSimulator.Enums;
 using TavernSimulator.Models;
 
 namespace TavernSimulator.Data;
