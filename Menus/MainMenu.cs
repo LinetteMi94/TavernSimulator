@@ -34,13 +34,14 @@ namespace TavernSimulator.Menus
         {
             Game.Game.ShowHeader();
             Console.WriteLine();
-            Console.WriteLine("1. Посмотреть запасы");
-            Console.WriteLine("2. Купить продукты");
-            Console.WriteLine("3. Заглянуть под прилавок");
-            Console.WriteLine("4. Посмотреть меню");
-            Console.WriteLine("5. Изучить новые рецепты");
-            Console.WriteLine("6. Открыть таверну");
-            var input = InputValidator.GetValidInput(6);
+            Console.WriteLine("1. Открыть таверну");
+            Console.WriteLine("2. Посмотреть запасы");
+            Console.WriteLine("3. Купить продукты");
+            Console.WriteLine("4. Заглянуть под прилавок");
+            Console.WriteLine("5. Посмотреть меню");
+            Console.WriteLine("6. Изучить новые рецепты");
+            Console.WriteLine("7. Посмотреть достижения");
+            var input = InputValidator.GetValidInput(7);
             handleChoice(input);
         }
         

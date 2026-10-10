@@ -58,7 +58,7 @@ public static class Game
     private static void HandleLearnDishesMenuChoice()
     {
         Console.WriteLine("Какой рецепт хотите выучить сегодня?");
-        var dishes = DishCatalog.Dishes.Where(x => x.RequiredTavernLevel <= _tavern.Level && !_tavern.AvailableDishes.Contains(x)).ToList();
+        var dishes = DishCatalog.Dishes.Where(x => x.RequiredTavernLevel <= _tavern.Level && !_tavern.AvailableDishes.Contains(x) && x.Id.StartsWith("base_")).ToList();
         var index = InputValidator.GetValidInput(dishes.Count);
         var dish = dishes.ElementAt(index - 1);
         
@@ -89,22 +89,25 @@ public static class Game
         switch (choice)
         {
             case 1:
-                CheckProductAvailability();
+                _isMorning = false;
                 break;
             case 2:
-                if (ShowTheShop()) MainMenu.ShowShopMenu(HandleShopMenuChoice);
+                CheckProductAvailability();
                 break;
             case 3:
-                LookUnderCounter();
+                if (ShowTheShop()) MainMenu.ShowShopMenu(HandleShopMenuChoice);
                 break;
             case 4:
-                ShowTavernMenu();
+                LookUnderCounter();
                 break;
             case 5:
-                if(ShowAvailableDishesToLearn()) MainMenu.ShowLearnDishesMenu(HandleLearnDishesMenuChoice);
+                ShowTavernMenu();
                 break;
             case 6:
-                _isMorning = false;
+                if(ShowAvailableDishesToLearn()) MainMenu.ShowLearnDishesMenu(HandleLearnDishesMenuChoice);
+                break;
+            case 7:
+                GameOutput.ShowAchievements();
                 break;
         }
     }

@@ -12,6 +12,11 @@ namespace TavernSimulator.Service;
 public static class AchievementService
 {
    
+    /// <summary>
+    /// Проверяет, выполнено ли условие разблокировки достижения.
+    /// </summary>
+    /// <param name="type">Тип условия достижения.</param>
+    /// <param name="tavern">Таверна, для которой проверяется условие.</param>
     public static void IsAchievementUnlocked(AchievementRequirementType type, Tavern tavern)
     {
         var achievements = AchievementCatalog.Achievements.Where(x => x.RequirementType == type);
@@ -19,13 +24,15 @@ public static class AchievementService
         {
             if (!achievement.IsUnlocked && tavern.TotalDishesCooked >= achievement.RequiredValue) Unlock(achievement,tavern);
         }
-        
     }
+    
+    
 
     /// <summary>
     /// Разблокирует достижение.
     /// </summary>
     /// <param name="achievement">Достижение для разблокировки.</param>
+    /// <param name="tavern">Таверна, для которой открывается достижение.</param>
     private static void Unlock(Achievement achievement, Tavern tavern)
     {
         achievement.IsUnlocked = true;

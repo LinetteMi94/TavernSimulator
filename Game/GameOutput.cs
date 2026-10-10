@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using TavernSimulator.Data;
 using TavernSimulator.Enums;
 using TavernSimulator.Input;
 using TavernSimulator.Models;
@@ -11,6 +12,26 @@ namespace TavernSimulator.Game;
 /// </summary>
 public static class GameOutput
 {
+ 
+    /// <summary>
+    /// Отображает результат покупки или получения продукта в консоли.
+    /// </summary>
+    /// <param name="result">Результат попытки покупки или получения продукта.</param>
+    /// <param name="product">Полученный или выбранный для покупки продукт.</param>
+    /// <param name="count">Количество полученного или выбранного для покупки продукта.</param>
+    public static void ShowAchievements()
+    {
+        Console.Clear();
+        var achievements = AchievementCatalog.Achievements;
+        var counter = 1;
+        foreach (var achievement in achievements)
+        {
+            Console.Write(achievement.IsUnlocked ? "✅" : "❌");
+            Console.WriteLine($" {counter}. {achievement.Name} - {achievement.Description}");
+            counter++;
+        }
+        InputValidator.Continue();
+    } 
     
     /// <summary>
     /// Отображает результат покупки или получения продукта в консоли.
