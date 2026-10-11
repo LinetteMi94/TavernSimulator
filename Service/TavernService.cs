@@ -164,6 +164,7 @@ public static class TavernService
         if (isLearned)
         {
             tavern.AvailableDishes.Add(dish);
+            AchievementService.IsAchievementUnlocked(AchievementRequirementType.DishesLearned, tavern);
             return LearnDishResult.Success;
         }
         return LearnDishResult.RecipeNotLearned;
@@ -175,7 +176,7 @@ public static class TavernService
     public static void LearnSecretDish(this Tavern tavern, Dish dish)
     {
         tavern.AvailableDishes.Add(dish);
-        DishCatalog.Dishes.Add(dish);
+        AchievementService.IsAchievementUnlocked(AchievementRequirementType.DishesLearned, tavern);
         GameOutput.ShowLearnDishResult(LearnDishResult.Success, dish);
     }
 

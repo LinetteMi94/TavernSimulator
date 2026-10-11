@@ -20,9 +20,30 @@ public static class AchievementService
     public static void IsAchievementUnlocked(AchievementRequirementType type, Tavern tavern)
     {
         var achievements = AchievementCatalog.Achievements.Where(x => x.RequirementType == type);
+        int check = 0;
+        switch (type)
+        {
+            case AchievementRequirementType.DishesCooked:
+            {
+                check = tavern.TotalDishesCooked;
+                break;
+            }
+            case AchievementRequirementType.DishesLearned:
+            {
+                check = tavern.AvailableDishes.Count;
+                break;
+            }
+            case AchievementRequirementType.VisitorsServed:
+            {
+                check = tavern.TotalVisitorsServed;
+                break;
+            }
+        }
+
+
         foreach (var achievement in achievements)
         {
-            if (!achievement.IsUnlocked && tavern.TotalDishesCooked >= achievement.RequiredValue) Unlock(achievement,tavern);
+            if (!achievement.IsUnlocked && check >= achievement.RequiredValue) Unlock(achievement,tavern);
         }
     }
     
@@ -38,6 +59,6 @@ public static class AchievementService
         achievement.IsUnlocked = true;
         if(achievement.RewardType == AchievementRewardType.Experience) tavern.Experience += achievement.RewardValue;
         if(achievement.RewardType == AchievementRewardType.Gold) tavern.Gold += achievement.RewardValue;
-        Console.WriteLine($"\nДостижение разблокировано! \n{achievement.UnlockMessage}");
+        Console.WriteLine($"\nДостижение разблокировано! \n{achievement.UnlockMessage}\n");
     }
 }

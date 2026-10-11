@@ -13,6 +13,22 @@ namespace TavernSimulator.Menus
     public static class MainMenu
     {
         
+        /// <summary>
+        /// Отображает меню просмотра достижений.
+        /// </summary>
+        /// <param name="handleChoice">Метод, обрабатывающий выбранный пользователем пункт меню.</param>
+        public static void ShowAchievementsMenu(Action<int> handleChoice)
+        {
+            Game.Game.ShowHeader();
+            Console.WriteLine();
+            Console.WriteLine("1. Приготовленные блюда");
+            Console.WriteLine("2. Изученные рецепты");
+            Console.WriteLine("3. Обслуженные посетители");
+            Console.WriteLine("4. Выйти в меню");
+            var input = InputValidator.GetValidInput(4);
+            handleChoice(input);
+        }
+        
         // <summary>
         /// Отображает меню находки предмета, забытого после ухода посетителя.
         /// </summary>
@@ -49,13 +65,13 @@ namespace TavernSimulator.Menus
         /// Отображает меню магазина и позволяет покупать продукты в таверну.
         /// </summary>
         /// <param name="handleChoice">Метод, обрабатывающий выбранный пользователем пункт меню.</param>
-        public static void ShowShopMenu(Action handleChoice)
+        public static void ShowShopMenu(Action<int> handleChoice)
         { 
             Console.WriteLine();
             Console.WriteLine("1. Купить продукт");
-            Console.WriteLine("2. Назад");
+            Console.WriteLine("2. Выйти из магазина");
             var input = InputValidator.GetValidInput(2);
-            if (input == 1) handleChoice();
+            handleChoice(input);
             InputValidator.Continue();
         }
         
@@ -78,13 +94,13 @@ namespace TavernSimulator.Menus
         /// Отображает меню выбора блюд, доступных для изучения, и позволяет изучать их.
         /// </summary>
         /// <param name="handleChoice">Метод, обрабатывающий выбранный пользователем пункт меню.</param>
-        public static void ShowLearnDishesMenu(Action handleChoice)
+        public static void ShowLearnDishesMenu(Action<int> handleChoice)
         { 
             Console.WriteLine();
             Console.WriteLine("1. Изучить рецепт");
             Console.WriteLine("2. Назад");
             var input = InputValidator.GetValidInput(2);
-            if (input == 1) handleChoice();
+            handleChoice(input);
             InputValidator.Continue();
         }
     }

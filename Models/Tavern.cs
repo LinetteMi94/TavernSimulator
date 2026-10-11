@@ -17,4 +17,5 @@ public class Tavern
     public int Level { get; set; } = 1;
     public int Gold { get; set; } = 100;
     public int TotalDishesCooked { get; set; } = 0;
+    public int TotalVisitorsServed { get; set; } = 0;
 }

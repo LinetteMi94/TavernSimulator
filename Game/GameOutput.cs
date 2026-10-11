@@ -14,15 +14,13 @@ public static class GameOutput
 {
  
     /// <summary>
-    /// Отображает результат покупки или получения продукта в консоли.
+    /// Отображает список достижений указанного типа.
     /// </summary>
-    /// <param name="result">Результат попытки покупки или получения продукта.</param>
-    /// <param name="product">Полученный или выбранный для покупки продукт.</param>
-    /// <param name="count">Количество полученного или выбранного для покупки продукта.</param>
-    public static void ShowAchievements()
+    /// <param name="type">Тип достижений для отображения.</param>
+    public static void ShowAchievements(AchievementRequirementType type)
     {
         Console.Clear();
-        var achievements = AchievementCatalog.Achievements;
+        var achievements = AchievementCatalog.Achievements.Where(a => a.RequirementType == type);
         var counter = 1;
         foreach (var achievement in achievements)
         {
