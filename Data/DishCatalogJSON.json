@@ -261,6 +261,18 @@
     }
   },
   {
+    "Id": "baker_herb_rusks",
+    "Name": "Сухарики с травами",
+    "Type": 2,
+    "Price": 12,
+    "RequiredTavernLevel": 3,
+    "Experience": 5,
+    "Ingredients": {
+      "Хлеб": 2,
+      "Травы": 1
+    }
+  },
+  {
     "Id": "base_mushroom_soup",
     "Name": "Грибной суп",
     "Type": 5,
@@ -285,6 +297,19 @@
       "Гречка": 2,
       "Курица": 1,
       "Лук": 1
+    }
+  },
+  {
+    "Id": "baker_honey_pretzels",
+    "Name": "Медовые крендельки",
+    "Type": 2,
+    "Price": 18,
+    "RequiredTavernLevel": 4,
+    "Experience": 7,
+    "Ingredients": {
+      "Пшеничная мука": 2,
+      "Мёд": 1,
+      "Яблоко": 1
     }
   },
   {
@@ -447,6 +472,19 @@
     }
   },
   {
+    "Id": "baker_honey_gingerbread",
+    "Name": "Медовые пряники",
+    "Type": 2,
+    "Price": 22,
+    "RequiredTavernLevel": 6,
+    "Experience": 10,
+    "Ingredients": {
+      "Пшеничная мука": 2,
+      "Мёд": 1,
+      "Яйцо": 1
+    }
+  },
+  {
     "Id": "base_pear_with_honey",
     "Name": "Груша с мёдом",
     "Type": 3,
@@ -495,6 +533,19 @@
     "Ingredients": {
       "Груша": 2,
       "Травы": 1
+    }
+  },
+  {
+    "Id": "baker_apple_turnovers",
+    "Name": "Яблочные слойки",
+    "Type": 2,
+    "Price": 24,
+    "RequiredTavernLevel": 7,
+    "Experience": 10,
+    "Ingredients": {
+      "Пшеничная мука": 2,
+      "Яблоко": 2,
+      "Мёд": 1
     }
   },
   {
@@ -579,6 +630,19 @@
     }
   },
   {
+    "Id": "baker_carrot_buns",
+    "Name": "Морковные булочки",
+    "Type": 2,
+    "Price": 26,
+    "RequiredTavernLevel": 8,
+    "Experience": 11,
+    "Ingredients": {
+      "Пшеничная мука": 2,
+      "Морковь": 2,
+      "Мёд": 1
+    }
+  },
+  {
     "Id": "base_rye_flatbread",
     "Name": "Ржаные лепёшки",
     "Type": 2,
@@ -617,6 +681,19 @@
       "Лимон": 1,
       "Травы": 2,
       "Мёд": 1
+    }
+  },
+  {
+    "Id": "baker_potato_flatbread",
+    "Name": "Картофельные лепёшки",
+    "Type": 2,
+    "Price": 28,
+    "RequiredTavernLevel": 9,
+    "Experience": 13,
+    "Ingredients": {
+      "Пшеничная мука": 2,
+      "Картофель": 2,
+      "Травы": 1
     }
   },
   {
@@ -722,6 +799,19 @@
     "Experience": 24,
     "Ingredients": {
       "Вишня": 3,
+      "Мёд": 1
+    }
+  },
+  {
+    "Id": "baker_cherry_jam_vatrushki",
+    "Name": "Ватрушки с вишнёвым джемом",
+    "Type": 2,
+    "Price": 32,
+    "RequiredTavernLevel": 12,
+    "Experience": 14,
+    "Ingredients": {
+      "Пшеничная мука": 2,
+      "Вишня": 2,
       "Мёд": 1
     }
   },
@@ -926,6 +1016,20 @@
     }
   },
   {
+    "Id": "baker_honey_cake",
+    "Name": "Медовый пирог",
+    "Type": 2,
+    "Price": 45,
+    "RequiredTavernLevel": 18,
+    "Experience": 22,
+    "Ingredients": {
+      "Пшеничная мука": 3,
+      "Мёд": 2,
+      "Яйцо": 2,
+      "Молоко": 1
+    }
+  },
+  {
     "Id": "base_lingonberry_pie",
     "Name": "Брусничный пирог",
     "Type": 2,
@@ -1102,6 +1206,21 @@
     }
   },
   {
+    "Id": "baker_royal_berry_pie",
+    "Name": "Праздничный пирог с ягодами",
+    "Type": 2,
+    "Price": 55,
+    "RequiredTavernLevel": 22,
+    "Experience": 26,
+    "Ingredients": {
+      "Пшеничная мука": 3,
+      "Брусника": 2,
+      "Яблоко": 2,
+      "Мёд": 2,
+      "Яйцо": 2
+    }
+  },
+  {
     "Id": "base_roasted_beetroot_with_honey",
     "Name": "Запечённая свёкла с мёдом",
     "Type": 3,
@@ -1210,6 +1329,19 @@
     }
   },
   {
+    "Id": "baker_nut_cookies",
+    "Name": "Ореховое печенье",
+    "Type": 2,
+    "Price": 32,
+    "RequiredTavernLevel": 25,
+    "Experience": 14,
+    "Ingredients": {
+      "Пшеничная мука": 2,
+      "Орехи": 2,
+      "Мёд": 1
+    }
+  },
+  {
     "Id": "base_strawberries_with_honey_and_milk",
     "Name": "Клубника с мёдом и молоком",
     "Type": 3,
@@ -1234,6 +1366,19 @@
       "Картофель": 2,
       "Морковь": 1,
       "Лук": 1
+    }
+  },
+  {
+    "Id": "baker_strawberry_jam_vatrushki",
+    "Name": "Ватрушки с клубничным джемом",
+    "Type": 2,
+    "Price": 32,
+    "RequiredTavernLevel": 26,
+    "Experience": 14,
+    "Ingredients": {
+      "Пшеничная мука": 2,
+      "Клубника": 2,
+      "Мёд": 1
     }
   },
   {

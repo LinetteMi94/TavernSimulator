@@ -47,10 +47,11 @@ public static class VisitorService
         var choice = Random.Shared.Next(100);
         Visitor visitor = choice switch
         {
-            < 20 => new Peasant(),
-            < 40 => new Nanny(),
-            < 60 => new Herbalist(),
-            < 80 => new Nun(),
+            < 17 => new Peasant(),
+            < 34 => new Nanny(),
+            < 50 => new Herbalist(),
+            < 67 => new Nun(),
+            < 84 => new Baker(),
             _ => new Woodcutter()
         };
         visitor.Name = visitor.PossibleNames[new Random().Next(0, visitor.PossibleNames.Count)];
