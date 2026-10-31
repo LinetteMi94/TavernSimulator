@@ -20,12 +20,30 @@ public static class VisitorService
     /// <param name="visitor">Посетитель, для которого формируется заказ.</param>
     /// <param name="tavern">Таверна, в которой посетитель делает заказ.</param>
     /// <returns>Список блюд, выбранных посетителем.</returns>
-    public static List<Dish> ChooseOrder(this Visitor visitor, Tavern tavern)
+    public static List<Dish> ChooseOrder(this Visitor visitor, Tavern tavern, DayEvent dayEvent)
     {
         int count = new Random().Next(2, 4);
         int money = visitor.Money;
-        var dishes = visitor.PreferredDishes
-            .Where(x => x.RequiredTavernLevel<= tavern.Level && x.Price<=money && (x.Id.StartsWith("base_") || tavern.AvailableDishes.Contains(x))).ToList();
+        List<Dish> dishes = [];
+        if (dayEvent == DayEvent.PumpkinDay)
+        {
+            dishes = tavern.AvailableDishes
+                .Where(x => x.Price<=money && x.Ingredients.ContainsKey("Тыква")).ToList();
+        }
+
+        if (dayEvent == DayEvent.HeatwaveDay)
+        {
+            dishes = tavern.AvailableDishes
+                .Where(x => x.Price<=money && x.Type == DishTypes.Напиток).ToList();
+        }
+
+        if (dayEvent == DayEvent.None)
+        {
+            dishes = visitor.PreferredDishes
+                .Where(x => x.RequiredTavernLevel <= tavern.Level && x.Price <= money &&
+                            (x.Id.StartsWith("base_") || tavern.AvailableDishes.Contains(x))).ToList();
+        }
+
         for (int i = 0; i < count; i++)
         {
             dishes = dishes.Where(x => x.Price<=money).ToList();

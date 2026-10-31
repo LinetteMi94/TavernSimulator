@@ -155,19 +155,16 @@ public static class TavernService
         }
 
         var choice = Random.Shared.Next(100);
-        bool isLearned = choice switch
+        var isLearned = choice switch
         {
             < 40 => true,
             _ => false
         };
 
-        if (isLearned)
-        {
-            tavern.AvailableDishes.Add(dish);
-            AchievementService.IsAchievementUnlocked(AchievementRequirementType.DishesLearned, tavern);
-            return LearnDishResult.Success;
-        }
-        return LearnDishResult.RecipeNotLearned;
+        if (!isLearned) return LearnDishResult.RecipeNotLearned;
+        tavern.AvailableDishes.Add(dish);
+        AchievementService.IsAchievementUnlocked(AchievementRequirementType.DishesLearned, tavern);
+        return LearnDishResult.Success;
     }
     
     /// <summary>

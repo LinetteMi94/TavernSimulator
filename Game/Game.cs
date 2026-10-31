@@ -21,6 +21,7 @@ public static class Game
     private static bool _isAchievementMenuRunning;
     private static bool _isLearningDishRunning;
     private static bool _isShopOpen;
+    private static DayEvent _dayEvent;
     private static bool _isMorning;
     private static bool _isVisitorBeingServed;
     private static Tavern _tavern = new();
@@ -29,6 +30,14 @@ public static class Game
     private static int _experienceToday;
     private static int _completedOrdersToday;
     private static Dictionary<Product, int> _availableProductsInShopToday = new ();
+    
+    /// <summary>
+    /// Отображает список продуктов, хранящихся на складе таверны.
+    /// </summary>
+    private static void CheckProductAvailability()
+    {
+        GameOutput.ShowTheFoodStorage(_tavern);
+    }
     
     /// <summary>
     /// Создаёт список продуктов, которые сегодня будут продаваться в магазине.
@@ -48,6 +57,16 @@ public static class Game
             }
             _availableProductsInShopToday.Add(product, new Random().Next(4,9));
         }
+    }
+
+    /// <summary>
+    /// Определяет особое событие текущего игрового дня.
+    /// </summary>
+    private static DayEvent DetermineDayEvent()
+    {
+        if (_tavern.Day % 9 == 0) return DayEvent.HeatwaveDay;
+        if (_tavern.Day % 17 == 0) return DayEvent.PumpkinDay;
+        return DayEvent.None;
     }
     
     /// <summary>
@@ -238,6 +257,7 @@ public static class Game
     private static void OpenTavern()
     {
         GetVisitorsToday();
+        ShowEvent();
         for (int i = 0; i < _visitorsToday; i++)
         {
             Console.Clear();
@@ -245,7 +265,7 @@ public static class Game
             Visitor visitor = VisitorService.CreateVisitor();
             Console.WriteLine("Новый посетитель: " + visitor.TypeName + " " +  visitor.Name);
             _isVisitorBeingServed = true;
-            var dishes = visitor.ChooseOrder(_tavern);
+            var dishes = visitor.ChooseOrder(_tavern, _dayEvent);
             while (_isVisitorBeingServed)
             {
                 visitor.ServeVisitor(dishes);
@@ -352,6 +372,44 @@ public static class Game
         }
         Console.WriteLine();
     }
+
+    /// <summary>
+    /// Отображает описание особого события текущего игрового дня.
+    /// </summary>
+    private static void ShowEvent()
+    {
+        _dayEvent = DetermineDayEvent();
+        Console.Clear();
+        switch (_dayEvent)
+        {
+            case DayEvent.None:
+                return;
+            case DayEvent.HeatwaveDay:
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine();
+                Console.WriteLine("╔══════════════════════════════════════════════════╗");
+                Console.WriteLine("║                  ☀️ ДЕНЬ ЖАРЫ!  ️                 ║");
+                Console.WriteLine("╠══════════════════════════════════════════════════╣");
+                Console.WriteLine("║ Сегодня ужасная жара!                            ║");
+                Console.WriteLine("║ Все посетители будут заказывать только напитки!  ║");
+                Console.WriteLine("╚══════════════════════════════════════════════════╝");
+                Console.ResetColor();
+                break;
+            case DayEvent.PumpkinDay:
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
+                Console.WriteLine();
+                Console.WriteLine("╔══════════════════════════════════════════════════╗");
+                Console.WriteLine("║              🎃 ТЫКВЕННЫЙ СПАС 🎃               ║");
+                Console.WriteLine("╠══════════════════════════════════════════════════╣");
+                Console.WriteLine("║       Сегодня в таверне праздник тыквы!          ║");
+                Console.WriteLine("║    Все посетители будут заказывать блюда         ║");
+                Console.WriteLine("║               с тыквой!  🎃                      ║");
+                Console.WriteLine("╚══════════════════════════════════════════════════╝");
+                Console.ResetColor();
+                break;
+        }
+        Console.ReadKey();
+    }
     
     /// <summary>
     /// Отображает заголовок таверны и основную информацию о её текущем состоянии.
@@ -390,14 +448,6 @@ public static class Game
         }
         Console.WriteLine(new string('-', 47));
         InputValidator.Continue();
-    }
-    
-    /// <summary>
-    /// Отображает список продуктов, хранящихся на складе таверны.
-    /// </summary>
-    private static void CheckProductAvailability()
-    {
-        GameOutput.ShowTheFoodStorage(_tavern);
     }
     
     /// <summary>
