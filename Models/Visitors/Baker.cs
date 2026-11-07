@@ -103,6 +103,7 @@ public class Baker : Visitor, IRecipeTeacher
                                       "«Вот это глаз! А может, и вкус у тебя не хуже моего? " +
                                       "Что ж, уговор есть уговор. Держи награду! Только не вздумай открывать свою пекарню, а то останусь без покупателей!»");
                     tavern.Experience += 100;
+                    tavern.ChangeReputation(2);
                     return;
                 }
                 Console.WriteLine($"\nПекарь {Name} громко смеётся:\n" +
@@ -114,6 +115,7 @@ public class Baker : Visitor, IRecipeTeacher
                 Console.WriteLine($"\nПекарь {Name} пожимает плечами:\n" +
                                   "«Как знаешь! Видать, не желаешь рисковать своей репутацией знатока выпечки. " +
                                   "Ну да ладно, не всякому охота мериться мастерством с настоящим пекарем!»");
+                tavern.ChangeReputation(2,false);
                 break;
         }
     }

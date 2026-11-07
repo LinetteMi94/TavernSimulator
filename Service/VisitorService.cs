@@ -81,7 +81,7 @@ public static class VisitorService
     /// </summary>
     public static Item? LeaveRandomItem(this Visitor visitor)
     {
-        if (!ShouldTriggerEvent(20)) return null;
+        if (!ShouldTriggerEvent(15)) return null;
         var item = visitor.AvaliableItemsForLeave[new Random().Next(0, visitor.AvaliableItemsForLeave.Count)];
         item.OwnerName = visitor.Name;
         item.OwnerType = visitor.TypeName;

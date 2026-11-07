@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices.Marshalling;
 using TavernSimulator.Data;
 using TavernSimulator.Enums;
 using TavernSimulator.Input;
@@ -28,6 +27,7 @@ public static class Game
     private static int _visitorsToday;
     private static int _moneyToday;
     private static int _experienceToday;
+    private static int _reputationToday;
     private static int _completedOrdersToday;
     private static Dictionary<Product, int> _availableProductsInShopToday = new ();
     
@@ -178,7 +178,11 @@ public static class Game
             case 2:
                 ReturnVisitorItem(visitor);
                 var IsCooking = _tavern.CookOrder(dishes);
-                if (!IsCooking) Console.WriteLine("Посетитель уходит голодный");
+                if (!IsCooking)
+                {
+                    _tavern.ChangeReputation(2, false);
+                    Console.WriteLine("Посетитель уходит голодный");
+                }
                 else
                 {
                     Console.WriteLine("Вы отдаёте заказ посетителю.");
@@ -187,6 +191,7 @@ public static class Game
                     _moneyToday += money;
                     Console.WriteLine($"Получено {money} зол.");
                     _experienceToday += dishes.Sum(x => x.Experience);
+                    _tavern.ChangeReputation(dishes.Count);
                     _completedOrdersToday++;
                     _tavern.TotalVisitorsServed++;
                     AchievementService.IsAchievementUnlocked(AchievementRequirementType.VisitorsServed, _tavern);
@@ -202,6 +207,7 @@ public static class Game
                 break;
             case 3:
                 Console.WriteLine("Вы прогнали поcетителя!");
+                _tavern.ChangeReputation(3,false);
                 _isVisitorBeingServed = false;
                 break;
         }
@@ -424,6 +430,7 @@ public static class Game
         Console.WriteLine($"║ Золото: {_tavern.Gold}                        ║");
         Console.WriteLine("║                                    ║");
         Console.WriteLine($"║ Уровень: {_tavern.Level}                         ║");
+        Console.WriteLine($"║ Репутация: {_tavern.Reputation}                       ║");
         Console.WriteLine($"║ Опыт: {_tavern.Experience}                            ║");
         Console.WriteLine($"║ Посетителей сегодня: {_visitorsToday}             ║");
         Console.WriteLine($"║ Выполнено заказов: {_completedOrdersToday}               ║");
@@ -491,6 +498,7 @@ public static class Game
             Console.Clear();
             _completedOrdersToday = 0;
             _moneyToday = 0;
+            _reputationToday = _tavern.Reputation;
             _experienceToday = 0;
             ShowHeader();
             CreateAvailableProductsInShopToday();
@@ -516,6 +524,7 @@ public static class Game
         Console.WriteLine($"Обслужено посетителей: {_completedOrdersToday}");
         Console.WriteLine($"Заработано золотых: {_moneyToday}");
         Console.WriteLine($"Получено опыта: {_experienceToday}");
+        Console.WriteLine($"Получено репутации: {_tavern.Reputation - _reputationToday}");
         InputValidator.Continue();
     }
 }

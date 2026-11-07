@@ -14,6 +14,8 @@ public class Tavern
     public List<Item>? FoundItems { get; set; } = [];
     public int Day { get; set; } = 1;
     public int Experience { get; set; } = 0;
+    
+    public int Reputation { get; set; } = 1;
     public int Level { get; set; } = 1;
     public int Gold { get; set; } = 100;
     public int TotalDishesCooked { get; set; } = 0;

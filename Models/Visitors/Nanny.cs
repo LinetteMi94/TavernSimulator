@@ -84,12 +84,14 @@ public class Nanny : Visitor, IRecipeTeacher
                 GameOutput.ShowCookResult(result, dish);
                 if (result == CookResult.Success)
                 {
+                    tavern.ChangeReputation(2);
                     tavern.Gold += dish.Price;
                     Console.WriteLine("Спасибо тебе большое. Думаю, ему сейчас как раз такая еда и нужна. Только положи порцию небольшую, он у меня малоежка.");
                 }
 
                 break;
             case 2:
+                tavern.ChangeReputation(2,false);
                 Console.WriteLine("Понимаю. Тогда ничего страшного. Придётся мне самой что-нибудь придумать для него. Спасибо, что выслушал.");
                 break;
         }

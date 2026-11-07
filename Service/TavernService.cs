@@ -52,6 +52,18 @@ public static class TavernService
         }
         return PurchaseProductResult.ReceiveSuccess;
     }
+
+    /// <summary>
+    /// Изменяет репутацию таверны: увеличивает или уменьшает её на указанное значение.
+    /// </summary>
+    /// <param name="tavern">Таверна, репутация которой изменяется.</param>
+    /// <param name="amount">Количество очков репутации для изменения.</param>
+    /// <param name="isReputationGained">Указывает, начисляется или отнимается репутация.</param>
+    public static void ChangeReputation(this Tavern tavern, int amount, bool isReputationGained = true)
+    {
+        if (isReputationGained) tavern.Reputation += amount;
+        else tavern.Reputation -= amount;
+    }
     
     /// <summary>
     /// Проверяет, достаточно ли опыта для повышения уровня таверны.
@@ -163,6 +175,7 @@ public static class TavernService
 
         if (!isLearned) return LearnDishResult.RecipeNotLearned;
         tavern.AvailableDishes.Add(dish);
+        tavern.ChangeReputation(2);
         AchievementService.IsAchievementUnlocked(AchievementRequirementType.DishesLearned, tavern);
         return LearnDishResult.Success;
     }
@@ -173,6 +186,7 @@ public static class TavernService
     public static void LearnSecretDish(this Tavern tavern, Dish dish)
     {
         tavern.AvailableDishes.Add(dish);
+        tavern.ChangeReputation(2);
         AchievementService.IsAchievementUnlocked(AchievementRequirementType.DishesLearned, tavern);
         GameOutput.ShowLearnDishResult(LearnDishResult.Success, dish);
     }
@@ -186,6 +200,7 @@ public static class TavernService
     {
         tavern.FoundItems!.Remove(item);
         tavern.Gold += item.OwnerPrice;
+        tavern.ChangeReputation(3);
     }
     
     /// <summary>

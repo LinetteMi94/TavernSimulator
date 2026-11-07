@@ -31,34 +31,34 @@ public class Nun : Visitor, IRecipeTeacher
          .Where(x => x.Id.StartsWith("nun_")).ToList();
     
      
-        public override void OnEvent(Tavern tavern)
-        {
-            ShareRecipe(tavern);
-        }
+     public override void OnEvent(Tavern tavern)
+     {
+         ShareRecipe(tavern);
+     }
 
-        public void ShareRecipe(Tavern tavern)
-        {
-            Dish? dish = null;
-            if (this is IRecipeTeacher visitor) dish = visitor.TrySetRecipeToTeach(dish, tavern);
-            if (dish != null)
-            {
-                Console.WriteLine($"\nМонахиня {Name} хитро на тебя смотрит:\n" +
+     public void ShareRecipe(Tavern tavern)
+     {
+         Dish? dish = null;
+         if (this is IRecipeTeacher visitor) dish = visitor.TrySetRecipeToTeach(dish, tavern);
+         if (dish != null)
+         {
+             Console.WriteLine($"\nМонахиня {Name} хитро на тебя смотрит:\n" +
                                   $"«В монастыре мы часто готовим кабачки. Есть один рецепт, который особенно хорошо получается осенью. Хочешь, я поделюсь им?»");
-                Console.WriteLine($"\nНазывается блюдо - {dish.Name}. Хочешь научу?");
-                Console.WriteLine("1. Да\n2. Нет\n");
-                var choice = Input.InputValidator.GetValidInput(2);
-                switch (choice)
-                {
-                    case 1:
-                        Console.WriteLine(
+             Console.WriteLine($"\nНазывается блюдо - {dish.Name}. Хочешь научу?");
+             Console.WriteLine("1. Да\n2. Нет\n");
+             var choice = Input.InputValidator.GetValidInput(2);
+             switch (choice)
+             {
+                 case 1:
+                     Console.WriteLine(
                             "Этот рецепт у нас берегут особенно тщательно. Я нечасто делюсь им с посторонними... Но тебе, пожалуй, доверю.");
-                        tavern.LearnSecretDish(dish);
-                        SecretRecipes.Remove(dish);
-                        break;
-                    case 2:
-                        Console.WriteLine("Как пожелаешь. Рецепт никуда не убежит.");
-                        break;
-                }
-            }
-        }
+                     tavern.LearnSecretDish(dish);
+                     SecretRecipes.Remove(dish);
+                     break;
+                 case 2:
+                     Console.WriteLine("Как пожелаешь. Рецепт никуда не убежит.");
+                     break;
+             }
+         }
+     }
 }

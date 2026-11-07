@@ -66,9 +66,11 @@ public class Herbalist : Visitor, IRecipeTeacher
             case 1:
                 var result = tavern.BuyProducts(herbs, count, 1);
                 GameOutput.ShowBuyProductResult(result, herbs, count);
+                tavern.ChangeReputation(1);
                 Console.WriteLine("Вот и славно. Хорошие травы, свежие. Пригодятся тебе на кухне.");
                 break;
             case 2:
+                tavern.ChangeReputation(1,false);
                 Console.WriteLine("Ну что ж, дело твоё. Если передумаешь, заходи, пока травы не завяли.");
                 break;
         }

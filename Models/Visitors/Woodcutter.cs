@@ -66,11 +66,14 @@ public class Woodcutter: Visitor
                 Console.WriteLine("Лесоруб: Ну а куда деваться… Сказал же, без хлеба домой не возвращаться.");
                 var result = tavern.SellRequestedProduct(bread, count,6);
                 GameOutput.ShowSellProductResult(result, bread.Key, count, 6);
-                Console.WriteLine(result == SellProductResult.SaleSuccess
-                    ? "Лесоруб: Фух, спас меня. А то жена меня бы без хлеба обратно отправила."
-                    : "Лесоруб: Ну всё… чувствую, сегодня мне домой лучше не спешить.");
+                if (result == SellProductResult.SaleSuccess)
+                {
+                    tavern.ChangeReputation(2);
+                    Console.WriteLine("Лесоруб: Фух, спас меня. А то жена меня бы без хлеба обратно отправила.");
+                }
                 break;
             case 2:
+                tavern.ChangeReputation(1,false);
                 Console.WriteLine("Лесоруб: Нет хлеба? Вот же напасть. Теперь ещё в другой конец деревни идти.");
                 break;
         }
@@ -94,10 +97,12 @@ public class Woodcutter: Visitor
                 if (result == CookResult.Success)
                 {
                     tavern.Gold += dish.Price;
+                    tavern.ChangeReputation(2);
                     Console.WriteLine("Вот это я понимаю. Неси скорее, пока совсем с ног не свалился.");
                 }
                 break;
             case 2:
+                tavern.ChangeReputation(2,false);
                 Console.WriteLine("Ну и ладно. Пойду домой, может, там ещё что-нибудь осталось.");
                 break;
         }
