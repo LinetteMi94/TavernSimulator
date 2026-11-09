@@ -21,6 +21,8 @@ public static class Game
     private static bool _isLearningDishRunning;
     private static bool _isShopOpen;
     private static DayEvent _dayEvent;
+    private static Season _season = Season.Spring;
+    private static int _seasonDay = 1;
     private static bool _isMorning;
     private static bool _isVisitorBeingServed;
     private static Tavern _tavern = new();
@@ -58,14 +60,26 @@ public static class Game
             _availableProductsInShopToday.Add(product, new Random().Next(4,9));
         }
     }
+    
+    /// <summary>
+    /// Создаёт новый игровой день.
+    /// </summary>
+    private static void CreateNewDay()
+    {
+        _seasonDay++;
+        _tavern.Day++;
+        UpdateSeason();
+        GetVisitorsToday();
+        ShowEvent();
+    }
 
     /// <summary>
     /// Определяет особое событие текущего игрового дня.
     /// </summary>
     private static DayEvent DetermineDayEvent()
     {
-        if (_tavern.Day % 9 == 0) return DayEvent.HeatwaveDay;
-        if (_tavern.Day % 17 == 0) return DayEvent.PumpkinDay;
+        if (_season == Season.Summer && _seasonDay == 9) return DayEvent.HeatwaveDay;
+        if (_season == Season.Autumn && _seasonDay == 8) return DayEvent.PumpkinDay;
         return DayEvent.None;
     }
     
@@ -262,8 +276,7 @@ public static class Game
     /// </summary>
     private static void OpenTavern()
     {
-        GetVisitorsToday();
-        ShowEvent();
+        CreateNewDay();
         for (int i = 0; i < _visitorsToday; i++)
         {
             Console.Clear();
@@ -426,6 +439,7 @@ public static class Game
         Console.WriteLine("╔════════════════════════════════════╗");
         Console.WriteLine("║   🪿 ТАВЕРНА «ГУСЬ И ПИРОГ» 🥧     ║");
         Console.WriteLine("╠════════════════════════════════════╣ ");
+        Console.WriteLine($"║       {_season}        (День {_seasonDay})                    ║");
         Console.WriteLine($"║ День: {_tavern.Day}                            ║");
         Console.WriteLine($"║ Золото: {_tavern.Gold}                        ║");
         Console.WriteLine("║                                    ║");
@@ -513,11 +527,21 @@ public static class Game
     }
     
     /// <summary>
+    /// Проверяет текущий игровой день и обновляет сезон при необходимости.
+    /// </summary>
+    private static void UpdateSeason()
+    {
+        if (_seasonDay < 15) return;
+        _seasonDay = 1;
+        _season++;
+        if (_season == (Season)4) _season = 0;
+    }
+    
+    /// <summary>
     /// Выводит в консоль статистику за день.
     /// </summary>
     private static void ViewDailyStatistics()
     {
-        _tavern.Day++;
         ShowHeader();
         Console.WriteLine($"День {_tavern.Day} завершён!");
         Console.WriteLine();
