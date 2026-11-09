@@ -84,6 +84,21 @@ public static class Game
     }
     
     /// <summary>
+    /// Возвращает русское название указанного сезона.
+    /// </summary>
+    public static string GetSeasonName(Season season)
+    {
+        return season switch
+        {
+            Season.Spring => "Весна",
+            Season.Summer => "Лето",
+            Season.Autumn => "Осень",
+            Season.Winter => "Зима",
+            _ => "Неизвестный сезон"
+        };
+    }
+    
+    /// <summary>
     /// Определяет количество посетителей на сегодняшний день.
     /// </summary>
     private static void GetVisitorsToday() => _visitorsToday = new Random().Next(2, 6);
@@ -439,7 +454,7 @@ public static class Game
         Console.WriteLine("╔════════════════════════════════════╗");
         Console.WriteLine("║   🪿 ТАВЕРНА «ГУСЬ И ПИРОГ» 🥧     ║");
         Console.WriteLine("╠════════════════════════════════════╣ ");
-        Console.WriteLine($"║       {_season}        (День {_seasonDay})                    ║");
+        Console.WriteLine($"║       {GetSeasonName(_season)}     (День {_seasonDay})           ║");
         Console.WriteLine($"║ День: {_tavern.Day}                            ║");
         Console.WriteLine($"║ Золото: {_tavern.Gold}                        ║");
         Console.WriteLine("║                                    ║");
