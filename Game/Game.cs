@@ -22,7 +22,7 @@ public static class Game
     private static bool _isShopOpen;
     private static DayEvent _dayEvent;
     private static Season _season = Season.Spring;
-    private static int _seasonDay = 1;
+    private static int _seasonDay;
     private static bool _isMorning;
     private static bool _isVisitorBeingServed;
     private static Tavern _tavern = new();
@@ -66,11 +66,16 @@ public static class Game
     /// </summary>
     private static void CreateNewDay()
     {
+        _completedOrdersToday = 0;
+        _moneyToday = 0;
+        _reputationToday = _tavern.Reputation;
+        _experienceToday = 0;
         _seasonDay++;
         _tavern.Day++;
         UpdateSeason();
         GetVisitorsToday();
-        ShowEvent();
+        CreateAvailableProductsInShopToday();
+        _isMorning = true;
     }
 
     /// <summary>
@@ -86,14 +91,14 @@ public static class Game
     /// <summary>
     /// Возвращает русское название указанного сезона.
     /// </summary>
-    public static string GetSeasonName(Season season)
+    private static string GetSeasonName(Season season)
     {
         return season switch
         {
-            Season.Spring => "Весна",
-            Season.Summer => "Лето",
-            Season.Autumn => "Осень",
-            Season.Winter => "Зима",
+            Season.Spring => "🌸 Весна 🌸",
+            Season.Summer => "☀️ Лето ☀️",
+            Season.Autumn => "🍂 Осень 🍂",
+            Season.Winter => "❄️ Зима ❄️",
             _ => "Неизвестный сезон"
         };
     }
@@ -291,7 +296,7 @@ public static class Game
     /// </summary>
     private static void OpenTavern()
     {
-        CreateNewDay();
+        ShowEvent();
         for (int i = 0; i < _visitorsToday; i++)
         {
             Console.Clear();
@@ -454,7 +459,7 @@ public static class Game
         Console.WriteLine("╔════════════════════════════════════╗");
         Console.WriteLine("║   🪿 ТАВЕРНА «ГУСЬ И ПИРОГ» 🥧     ║");
         Console.WriteLine("╠════════════════════════════════════╣ ");
-        Console.WriteLine($"║       {GetSeasonName(_season)}     (День {_seasonDay})           ║");
+        Console.WriteLine($"║     {GetSeasonName(_season)}   (День {_seasonDay})         ║");
         Console.WriteLine($"║ День: {_tavern.Day}                            ║");
         Console.WriteLine($"║ Золото: {_tavern.Gold}                        ║");
         Console.WriteLine("║                                    ║");
@@ -525,13 +530,8 @@ public static class Game
         while (_isRunning)
         {
             Console.Clear();
-            _completedOrdersToday = 0;
-            _moneyToday = 0;
-            _reputationToday = _tavern.Reputation;
-            _experienceToday = 0;
+            CreateNewDay();
             ShowHeader();
-            CreateAvailableProductsInShopToday();
-            _isMorning = true;
             while (_isMorning)
             {
                 MainMenu.ShowMorningMenu(HandleMorningMenuChoice);

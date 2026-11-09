@@ -12,7 +12,7 @@ public class Tavern
     public Dictionary<string, int> Products { get; set; } = new();
     public List<Dish>? AvailableDishes { get; set; }
     public List<Item>? FoundItems { get; set; } = [];
-    public int Day { get; set; } = 1;
+    public int Day { get; set; }
     public int Experience { get; set; } = 0;
     
     public int Reputation { get; set; } = 1;

@@ -63,6 +63,8 @@ public static class TavernService
     {
         if (isReputationGained) tavern.Reputation += amount;
         else tavern.Reputation -= amount;
+        if(tavern.Reputation < 0) tavern.Reputation = 0;
+        if(tavern.Reputation > 1000)  tavern.Reputation = 1000;
     }
     
     /// <summary>
