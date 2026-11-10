@@ -60,18 +60,11 @@ public static class VisitorService
     /// <summary>
     /// Создаёт нового посетителя случайного типа.
     /// </summary>
-    public static Visitor CreateVisitor()
+    public static Visitor CreateVisitor(Tavern tavern)
     {
-        var choice = Random.Shared.Next(100);
-        Visitor visitor = choice switch
-        {
-            < 17 => new Peasant(),
-            < 34 => new Nanny(),
-            < 50 => new Herbalist(),
-            < 67 => new Nun(),
-            < 84 => new Baker(),
-            _ => new Woodcutter()
-        };
+        var visitors = VisitorCatalog.Visitors
+            .Where(x => x.MinReputation <= tavern.Reputation && x.MaxReputation>= tavern.Reputation).ToList();
+        var visitor = visitors[new Random().Next(visitors.Count)].Create();
         visitor.Name = visitor.PossibleNames[new Random().Next(0, visitor.PossibleNames.Count)];
         return visitor;
     }

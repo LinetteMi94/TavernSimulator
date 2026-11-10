@@ -301,7 +301,7 @@ public static class Game
         {
             Console.Clear();
             ShowHeader();
-            Visitor visitor = VisitorService.CreateVisitor();
+            Visitor visitor = VisitorService.CreateVisitor(_tavern);
             Console.WriteLine("Новый посетитель: " + visitor.TypeName + " " +  visitor.Name);
             _isVisitorBeingServed = true;
             var dishes = visitor.ChooseOrder(_tavern, _dayEvent);
