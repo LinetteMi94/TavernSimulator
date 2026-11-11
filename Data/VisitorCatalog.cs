@@ -14,6 +14,7 @@ public static class VisitorCatalog
             new (10,110, () => new Herbalist()),
             new (10,110, () => new Nanny()),
             new (20,120, () => new Baker()),
-            new (20,120, () => new Woodcutter())
+            new (20,120, () => new Woodcutter()),
+            new (30,130, () => new Merchant())
         ];
 }
