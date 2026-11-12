@@ -93,15 +93,13 @@ public static class TavernService
         foreach (var ingrid in dish.Ingredients)
         {
             if (!tavern.Products.ContainsKey(ingrid.Key)) return CookResult.UnknownIngredient;
-
             var product = tavern.Products.First(x => x.Key == ingrid.Key);
             if (product.Value < ingrid.Value) return CookResult.NotEnoughIngredients;
         }
 
         foreach (var ingrid in dish.Ingredients)
         {
-            var product = tavern.Products.First(x => x.Key == ingrid.Key);
-            tavern.Products[product.Key] -= ingrid.Value;
+            tavern.RemoveProduct(ingrid.Key, ingrid.Value);
         }
 
         tavern.TotalDishesCooked++;
@@ -164,8 +162,7 @@ public static class TavernService
     {
         foreach (var ingrid in dish.Ingredients)
         {
-            var product = tavern.Products.First(x => x.Key == ingrid.Key);
-            tavern.Products[product.Key]--;
+            tavern.RemoveProduct(ingrid.Key);
         }
 
         var choice = Random.Shared.Next(100);
@@ -193,6 +190,18 @@ public static class TavernService
         GameOutput.ShowLearnDishResult(LearnDishResult.Success, dish);
     }
 
+    /// <summary>
+    /// Уменьшает количество указанного продукта на складе таверны.
+    /// </summary>
+    /// <param name="tavern">Таверна, со склада которой списывается продукт.</param>
+    /// <param name="productName">Название продукта.</param>
+    /// <param name="count">Количество единиц продукта для списания. По умолчанию 1.</param>
+    public static void RemoveProduct(this Tavern tavern, string productName, int count = 1)
+    {
+        var product = tavern.Products.First(x => x.Key == productName);
+        tavern.Products[product.Key] -= count;
+    }
+    
     /// <summary>
     /// Возвращает найденную вещь её владельцу и начисляет таверне вознаграждение.
     /// </summary>
