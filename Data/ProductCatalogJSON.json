@@ -12,6 +12,30 @@
     "RequiredTavernLevel": 1
   },
   {
+    "Id": "spring_ramsons",
+    "Name": "Черемша",
+    "Price": 4,
+    "RequiredTavernLevel": 1
+  },
+  {
+    "Id": "summer_tomato",
+    "Name": "Помидор",
+    "Price": 5,
+    "RequiredTavernLevel": 1
+  },
+  {
+    "Id": "summer_watermelon",
+    "Name": "Арбуз",
+    "Price": 8,
+    "RequiredTavernLevel": 1
+  },
+  {
+    "Id": "spring_rhubarb",
+    "Name": "Ревень",
+    "Price": 5,
+    "RequiredTavernLevel": 1
+  },
+  {
     "Id": "base_carrot",
     "Name": "Морковь",
     "Price": 2,
@@ -27,6 +51,18 @@
     "Id": "base_chicken",
     "Name": "Курица",
     "Price": 6,
+    "RequiredTavernLevel": 1
+  },
+  {
+    "Id": "autumn_cranberry",
+    "Name": "Клюква",
+    "Price": 6,
+    "RequiredTavernLevel": 1
+  },
+  {
+    "Id": "autumn_turnip",
+    "Name": "Репа",
+    "Price": 5,
     "RequiredTavernLevel": 1
   },
   {
@@ -60,15 +96,39 @@
     "RequiredTavernLevel": 2
   },
   {
+    "Id": "summer_eggplant",
+    "Name": "Баклажан",
+    "Price": 7,
+    "RequiredTavernLevel": 2
+  },
+  {
     "Id": "base_honey",
     "Name": "Мёд",
     "Price": 5,
     "RequiredTavernLevel": 2
   },
   {
+    "Id": "winter_raisins",
+    "Name": "Изюм",
+    "Price": 8,
+    "RequiredTavernLevel": 2
+  },
+  {
+    "Id": "autumn_horseradish",
+    "Name": "Хрен",
+    "Price": 4,
+    "RequiredTavernLevel": 2
+  },
+  {
     "Id": "base_bread",
     "Name": "Хлеб",
     "Price": 4,
+    "RequiredTavernLevel": 2
+  },
+  {
+    "Id": "spring_asparagus",
+    "Name": "Спаржа",
+    "Price": 8,
     "RequiredTavernLevel": 2
   },
   {
@@ -82,6 +142,18 @@
     "Name": "Тыква",
     "Price": 4,
     "RequiredTavernLevel": 3 
+  },
+  {
+    "Id": "winter_cinnamon",
+    "Name": "Корица",
+    "Price": 12,
+    "RequiredTavernLevel": 3
+  },
+  {
+    "Id": "winter_orange",
+    "Name": "Апельсин",
+    "Price": 15,
+    "RequiredTavernLevel": 3
   },
   {
     "Id": "base_mushrooms",
