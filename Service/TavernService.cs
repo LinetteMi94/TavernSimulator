@@ -130,7 +130,7 @@ public static class TavernService
     public static void CreateTavern(this Tavern tavern)
     {
         var availiableProducts = ProductCatalog.Products
-            .Where(x => x.RequiredTavernLevel == 1)
+            .Where(x => x.RequiredTavernLevel == 1 && x.Id.StartsWith("base_"))
             .ToList();
         foreach (var product in availiableProducts)
         {

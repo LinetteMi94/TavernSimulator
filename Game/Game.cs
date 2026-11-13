@@ -48,7 +48,7 @@ public static class Game
     {
         _availableProductsInShopToday = new Dictionary<Product, int>();
         var availableProducts = ProductCatalog.Products
-            .Where(product => product.RequiredTavernLevel <= _tavern.Level)
+            .Where(product => product.RequiredTavernLevel <= _tavern.Level && product.Id.StartsWith("base_"))
             .OrderBy(_ => Random.Shared.Next()).Take(7).OrderBy(x => x.Name).ToList();
         foreach (var product in availableProducts)
         {

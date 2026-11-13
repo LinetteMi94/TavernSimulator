@@ -16,7 +16,7 @@ public class Peasant : Visitor
     public override string TypeName { get; set; } =  "Крестьянин"; 
     public override int Money { get; } = new Random().Next(20,30);
     
-    private Product secretProduct { get; set; } = new () { Name = "Кабачок", Price = 0, RequiredTavernLevel = 1 };
+    private Product secretProduct { get; set; } = ProductCatalog.Products.First(x => x.Name == "Кабачок");
     public override List<string> PossibleNames { get; set; } = ["Иван", "Степан", "Тихон", "Фома", "Яков", "Кузьма", "Прохор",
         "Матвей", "Савелий", "Михаил", "Егор", "Фёдор", "Лука", "Пётр", "Афанасий", "Данила", "Григорий", "Макар", "Трофим", "Никита"];
 

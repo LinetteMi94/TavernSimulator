@@ -1,195 +1,240 @@
 ﻿[
   {
+    "Id": "base_potato",
     "Name": "Картофель",
     "Price": 2,
    "RequiredTavernLevel": 1
   },
   {
+    "Id": "special_zucchini",
+    "Name": "Кабачок",
+    "Price": 3,
+    "RequiredTavernLevel": 1
+  },
+  {
+    "Id": "base_carrot",
     "Name": "Морковь",
     "Price": 2,
     "RequiredTavernLevel": 1
   },
   {
+    "Id": "base_onion",
     "Name": "Лук",
     "Price": 2,
     "RequiredTavernLevel": 1
   },
   {
+    "Id": "base_chicken",
     "Name": "Курица",
     "Price": 6,
     "RequiredTavernLevel": 1
   },
   {
+    "Id": "base_egg",
     "Name": "Яйцо",
     "Price": 3,
     "RequiredTavernLevel": 1
   },
   {
+    "Id": "base_wheat_flour",
     "Name": "Пшеничная мука",
     "Price": 3,
     "RequiredTavernLevel": 1
   },
   {
+    "Id": "base_apple",
     "Name": "Яблоко",
     "Price": 3,
     "RequiredTavernLevel": 1
   },
   {
+    "Id": "base_herbs",
     "Name": "Травы",
     "Price": 2,
     "RequiredTavernLevel": 1
   },
   {
+    "Id": "base_milk",
     "Name": "Молоко",
     "Price": 3,
     "RequiredTavernLevel": 2
   },
   {
+    "Id": "base_honey",
     "Name": "Мёд",
     "Price": 5,
     "RequiredTavernLevel": 2
   },
   {
+    "Id": "base_bread",
     "Name": "Хлеб",
     "Price": 4,
     "RequiredTavernLevel": 2
   },
   {
+    "Id": "base_garlic",
     "Name": "Чеснок",
     "Price": 3,
     "RequiredTavernLevel": 3
   },
   {
+    "Id": "base_pumpkin",
     "Name": "Тыква",
     "Price": 4,
     "RequiredTavernLevel": 3 
   },
   {
+    "Id": "base_mushrooms",
     "Name": "Грибы",
     "Price": 5,
     "RequiredTavernLevel": 4
   },
   {
+    "Id": "base_buckwheat",
     "Name": "Гречка",
     "Price": 4,
     "RequiredTavernLevel": 4
   },
   {
+    "Id": "base_pork",
     "Name": "Свинина",
     "Price": 7,
     "RequiredTavernLevel": 5
   },
   {
+    "Id": "base_pear",
     "Name": "Груша",
     "Price": 4,
     "RequiredTavernLevel": 6
   },
   {
+    "Id": "base_lemon",
     "Name": "Лимон",
     "Price": 5,
     "RequiredTavernLevel": 7
   },
   {
+    "Id": "base_rye_flour",
     "Name": "Ржаная мука",
     "Price": 3,
     "RequiredTavernLevel": 9
   },
   {
+    "Id": "base_goose",
     "Name": "Гусь",
     "Price": 12,
     "RequiredTavernLevel": 10
   },
   {
+    "Id": "base_cherry",
     "Name": "Вишня",
     "Price": 5,
     "RequiredTavernLevel": 11
   },
   {
+    "Id": "base_cheeze",
     "Name": "Сыр",
     "Price": 8,
     "RequiredTavernLevel": 12
   },
   {
+    "Id": "base_cabbage",
     "Name": "Капуста",
     "Price": 3,
     "RequiredTavernLevel": 13
   },
   {
+    "Id": "base_butter",
     "Name": "Масло",
     "Price": 5,
     "RequiredTavernLevel": 14
   },
   {
+    "Id": "base_catfish",
     "Name": "Сом",
     "Price": 6,
     "RequiredTavernLevel": 15
   },
   {
+    "Id": "base_peas",
     "Name": "Горох",
     "Price": 4,
     "RequiredTavernLevel": 16
   },
   {
+    "Id": "base_bacon",
     "Name": "Бекон",
     "Price": 9,
     "RequiredTavernLevel": 17
   },
   {
+    "Id": "base_lingonberry",
     "Name": "Брусника",
     "Price": 5,
     "RequiredTavernLevel": 18
   },
   {
+    "Id": "base_rice",
     "Name": "Рис",
     "Price": 5,
     "RequiredTavernLevel": 19
   },
   {
+    "Id": "base_chili_pepper",
     "Name": "Острый перец",
     "Price": 5,
     "RequiredTavernLevel": 20
   },
   {
+    "Id": "base_beef",
     "Name": "Говядина",
     "Price": 8,
     "RequiredTavernLevel": 21
   },
   {
+    "Id": "base_beet",
     "Name": "Свёкла",
     "Price": 2,
     "RequiredTavernLevel": 22
   },
   {
+    "Id": "base_trout",
     "Name": "Форель",
     "Price": 9,
     "RequiredTavernLevel": 23
   },
   {
+    "Id": "base_nuts",
     "Name": "Орехи",
     "Price": 7,
     "RequiredTavernLevel": 24
   },
   {
+    "Id": "base_strawberry",
     "Name": "Клубника",
     "Price": 6,
     "RequiredTavernLevel": 25
   },
   {
+    "Id": "base_rabbit",
     "Name": "Кролик",
     "Price": 9,
     "RequiredTavernLevel": 26
   },
   {
+    "Id": "base_plum",
     "Name": "Слива",
     "Price": 4,
     "RequiredTavernLevel": 27
   },
   {
+    "Id": "base_venison",
     "Name": "Оленина",
     "Price": 12,
     "RequiredTavernLevel": 28
   },
   {
+    "Id": "base_chocolate",
     "Name": "Шоколад",
     "Price": 8,
     "RequiredTavernLevel": 29
