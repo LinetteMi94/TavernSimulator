@@ -30,12 +30,6 @@
     "RequiredTavernLevel": 1
   },
   {
-    "Id": "spring_rhubarb",
-    "Name": "Ревень",
-    "Price": 5,
-    "RequiredTavernLevel": 1
-  },
-  {
     "Id": "base_carrot",
     "Name": "Морковь",
     "Price": 2,
@@ -51,6 +45,12 @@
     "Id": "base_chicken",
     "Name": "Курица",
     "Price": 6,
+    "RequiredTavernLevel": 1
+  },
+  {
+    "Id": "summer_eggplant",
+    "Name": "Баклажан",
+    "Price": 7,
     "RequiredTavernLevel": 1
   },
   {
@@ -96,12 +96,6 @@
     "RequiredTavernLevel": 2
   },
   {
-    "Id": "summer_eggplant",
-    "Name": "Баклажан",
-    "Price": 7,
-    "RequiredTavernLevel": 2
-  },
-  {
     "Id": "base_honey",
     "Name": "Мёд",
     "Price": 5,
@@ -111,6 +105,12 @@
     "Id": "winter_raisins",
     "Name": "Изюм",
     "Price": 8,
+    "RequiredTavernLevel": 2
+  },
+  {
+    "Id": "spring_rhubarb",
+    "Name": "Ревень",
+    "Price": 5,
     "RequiredTavernLevel": 2
   },
   {

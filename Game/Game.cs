@@ -144,7 +144,9 @@ public static class Game
             return;
         }
         Console.WriteLine("Какой рецепт хотите выучить сегодня?");
-        var dishes = DishCatalog.Dishes.Where(x => x.RequiredTavernLevel <= _tavern.Level && !_tavern.AvailableDishes.Contains(x) && x.Id.StartsWith("base_")).ToList();
+        var dishes = DishCatalog.Dishes.Where(x => x.RequiredTavernLevel <= _tavern.Level 
+                                                   && !_tavern.AvailableDishes.Contains(x) 
+                                                   && (x.Id.StartsWith("base_") || x.Id.StartsWith(_season.ToString().ToLower()))).ToList();
         var index = InputValidator.GetValidInput(dishes.Count);
         var dish = dishes.ElementAt(index - 1);
         
@@ -306,7 +308,7 @@ public static class Game
             Visitor visitor = VisitorService.CreateVisitor(_tavern);
             Console.WriteLine("Новый посетитель: " + visitor.TypeName + " " +  visitor.Name);
             _isVisitorBeingServed = true;
-            var dishes = visitor.ChooseOrder(_tavern, _dayEvent);
+            var dishes = visitor.ChooseOrder(_tavern, _season, _dayEvent);
             while (_isVisitorBeingServed)
             {
                 visitor.ServeVisitor(dishes);
@@ -352,8 +354,11 @@ public static class Game
     private static void ShowAvailableDishesToLearn()
     {
         Console.Clear();
+        var season = _season.ToString().ToLower();
         Console.WriteLine("\nДоступные блюда для изучения: \n");
-        var dishes = DishCatalog.Dishes.Where(x => x.RequiredTavernLevel <= _tavern.Level && !_tavern.AvailableDishes.Contains(x) && x.Id.StartsWith("base_")).ToList();
+        var dishes = DishCatalog.Dishes.Where(x => x.RequiredTavernLevel <= _tavern.Level 
+                                                   && !_tavern.AvailableDishes.Contains(x) 
+                                                   && (x.Id.StartsWith("base_") || x.Id.StartsWith(season))).ToList();
         if (dishes.Count == 0)
         {
             Console.WriteLine("Доступных блюд для изучения нет!");

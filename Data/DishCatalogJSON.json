@@ -14,6 +14,33 @@
     }
   },
   {
+    "Id": "summer_eggplant_caviar",
+    "Name": "Икра из баклажанов",
+    "Type": 8,
+    "Price": 27,
+    "RequiredTavernLevel": 1,
+    "Experience": 17,
+    "Ingredients": {
+      "Баклажан": 2,
+      "Помидор": 1,
+      "Лук": 1
+    }
+  },
+  {
+    "Id": "summer_eggplant_cutlets",
+    "Name": "Овощные котлеты из баклажанов",
+    "Type": 8,
+    "Price": 19,
+    "RequiredTavernLevel": 1,
+    "Experience": 9,
+    "Ingredients": {
+      "Баклажан": 1,
+      "Картофель": 1,
+      "Яйцо": 1,
+      "Пшеничная мука": 1
+    }
+  },
+  {
     "Id": "nun_zucchini_stew",
     "Name": "Рагу с кабачком",
     "Type": 8,
@@ -24,6 +51,19 @@
       "Кабачок": 2,
       "Картофель": 1,
       "Морковь": 1,
+      "Лук": 1
+    }
+  },
+  {
+    "Id": "spring_ramsons_salad",
+    "Name": "Салат с черемшой",
+    "Type": 8,
+    "Price": 19,
+    "RequiredTavernLevel": 1,
+    "Experience": 11,
+    "Ingredients": {
+      "Черемша": 2,
+      "Яйцо": 1,
       "Лук": 1
     }
   },
@@ -106,6 +146,20 @@
     }
   },
   {
+    "Id": "summer_tomato_soup",
+    "Name": "Томатный суп с зеленью",
+    "Type": 5,
+    "Price": 28,
+    "RequiredTavernLevel": 1,
+    "Experience": 19,
+    "Ingredients": {
+      "Помидор": 2,
+      "Курица": 1,
+      "Лук": 1,
+      "Травы": 1
+    }
+  },
+  {
     "Id": "base_tea",
     "Name": "Чай",
     "Type": 6,
@@ -129,6 +183,57 @@
     }
   },
   {
+    "Id": "spring_ramsons_soup",
+    "Name": "Суп с черемшой",
+    "Type": 5,
+    "Price": 21,
+    "RequiredTavernLevel": 2,
+    "Experience": 15,
+    "Ingredients": {
+      "Черемша": 2,
+      "Картофель": 2,
+      "Лук": 1
+    }
+  },
+  {
+    "Id": "spring_rhubarb_compote",
+    "Name": "Компот из ревеня",
+    "Type": 6,
+    "Price": 25,
+    "RequiredTavernLevel": 2,
+    "Experience": 14,
+    "Ingredients": {
+      "Ревень": 2,
+      "Мёд": 1,
+      "Яблоко": 1
+    }
+  },
+  {
+    "Id": "summer_watermelon_drink",
+    "Name": "Арбузный напиток",
+    "Type": 6,
+    "Price": 18,
+    "RequiredTavernLevel": 2,
+    "Experience": 10,
+    "Ingredients": {
+      "Арбуз": 1,
+      "Мёд": 1
+    }
+  },
+  {
+    "Id": "spring_rhubarb_pie",
+    "Name": "Пирог с ревенем",
+    "Type": 2,
+    "Price": 35,
+    "RequiredTavernLevel": 2,
+    "Experience": 22,
+    "Ingredients": {
+      "Ревень": 3,
+      "Пшеничная мука": 2,
+      "Яйцо": 1
+    }
+  },
+  {
     "Id": "base_milk_porridge",
     "Name": "Молочная каша",
     "Type": 4,
@@ -139,6 +244,19 @@
       "Молоко": 2,
       "Пшеничная мука": 1,
       "Мёд": 1
+    }
+  },
+  {
+    "Id": "spring_asparagus_omelet",
+    "Name": "Омлет со спаржей",
+    "Type": 7,
+    "Price": 37,
+    "RequiredTavernLevel": 2,
+    "Experience":26,
+    "Ingredients": {
+      "Спаржа": 2,
+      "Яйцо": 2,
+      "Молоко": 1
     }
   },
   {
@@ -221,6 +339,20 @@
     }
   },
   {
+    "Id": "summer_watermelon_pudding",
+    "Name": "Арбузный пудинг",
+    "Type": 3,
+    "Price": 29,
+    "RequiredTavernLevel": 3,
+    "Experience": 18,
+    "Ingredients": {
+      "Арбуз": 1,
+      "Молоко": 1,
+      "Яйцо": 2,
+      "Мёд": 1
+    }
+  },
+  {
     "Id": "nun_zucchini_with_garlic",
     "Name": "Кабачки с чесноком",
     "Type": 8,
@@ -231,6 +363,20 @@
       "Кабачок": 2,
       "Чеснок": 1,
       "Травы": 1
+    }
+  },
+  {
+    "Id": "spring_asparagus_stew",
+    "Name": "Тушёная спаржа с овощами",
+    "Type": 8,
+    "Price": 34,
+    "RequiredTavernLevel": 3,
+    "Experience": 21,
+    "Ingredients": {
+      "Спаржа": 2,
+      "Картофель": 2,
+      "Морковь": 1,
+      "Лук": 1
     }
   },
   {
@@ -1162,6 +1308,19 @@
       "Кабачок": 2,
       "Острый перец": 1,
       "Травы": 1
+    }
+  },
+  {
+    "Id": "summer_stuffed_tomatoes",
+    "Name": "Фаршированные помидоры",
+    "Type": 0,
+    "Price": 46,
+    "RequiredTavernLevel": 21,
+    "Experience": 34,
+    "Ingredients": {
+      "Помидор": 3,
+      "Говядина": 2,
+      "Лук": 1
     }
   },
   {

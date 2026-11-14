@@ -20,7 +20,7 @@ public static class VisitorService
     /// <param name="visitor">Посетитель, для которого формируется заказ.</param>
     /// <param name="tavern">Таверна, в которой посетитель делает заказ.</param>
     /// <returns>Список блюд, выбранных посетителем.</returns>
-    public static List<Dish> ChooseOrder(this Visitor visitor, Tavern tavern, DayEvent dayEvent)
+    public static List<Dish> ChooseOrder(this Visitor visitor, Tavern tavern, Season season, DayEvent dayEvent)
     {
         int count = new Random().Next(2, 4);
         int money = visitor.Money;
@@ -41,7 +41,10 @@ public static class VisitorService
         {
             dishes = visitor.PreferredDishes
                 .Where(x => x.RequiredTavernLevel <= tavern.Level && x.Price <= money &&
-                            (x.Id.StartsWith("base_") || tavern.AvailableDishes.Contains(x))).ToList();
+                            (x.Id.StartsWith("base_") || x.Id.StartsWith(season.ToString().ToLower()) ||
+                             (!x.Id.StartsWith("spring_") && !x.Id.StartsWith("summer_") &&
+                              !x.Id.StartsWith("autumn_") && !x.Id.StartsWith("winter_") &&
+                              tavern.AvailableDishes.Contains(x)))).ToList();
         }
 
         for (int i = 0; i < count; i++)
