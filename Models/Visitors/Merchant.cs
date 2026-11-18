@@ -14,7 +14,8 @@ public class Merchant : Visitor
     public override int Money { get; } = new Random().Next(50,60);
     public override List<string> PossibleNames { get; set; } = ["Аникей", "Влас", "Гордей", "Ермил", "Наум", "Савватий", "Дорофей",
     "Кузьма", "Велемир", "Радмир", "Боримир", "Евстигней", "Иов", "Онуфрий", "Филат", "Прокопий", "Сысой", "Агапит", "Панкрат", "Ларион"];
-    public override List<Dish> PreferredDishes => DishCatalog.Dishes.Where(x => !x.Id.StartsWith("base")).ToList();
+    public override List<Dish> PreferredDishes => 
+        DishCatalog.Dishes.Where(x => !x.Id.StartsWith("base")).ToList();
     public override List<Item> AvaliableItemsForLeave { get; set; } =
     [
         new ("Фрагмент карты", "Потрёпанный клочок пергамента с выцветшими линиями и пометкой карандашом.", 7, 20),

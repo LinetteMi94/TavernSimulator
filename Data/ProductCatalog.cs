@@ -17,4 +17,9 @@ public static class ProductCatalog
         string json = File.ReadAllText("Data/ProductCatalogJSON.json");
         Products = JsonSerializer.Deserialize<List<Product>>(json);
     }
+
+    public static Product? GetProduct(string name)
+    {
+        return Products.FirstOrDefault(p => p.Name == name);
+    }
 }

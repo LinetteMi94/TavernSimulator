@@ -1,4 +1,5 @@
 ﻿using TavernSimulator.Models.Visitors;
+using TavernSimulator.Models.Visitors.Seasonal;
 
 namespace TavernSimulator.Data;
 
@@ -9,6 +10,7 @@ public static class VisitorCatalog
 {
     public static readonly List<VisitorInfo> Visitors = 
         [
+            new(0,1000,() => new Dryad()),
             new (0,100, () => new Peasant()),
             new (0,100, () => new Nun()),
             new (10,110, () => new Herbalist()),

@@ -18,7 +18,9 @@ public class Herbalist : Visitor, IRecipeTeacher
     public override int Money { get; } = new Random().Next(30,40);
     public override List<string> PossibleNames { get; set; } = ["Меланья", "Аглая","Лукерья","Акулина","Феврония","Пелагея","Дарья",
         "Матрёна","Евдокия","Прасковья","Домника","Феодосия","Марфа","Устинья","Евпраксия","Василиса","Агафья","Ксения","Степанида","Соломонида"];
-    public override List<Dish> PreferredDishes => DishCatalog.Dishes.Where(x =>x.Type is DishTypes.Овощное or DishTypes.Суп || x.Ingredients.ContainsKey("Травы") || x.Name.Contains("Чай") ).ToList();
+    public override List<Dish> PreferredDishes => 
+        DishCatalog.Dishes.Where(x =>x.Type is DishTypes.Овощное or DishTypes.Суп 
+                                     || x.Ingredients.ContainsKey("Травы") || x.Name.Contains("Чай") ).ToList();
 
     public override List<Item> AvaliableItemsForLeave { get; set; } = 
     [

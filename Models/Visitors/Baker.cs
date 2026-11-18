@@ -23,7 +23,8 @@ public class Baker : Visitor, IRecipeTeacher
         "Агафон", "Елисей", "Наум", "Пахом", "Фрол",
         "Никифор", "Архип", "Захар", "Игнат", "Тимофей"
     ];
-    public override List<Dish> PreferredDishes => DishCatalog.Dishes.Where(x =>x.Type is DishTypes.Выпечка or DishTypes.Сладкое).ToList();
+    public override List<Dish> PreferredDishes => 
+        DishCatalog.Dishes.Where(x =>x.Type is DishTypes.Выпечка or DishTypes.Сладкое).ToList();
 
     public List<string> Questions { get; set; } =
     [
