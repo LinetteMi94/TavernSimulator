@@ -17,6 +17,7 @@ public class Nun : Visitor, IRecipeTeacher
     public override List<string> PossibleNames { get; set; } = ["Агнесса","Беатриса","Клара",
         "Марта","Матильда","Розалия","Эльза","Хильда","Эльвира","Адела","Гертруда","Бригитта"];
      public override List<Dish> PreferredDishes => DishCatalog.Dishes.Where(x =>x.Type is DishTypes.Сладкое or DishTypes.Напиток or DishTypes.Выпечка ).ToList();
+     public override VisitorTypes Type { get; set; } = VisitorTypes.None;
      public bool HasRecipes { get; set; } = true;
      public override List<Item> AvaliableItemsForLeave { get; set; } = 
      [

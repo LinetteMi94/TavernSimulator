@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using TavernSimulator.Enums;
 
 namespace TavernSimulator.Models;
 
@@ -8,18 +9,13 @@ namespace TavernSimulator.Models;
 public abstract class Visitor
 {
     public abstract string TypeName { get; set; } 
-    
     public string Name { get; set; } 
-
     public abstract int Money { get;  }
-    
     public abstract List<string> PossibleNames { get; set; } 
-
     public abstract List<Dish> PreferredDishes { get;  }
-
     public List<Dish> Order { get; set; } = new();
-    
     public abstract List<Item> AvaliableItemsForLeave { get; set; } 
+    public abstract VisitorTypes Type { get; set; }
 
     /// <summary>
     /// Запускает случайное событие после посещения таверны.

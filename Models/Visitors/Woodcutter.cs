@@ -20,6 +20,7 @@ public class Woodcutter: Visitor
         "Ефим", "Гаврила", "Лука", "Яков", "Пахом", "Савва", "Елисей", "Мирон", "Игнат", "Наум", "Фома", "Данила", "Егор"];
     public override List<Dish> PreferredDishes => DishCatalog.Dishes.Where(x => x.Type is DishTypes.Мясное or DishTypes.Напиток).ToList();
 
+    public override VisitorTypes Type { get; set; } = VisitorTypes.None;
     public override List<Item> AvaliableItemsForLeave { get; set; } = 
         [
             new ("Точильный камень", "Небольшой камень для заточки топора.", 5, 10),

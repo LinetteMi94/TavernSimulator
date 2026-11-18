@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using TavernSimulator.Data;
+using TavernSimulator.Enums;
 using TavernSimulator.Game;
 using TavernSimulator.Service;
 
@@ -29,6 +30,7 @@ public class Peasant : Visitor
         new ("Складной нож", "Небольшой хозяйственный нож.", 8, 18),
         new ("Семена пшеницы", "Небольшой мешочек с семенами.", 4, 12)
     ];
+    public override VisitorTypes Type { get; set; } = VisitorTypes.None;
     public override void OnEvent(Tavern tavern)
     {
         var count = new Random().Next(5, 20);

@@ -1,4 +1,5 @@
 ﻿using TavernSimulator.Data;
+using TavernSimulator.Enums;
 using TavernSimulator.Game;
 using TavernSimulator.Service;
 
@@ -24,6 +25,7 @@ public class Merchant : Visitor
         new ("Маленький колокольчик", "Крошечный медный колокольчик на изношенном шнурке, язычок слегка погнут.", 5, 15),
         new ("Серебряное кольцо с рунами", "Тонкое серебряное кольцо, руны стёрты от времени, местами видна патина.", 10, 35)
     ];
+    public override VisitorTypes Type { get; set; } = VisitorTypes.None;
     public override void OnEvent(Tavern tavern)
     {
         TradeGoods(tavern);

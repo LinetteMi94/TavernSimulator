@@ -18,7 +18,9 @@ public class Nanny : Visitor, IRecipeTeacher
     public override int Money { get; } = new Random().Next(30,35);
     public override List<string> PossibleNames { get; set; } = ["Матрёна","Евдокия","Прасковья","Устинья","Феврония","Агафья",
         "Пелагея","Акулина","Марфа","Степанида","Феодора","Гликерия","Фёкла","Домна","Анфиса","Василиса","Меланья","Евпраксия","Дарья","Параскева"];
-    public override List<Dish> PreferredDishes => DishCatalog.Dishes.Where(x =>x.Type is DishTypes.Суп or DishTypes.Напиток or DishTypes.Каша ).ToList();
+    public override List<Dish> PreferredDishes => 
+        DishCatalog.Dishes.Where(x =>x.Type is DishTypes.Суп or DishTypes.Напиток or DishTypes.Каша ).ToList();
+    public override VisitorTypes Type { get; set; } = VisitorTypes.None;
     public bool HasRecipes { get; set; } = true;
     public override List<Item> AvaliableItemsForLeave { get; set; } = 
     [

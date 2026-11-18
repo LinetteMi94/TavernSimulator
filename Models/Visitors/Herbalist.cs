@@ -30,6 +30,7 @@ public class Herbalist : Visitor, IRecipeTeacher
         new ("Серебряная игла", "Тонкая игла, которой травница зашивает мешочки с травами.", 12, 30),
         new ("Засушенный цветок", "Редкий цветок, аккуратно высушенный между страницами книги.", 2, 18)
     ];
+    public override VisitorTypes Type { get; set; } = VisitorTypes.None;
     
     public bool HasRecipes { get; set; } = true;
     public List<Dish> SecretRecipes { get; set; } = DishCatalog.Dishes

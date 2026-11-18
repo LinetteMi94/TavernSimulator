@@ -23,6 +23,9 @@ public class Dryad : Visitor
         new ("Бутылочка лесной росы", "Прозрачная бутылочка с прохладной росой, собранной ранним весенним утром.", 6, 15),
         new ("Венок из первоцветов", "Небольшой венок из свежих весенних цветов, пахнущий лесом и влажной землёй.", 4, 10)
     ];
+
+    public override VisitorTypes Type { get; set; } = VisitorTypes.Spring;
+
     public override void OnEvent(Tavern tavern)
     {
        

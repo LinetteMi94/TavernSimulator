@@ -47,6 +47,7 @@ public class Baker : Visitor, IRecipeTeacher
         new ("Складной нож", "Небольшой рабочий нож с деревянной рукоятью.", 8, 22),
         new ("Медный свисток", "Маленький свисток, которым пекарь подзывает помощников из соседней комнаты.", 7, 20)
     ];
+    public override VisitorTypes Type { get; set; } = VisitorTypes.None;
     
     public bool HasRecipes { get; set; } = true;
     public List<Dish> SecretRecipes { get; set; } = DishCatalog.Dishes
