@@ -1,4 +1,6 @@
-﻿namespace TavernSimulator.Models;
+﻿using TavernSimulator.Enums;
+
+namespace TavernSimulator.Models;
 
 /// <summary>
 /// Представляет продукт, используемый для приготовления блюд.
@@ -6,6 +8,7 @@
 public class Product
 {
     public string Id { get; set; }
+    public ProductTypes Type { get; set; }
     public string Name { get; set; }
     public int Price { get; set; }
     public int RequiredTavernLevel  { get; set; }
