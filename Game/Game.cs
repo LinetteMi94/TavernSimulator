@@ -21,7 +21,7 @@ public static class Game
     private static bool _isLearningDishRunning;
     private static bool _isShopOpen;
     private static DayEvent _dayEvent;
-    private static Season _season = Season.Spring;
+    private static Season _season = Season.Summer;
     private static int _seasonDay;
     private static bool _isMorning;
     private static bool _isVisitorBeingServed;
@@ -305,7 +305,7 @@ public static class Game
         {
             Console.Clear();
             ShowHeader();
-            Visitor visitor = VisitorService.CreateVisitor(_tavern);
+            Visitor visitor = VisitorService.CreateVisitor(_tavern, _season);
             Console.WriteLine("Новый посетитель: " + visitor.TypeName + " " +  visitor.Name);
             _isVisitorBeingServed = true;
             var dishes = visitor.ChooseOrder(_tavern, _season, _dayEvent);
