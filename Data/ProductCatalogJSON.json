@@ -203,6 +203,13 @@
     "RequiredTavernLevel": 5
   },
   {
+    "Id": "base_сottage_сheese",
+    "Type": 6,
+    "Name": "Творог",
+    "Price": 8,
+    "RequiredTavernLevel": 5
+  },
+  {
     "Id": "base_pear",
     "Type": 3,
     "Name": "Груша",

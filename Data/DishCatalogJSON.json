@@ -183,6 +183,17 @@
     }
   },
   {
+    "Id": "winter_raisin_compote",
+    "Name": "Компот из изюма",
+    "Type": 6,
+    "Price": 20,
+    "RequiredTavernLevel": 2,
+    "Experience": 11,
+    "Ingredients": {
+      "Изюм": 2
+    }
+  },
+  {
     "Id": "spring_ramsons_soup",
     "Name": "Суп с черемшой",
     "Type": 5,
@@ -339,6 +350,43 @@
     }
   },
   {
+    "Id": "winter_gingerbread",
+    "Name": "Пряники с корицей",
+    "Type": 2,
+    "Price": 29,
+    "RequiredTavernLevel": 3,
+    "Experience": 19,
+    "Ingredients": {
+      "Пшеничная мука": 2,
+      "Мёд": 1,
+      "Корица": 1
+    }
+  },
+  {
+    "Id": "winter_hot_apple_drink",
+    "Name": "Горячий яблочный напиток с корицей",
+    "Type": 6,
+    "Price": 22,
+    "RequiredTavernLevel": 3,
+    "Experience": 16,
+    "Ingredients": {
+      "Яблоко": 2,
+      "Корица": 1
+    }
+  },
+  {
+    "Id": "winter_orange_ice_cream",
+    "Name": "Апельсиновое мороженое",
+    "Type": 2,
+    "Price": 26,
+    "RequiredTavernLevel": 3,
+    "Experience": 18,
+    "Ingredients": {
+      "Молоко": 2,
+      "Апельсин": 1
+    }
+  },
+  {
     "Id": "summer_watermelon_pudding",
     "Name": "Арбузный пудинг",
     "Type": 3,
@@ -433,6 +481,19 @@
     }
   },
   {
+    "Id": "winter_orange_cake",
+    "Name": "Апельсиновый кекс",
+    "Type": 2,
+    "Price": 31,
+    "RequiredTavernLevel": 4,
+    "Experience": 24,
+    "Ingredients": {
+      "Пшеничная мука": 2,
+      "Яйцо": 1,
+      "Апельсин": 1
+    }
+  },
+  {
     "Id": "base_buckwheat_with_chicken",
     "Name": "Гречка с курицей",
     "Type": 4,
@@ -521,6 +582,18 @@
       "Тыква": 2,
       "Яйцо": 1,
       "Мёд": 1
+    }
+  },
+  {
+    "Id": "winter_cottage_cheese_casserole_with_raisins",
+    "Name": "Творожная запеканка с изюмом",
+    "Type": 3,
+    "Price": 30,
+    "RequiredTavernLevel": 5,
+    "Experience": 20,
+    "Ingredients": {
+      "Творог": 2,
+      "Изюм": 1
     }
   },
   {
