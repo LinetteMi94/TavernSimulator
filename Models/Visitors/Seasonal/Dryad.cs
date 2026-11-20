@@ -3,6 +3,10 @@ using TavernSimulator.Enums;
 
 namespace TavernSimulator.Models.Visitors.Seasonal;
 
+/// <summary>
+/// Представляет дриаду, весеннего персонажа, которая посещает таверну.
+/// Предпочитает блюда без мяса и рыбы.
+/// </summary>
 public class Dryad : Visitor
 {
     public override string TypeName { get; set; } = "Дриада";
