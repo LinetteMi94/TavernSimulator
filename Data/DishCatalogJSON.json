@@ -14,6 +14,30 @@
     }
   },
   {
+    "Id": "autumn_cranberry_mors",
+    "Name": "Клюквенный морс",
+    "Type": 6,
+    "Price": 19,
+    "RequiredTavernLevel": 1,
+    "Experience": 9,
+    "Ingredients": {
+      "Клюква": 2
+    }
+  },
+  {
+    "Id": "autumn_cranberry_waffles",
+    "Name": "Клюквенные вафли",
+    "Type": 2,
+    "Price": 22,
+    "RequiredTavernLevel": 1,
+    "Experience": 14,
+    "Ingredients": {
+      "Клюква": 1,
+      "Пшеничная мука": 2,
+      "Яйцо": 1
+    }
+  },
+  {
     "Id": "summer_eggplant_caviar",
     "Name": "Икра из баклажанов",
     "Type": 8,
@@ -207,6 +231,18 @@
     }
   },
   {
+    "Id": "autumn_turnip_with_horseradish",
+    "Name": "Репа с хреном",
+    "Type": 8,
+    "Price": 18,
+    "RequiredTavernLevel": 2,
+    "Experience": 8,
+    "Ingredients": {
+      "Репа": 2,
+      "Хрен": 1
+    }
+  },
+  {
     "Id": "spring_rhubarb_compote",
     "Name": "Компот из ревеня",
     "Type": 6,
@@ -360,6 +396,32 @@
       "Пшеничная мука": 2,
       "Мёд": 1,
       "Корица": 1
+    }
+  },
+  {
+    "Id": "autumn_turnip_with_honey",
+    "Name": "Репа с мёдом",
+    "Type": 8,
+    "Price": 20,
+    "RequiredTavernLevel": 3,
+    "Experience": 11,
+    "Ingredients": {
+      "Репа": 2,
+      "Мёд": 1
+    }
+  },
+  {
+    "Id": "autumn_stew",
+    "Name": "Осеннее рагу",
+    "Type": 8,
+    "Price": 19,
+    "RequiredTavernLevel": 3,
+    "Experience": 10,
+    "Ingredients": {
+      "Репа": 1,
+      "Тыква": 1,
+      "Картофель": 2,
+      "Лук": 1
     }
   },
   {
@@ -956,6 +1018,20 @@
       "Яйцо": 1,
       "Молоко": 1,
       "Мёд": 1
+    }
+  },
+  {
+    "Id": "autumn_stewed_meat_with_pumpkin",
+    "Name": "Тушёный гусь с тыквой",
+    "Type": 0,
+    "Price": 32,
+    "RequiredTavernLevel": 10,
+    "Experience": 20,
+    "Ingredients": {
+      "Тыква": 2,
+      "Лук": 1,
+      "Гусь": 1,
+      "Травы": 1
     }
   },
   {
