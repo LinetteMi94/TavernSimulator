@@ -1,5 +1,12 @@
 ﻿[
   {
+    "Id": "base_crucian_carp",
+    "Type":1,
+    "Name": "Карась",
+    "Price": 4,
+    "RequiredTavernLevel": 1
+  },
+  {
     "Id": "base_potato",
     "Type": 2,
     "Name": "Картофель",
@@ -25,13 +32,6 @@
     "Type": 2,
     "Name": "Помидор",
     "Price": 5,
-    "RequiredTavernLevel": 1
-  },
-  {
-    "Id": "summer_watermelon",
-    "Type": 5,
-    "Name": "Арбуз",
-    "Price": 8,
     "RequiredTavernLevel": 1
   },
   {
@@ -137,6 +137,13 @@
     "Type": 2,
     "Name": "Хрен",
     "Price": 4,
+    "RequiredTavernLevel": 2
+  },
+  {
+    "Id": "summer_watermelon",
+    "Type": 5,
+    "Name": "Арбуз",
+    "Price": 8,
     "RequiredTavernLevel": 2
   },
   {

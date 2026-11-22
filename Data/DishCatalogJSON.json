@@ -130,6 +130,18 @@
     }
   },
   {
+    "Id": "base_fried_crucian_carp_with_potato",
+    "Name": "Жареный карась с картошкой",
+    "Type": 1,
+    "Price": 10,
+    "RequiredTavernLevel": 1,
+    "Experience": 3,
+    "Ingredients": {
+      "Карась": 1,
+      "Картофель": 1
+    }
+  },
+  {
     "Id": "base_vegetable_stew",
     "Name": "Овощное рагу",
     "Type": 8,

@@ -13,6 +13,7 @@ public static class VisitorCatalog
         [
             new(-1,-1,VisitorTypes.Spring,() => new Dryad()),
             new(-1,-1,VisitorTypes.Winter,() => new Snowman()),
+            new(-1,-1,VisitorTypes.Summer,() => new Mermaid()),
             new (0,100,VisitorTypes.None, () => new Peasant()),
             new (0,100,VisitorTypes.None,() => new Nun()),
             new (10,110,VisitorTypes.None, () => new Herbalist()),
