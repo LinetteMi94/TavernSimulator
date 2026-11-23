@@ -220,5 +220,54 @@ public static class AchievementCatalog
             RewardValue = 100,
             RequirementType = AchievementRequirementType.VisitorsServed,
             RequiredValue = 500 },
+        new() {
+            Id = "level_2",
+            Name = "Первые успехи",
+            Description = "Достигните 2 уровня таверны.",
+            UnlockMessage = "🏆 Ваша таверна начинает привлекать всё больше посетителей. Похоже, дело идёт в гору!",
+            RewardType = AchievementRewardType.Gold,
+            RewardValue = 25,
+            RequirementType = AchievementRequirementType.TavernLevel,
+            RequiredValue = 2 },
+
+        new() {
+            Id = "level_5",
+            Name = "Место с репутацией",
+            Description = "Достигните 5 уровня таверны.",
+            UnlockMessage = "🏆 О вашей таверне уже знают в округе. Сюда начинают приходить не только из ближайших домов.",
+            RewardType = AchievementRewardType.Gold,
+            RewardValue = 50,
+            RequirementType = AchievementRequirementType.TavernLevel,
+            RequiredValue = 5 },
+
+        new() {
+            Id = "level_10",
+            Name = "Знаменитая таверна",
+            Description = "Достигните 10 уровня таверны.",
+            UnlockMessage = "🏆 Ваша таверна стала известна далеко за пределами округа. Путешественники специально держат путь сюда.",
+            RewardType = AchievementRewardType.Gold,
+            RewardValue = 100,
+            RequirementType = AchievementRequirementType.TavernLevel,
+            RequiredValue = 10 },
+
+        new() {
+            Id = "level_15",
+            Name = "Лучшее место в округе",
+            Description = "Достигните 15 уровня таверны.",
+            UnlockMessage = "🏆 Ваша таверна стала настоящей достопримечательностью. Здесь хотят побывать все!",
+            RewardType = AchievementRewardType.Gold,
+            RewardValue = 150,
+            RequirementType = AchievementRequirementType.TavernLevel,
+            RequiredValue = 15 },
+
+        new() {
+            Id = "level_20",
+            Name = "Легенда таверн",
+            Description = "Достигните 20 уровня таверны.",
+            UnlockMessage = "🏆 Ваша таверна достигла вершины! О ней рассказывают истории, а лучшие столы бронируют заранее.",
+            RewardType = AchievementRewardType.Gold,
+            RewardValue = 250,
+            RequirementType = AchievementRequirementType.TavernLevel,
+            RequiredValue = 20 }
         ];
 }

@@ -19,7 +19,8 @@ public static class AchievementService
     /// <param name="tavern">Таверна, для которой проверяется условие.</param>
     public static void IsAchievementUnlocked(AchievementRequirementType type, Tavern tavern)
     {
-        var achievements = AchievementCatalog.Achievements.Where(x => x.RequirementType == type);
+        var achievements = AchievementCatalog.Achievements
+            .Where(x => x.RequirementType == type);
         int check = 0;
         switch (type)
         {
@@ -36,6 +37,11 @@ public static class AchievementService
             case AchievementRequirementType.VisitorsServed:
             {
                 check = tavern.TotalVisitorsServed;
+                break;
+            }
+            case AchievementRequirementType.TavernLevel:
+            {
+                check = tavern.Level;
                 break;
             }
         }
